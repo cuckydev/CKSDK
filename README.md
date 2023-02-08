@@ -8,6 +8,8 @@ This is my new PS1 SDK
 
 There's currently no examples or instructions
 
+Documentation is available at https://ckdev.org/CKSDK
+
 ## Notes
 
 This SDK seems to not run in PCSX-Redux or ePSXe
