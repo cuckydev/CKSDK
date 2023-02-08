@@ -140,11 +140,13 @@ int main(int argc, char *argv[])
 			std::cerr << "Input ELF overrides kernel" << std::endl;
 			return 1;
 		}
-		if (max_addr - min_addr > 0x200000)
+		/*
+		if (max_addr - seg_addr > 0x200000)
 		{
-			std::cerr << "Input ELF is larger than 2MB" << std::endl;
+			std::cerr << "Input ELF is larger than 2MB segment" << std::endl;
 			return 1;
 		}
+		*/
 
 		// Read program segments into buffer
 		buffer.resize(max_addr - min_addr);
