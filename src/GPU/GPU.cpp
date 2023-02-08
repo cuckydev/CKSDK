@@ -103,7 +103,7 @@ namespace CKSDK
 		void Queue_DrawOT(const DrawQueueArgs &args)
 		{
 			// Get arguments
-			uint32_t ot = args.arg[0];
+			size_t ot = args.arg[0];
 
 			// Set DMA direction
 			DataSync();
@@ -149,10 +149,6 @@ namespace CKSDK
 			TIMER_CTRL(0).ctrl = 0x0500;
 			TIMER_CTRL(1).ctrl = 0x0500;
 
-			// Initialize buffers
-			g_bufferp = &buffers[0];
-			g_bufferp->Init();
-
 			// Initialize GTE
 			{
 				uint32_t v0, v1, t0;
@@ -190,6 +186,23 @@ namespace CKSDK
 			
 			// Restore IRQs
 			OS::EnableIRQ();
+		}
+
+		void SetBuffer(Word *buffer, size_t size, size_t ot_size)
+		{
+			// Setup buffers
+			Word *bufferp = buffer;
+			size >>= 1;
+			for (auto &i : buffers)
+			{
+				i.buffer = bufferp;
+				i.ot_size = ot_size;
+				bufferp += size;
+			}
+
+			// Initialize buffers
+			g_bufferp = &buffers[0];
+			g_bufferp->Init();
 		}
 
 		void SetScreen(uint32_t w, uint32_t h, uint32_t ox, uint32_t oy, uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1)
@@ -281,12 +294,12 @@ namespace CKSDK
 				flip_callback();
 
 			// Set draw framebuffer area
-			// AllocPacket<Buffer::GP0>(OT::Length - 1) = bufferp->gp0;
+			AllocPacket<Buffer::GP0>(bufferp->ot_size - 1) = bufferp->gp0;
 
 			// Send OT to GPU
-			// draw_queue.Enqueue(Queue_DrawOT, DrawQueueArgs{
-			// 	uint32_t(bufferp->ot + OT::Length)
-			// });
+			draw_queue.Enqueue(Queue_DrawOT, DrawQueueArgs{
+				uint32_t(&bufferp->GetOT(bufferp->ot_size - 1))
+			});
 
 			// Flip and initialize buffer
 			bufferp = (bufferp == &buffers[0]) ? &buffers[1] : &buffers[0];

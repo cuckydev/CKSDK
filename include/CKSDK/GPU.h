@@ -428,26 +428,27 @@ namespace CKSDK
 			Word gp1_mode;
 
 			// Buffers
-			/// @brief Ordering table start pointer
-			Tag *ot;
+			/// @brief Buffer pointer
+			Word *buffer;
 			/// @brief Ordering table size
 			size_t ot_size;
-			/// @brief Primitive buffer start pointer
-			Word *pri;
-			/// @brief Primitive buffer size
-			size_t pri_size;
 			/// @brief Primitive buffer pointer
-			Word *prip; // Primitive buffer
+			Word *prip;
 
-			// Buffer initialization
+			/// @brief Gets ordering table tag at index
+			/// @param i Index of tag
+			/// @return Tag at index
+			Tag &GetOT(size_t i)
+			{ return *((Tag*)(&buffer[1 + i])); }
+
 			/// @brief Initializes primitive buffer and ordering table
 			void Init()
 			{
 				// Set primitive pointer
-				prip = pri;
+				prip = (Word*)(&GetOT(ot_size));
 
 				// Initialize ordering tables
-				DMA_CTRL(OS::DMA::OTC).madr = (uint32_t)&ot[ot_size];
+				DMA_CTRL(OS::DMA::OTC).madr = uint32_t(&GetOT(ot_size - 1));
 				DMA_CTRL(OS::DMA::OTC).bcr  = (ot_size + 1) & 0xFFFF;
 				DMA_CTRL(OS::DMA::OTC).chcr = 0x11000002;
 				while ((DMA_CTRL(OS::DMA::OTC).chcr & (1 << 24)) != 0);
@@ -462,6 +463,15 @@ namespace CKSDK
 		/// @brief Initializes GPU
 		/// @note For internal use only
 		void Init();
+
+		/// @brief Set GPU buffer
+		/// @param buffer Buffer to set
+		/// @param size Size of buffer in words
+		/// @param ot_size Size of ordering table in entries
+		/// @details This splits the given buffer into two for double buffering
+		/// @details The ordering table is placed at the beginning of each buffer
+		/// @details ot_size represents the addressable size of the ordering table, the terminator is added automatically
+		void SetBuffer(Word *buffer, size_t size, size_t ot_size);
 
 		/// @brief Sets GPU framebuffers
 		/// @param w Width of framebuffers
@@ -495,6 +505,7 @@ namespace CKSDK
 		/// @param wh Width and height in VRAM
 		/// @param bcr DMA block count value
 		void DMAImage(const void *addr, uint32_t xy, uint32_t wh, uint32_t bcr);
+
 		/// @brief Loads image to VRAM
 		/// @param addr Address of image data
 		/// @param x X coordinate in VRAM
@@ -524,30 +535,36 @@ namespace CKSDK
 
 		/// @brief Flip callback type
 		typedef OS::Function<void> FlipCallback;
+
 		/// @brief Sets flip callback
 		/// @param cb FlipCallback
 		/// @returns Previous FlipCallback
 		FlipCallback SetFlipCallback(FlipCallback cb);
+
 		/// @brief Gets flip callback
 		/// @returns FlipCallback
 		FlipCallback GetFlipCallback();
 
 		/// @brief VBlank callback type
 		typedef OS::Function<void> VBlankCallback;
+
 		/// @brief Sets VBlank callback
 		/// @param cb VBlankCallback
 		/// @returns Previous VBlankCallback
 		VBlankCallback SetVBlankCallback(VBlankCallback cb);
+
 		/// @brief Gets VBlank callback
 		/// @returns VBlankCallback
 		VBlankCallback GetVBlankCallback();
 
 		/// @brief Queue callback type
 		typedef OS::Function<void> QueueCallback;
+
 		/// @brief Sets queue callback
 		/// @param cb QueueCallback
 		/// @returns Previous QueueCallback
 		QueueCallback SetQueueCallback(QueueCallback cb);
+
 		/// @brief Gets queue callback
 		/// @returns QueueCallback
 		QueueCallback GetQueueCallback();
@@ -559,9 +576,9 @@ namespace CKSDK
 		/// @return Packet
 		/// @details Allocates and links a packet of a given size onto the given ordering table
 		/// @details Packets are linked in reverse order, but the primitives within the packet will run in the order they are written
-		static Word *AllocPacket(uint32_t ot, size_t words)
+		static Word *AllocPacket(size_t ot, size_t words)
 		{
-			Tag *otp = &g_bufferp->ot[1 + ot];
+			Tag *otp = (Tag*)&g_bufferp->GetOT(ot);
 			Word *prip = g_bufferp->prip;
 
 			new(prip) Tag(otp->Ptr(), words);
@@ -579,7 +596,7 @@ namespace CKSDK
 		/// @details Packets are linked in reverse order, but the primitives within the packet will run in the order they are written
 		/// @overload
 		template <typename T>
-		static T &AllocPacket(uint32_t ot)
+		static T &AllocPacket(size_t ot)
 		{ return *((T*)AllocPacket(ot, sizeof(T) / sizeof(Word))); }
 		
 		/// @brief Wait until GPU is ready to receive command word

@@ -1,7 +1,5 @@
 # CKSDK
 
-WARNING! Due to incomplete reworking the GPU code does not currently operate!!!
-
 ## About
 
 This is my new PS1 SDK
