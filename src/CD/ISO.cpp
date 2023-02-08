@@ -94,7 +94,7 @@ namespace CKSDK
 		// ISO9660 callbacks
 		static void ReadCallback_ReadDirectory(void *addr, size_t sectors)
 		{
-			// Look for ALL.CDP in file
+			// Look for ALL in file
 			char *dirp = (char*)addr;
 
 			while (1)
@@ -147,7 +147,7 @@ namespace CKSDK
 			char *iso_buffer = new char[2048];
 			CD::ReadSectors(ReadCallback_FindDirectory, iso_buffer, CD::Loc::Enc(0x10), 1, CD::Mode::Speed);
 
-			// Wait for ALL.CDP to be found
+			// Wait for ALL to be found
 			while (all_lba == 0);
 			CD::ReadSync();
 			delete[] iso_buffer;
