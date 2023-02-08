@@ -1,0 +1,3 @@
+# Generated Doxygen files
+docs/*
+!docs/Doxyfile.in
