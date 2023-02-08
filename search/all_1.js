@@ -13,5 +13,6 @@ var searchData=
   ['btn_21',['btn',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a3a98912a80a1b24e2eb06000661ffa5a',1,'CKSDK::SPI::PadResponse']]],
   ['btn_5fi_22',['btn_i',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a9e368279590f3774692031e047897937',1,'CKSDK::SPI::PadResponse']]],
   ['btn_5fii_23',['btn_ii',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#abbbd97b29dbc511425cc12dece94a03d',1,'CKSDK::SPI::PadResponse']]],
-  ['buffer_24',['Buffer',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html',1,'CKSDK::GPU']]]
+  ['buffer_24',['buffer',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html#a8ef4c4dca018392b827d5ad3dc47eaac',1,'CKSDK::GPU::Buffer']]],
+  ['buffer_25',['Buffer',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html',1,'CKSDK::GPU']]]
 ];
