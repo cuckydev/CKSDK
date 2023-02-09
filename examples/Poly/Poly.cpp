@@ -42,54 +42,54 @@ extern "C" void main()
 			CKSDK::GPU::Poly<true, true, false> poly;
 		};
 
-		PolyTest *poly_test = CKSDK::GPU::AllocPacket<PolyTest>(0);
-		new(poly_test) PolyTest(); // Call constructor
+		PolyTest &poly_test = CKSDK::GPU::AllocPacket<PolyTest>(0);
+		new(&poly_test) PolyTest(); // Call constructor
 
 		// Setup background polygon to fill entire screen
-		poly_test->bg.v0.c.s.r = 0x00;
-		poly_test->bg.v0.c.s.g = 0x80;
-		poly_test->bg.v0.c.s.b = 0x80;
+		poly_test.bg.v0.c.s.r = 0x00;
+		poly_test.bg.v0.c.s.g = 0x80;
+		poly_test.bg.v0.c.s.b = 0x80;
 
-		poly_test->bg.v0.xy.s.x = 0;
-		poly_test->bg.v0.xy.s.y = 0;
+		poly_test.bg.v0.xy.s.x = 0;
+		poly_test.bg.v0.xy.s.y = 0;
 
-		poly_test->bg.v1.xy.s.x = g_width;
-		poly_test->bg.v1.xy.s.y = 0;
+		poly_test.bg.v1.xy.s.x = g_width;
+		poly_test.bg.v1.xy.s.y = 0;
 
-		poly_test->bg.v2.xy.s.x = 0;
-		poly_test->bg.v2.xy.s.y = g_height;
+		poly_test.bg.v2.xy.s.x = 0;
+		poly_test.bg.v2.xy.s.y = g_height;
 
-		poly_test->bg.v3.xy.s.x = g_width;
-		poly_test->bg.v3.xy.s.y = g_height;
+		poly_test.bg.v3.xy.s.x = g_width;
+		poly_test.bg.v3.xy.s.y = g_height;
 
 		// Setup foreground polygon
-		poly_test->poly.v0.c.s.r = 0x80;
-		poly_test->poly.v0.c.s.g = 0x00;
-		poly_test->poly.v0.c.s.b = 0x00;
+		poly_test.poly.v0.c.s.r = 0x80;
+		poly_test.poly.v0.c.s.g = 0x00;
+		poly_test.poly.v0.c.s.b = 0x00;
 
-		poly_test->poly.v1.c.s.r = 0x00;
-		poly_test->poly.v1.c.s.g = 0x80;
-		poly_test->poly.v1.c.s.b = 0x00;
+		poly_test.poly.v1.c.s.r = 0x00;
+		poly_test.poly.v1.c.s.g = 0x80;
+		poly_test.poly.v1.c.s.b = 0x00;
 
-		poly_test->poly.v2.c.s.r = 0x00;
-		poly_test->poly.v2.c.s.g = 0x00;
-		poly_test->poly.v2.c.s.b = 0x80;
+		poly_test.poly.v2.c.s.r = 0x00;
+		poly_test.poly.v2.c.s.g = 0x00;
+		poly_test.poly.v2.c.s.b = 0x80;
 
-		poly_test->poly.v3.c.s.r = 0x80;
-		poly_test->poly.v3.c.s.g = 0x80;
-		poly_test->poly.v3.c.s.b = 0x80;
+		poly_test.poly.v3.c.s.r = 0x80;
+		poly_test.poly.v3.c.s.g = 0x80;
+		poly_test.poly.v3.c.s.b = 0x80;
 
-		poly_test->poly.v0.xy.s.x = 64;
-		poly_test->poly.v0.xy.s.y = 64;
+		poly_test.poly.v0.xy.s.x = 64;
+		poly_test.poly.v0.xy.s.y = 64;
 
-		poly_test->poly.v1.xy.s.x = 256;
-		poly_test->poly.v1.xy.s.y = 64;
+		poly_test.poly.v1.xy.s.x = 256;
+		poly_test.poly.v1.xy.s.y = 64;
 
-		poly_test->poly.v2.xy.s.x = 64;
-		poly_test->poly.v2.xy.s.y = 176;
+		poly_test.poly.v2.xy.s.x = 64;
+		poly_test.poly.v2.xy.s.y = 176;
 
-		poly_test->poly.v3.xy.s.x = 256;
-		poly_test->poly.v3.xy.s.y = 176;
+		poly_test.poly.v3.xy.s.x = 256;
+		poly_test.poly.v3.xy.s.y = 176;
 
 		// Flip screen
 		CKSDK::GPU::Flip();

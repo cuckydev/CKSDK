@@ -612,8 +612,8 @@ namespace CKSDK
 		/// @details Packets are linked in reverse order, but the primitives within the packet will run in the order they are written
 		/// @overload
 		template <typename T>
-		static T *AllocPacket(size_t ot)
-		{ return (T*)AllocPacket(ot, sizeof(T) / sizeof(Word)); }
+		static T &AllocPacket(size_t ot)
+		{ return *((T*)AllocPacket(ot, sizeof(T) / sizeof(Word))); }
 		
 		/// @brief Wait until GPU is ready to receive command word
 		inline void CmdSync() { while ((GPU_GP1 & (1 << 26)) == 0); }
