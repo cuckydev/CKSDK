@@ -2,9 +2,9 @@
 
 ## About
 
-This is my new PS1 SDK
+This is my new PlayStation Software Development Kit
 
-There's currently no examples or instructions
+See examples in the examples directory
 
 Documentation is available at https://ckdev.org/CKSDK
 
