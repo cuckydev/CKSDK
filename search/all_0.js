@@ -4,7 +4,7 @@ var searchData=
   ['acknowledge_1',['Acknowledge',['../dc/d2b/namespaceCKSDK_1_1CD.html#aed4f27d936ff8d0dafbe58039047bf05add279c1edcfbecb780a4a20917a766c1',1,'CKSDK::CD']]],
   ['addr_2',['addr',['../d9/d1e/structCKSDK_1_1SPI_1_1PadPacket.html#ab4a31ae26267a15c3d4f0745f78ddd4c',1,'CKSDK::SPI::PadPacket']]],
   ['alloc_3',['Alloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#add55e8bba2c73b30c1a0ab6f3d50aa42',1,'CKSDK::Mem']]],
-  ['allocpacket_4',['AllocPacket',['../d8/d2a/namespaceCKSDK_1_1GPU.html#aff79ac26014abd75f2964798512e543b',1,'CKSDK::GPU::AllocPacket(size_t ot, size_t words)'],['../d8/d2a/namespaceCKSDK_1_1GPU.html#a694dc10d4977840ac1f03576e9acf875',1,'CKSDK::GPU::AllocPacket(size_t ot)']]],
+  ['allocpacket_4',['AllocPacket',['../d8/d2a/namespaceCKSDK_1_1GPU.html#aff79ac26014abd75f2964798512e543b',1,'CKSDK::GPU::AllocPacket(size_t ot, size_t words)'],['../d8/d2a/namespaceCKSDK_1_1GPU.html#a05931672a873b090ef0737d08af8030d',1,'CKSDK::GPU::AllocPacket(size_t ot)']]],
   ['america_5',['America',['../dc/d2b/namespaceCKSDK_1_1CD.html#aabe89ede4a564e2e9533eff996fbb41fa088f003833d523d9dccc529e929afdc7',1,'CKSDK::CD']]],
   ['analog_6',['analog',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#aae9201a4234a39253e34a883065e4ff3',1,'CKSDK::SPI::PadResponse']]],
   ['analog_7',['Analog',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a8fadab7f8bbc7a54e79b3e6e858a0da9aa3002b111f6b8eac54284351e975c857',1,'CKSDK::SPI']]],
