@@ -45,11 +45,15 @@ namespace CKSDK
 
 		OS::Init();
 		GPU::Init();
+		#ifndef CKSDK_NO_CD
 		CD::Init();
+		#endif
 		SPU::Init();
 		SPI::Init();
 		Timer::Init();
 		DLL::Init();
+		#ifndef CKSDK_NO_CD
 		ISO::Init();
+		#endif
 	}
 }

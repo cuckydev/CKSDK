@@ -265,13 +265,11 @@ namespace CKSDK
 		/// @tparam Grad `true` if each vertex has a color
 		/// @tparam Quad `true` if the polygon is a quad
 		/// @tparam Tex `true` if textured
-		/// @tparam Semi `true` if semi-transparency is enabled
-		/// @tparam Raw `true` if modulation is disabled
 		/// 
 		/// @details The structure will contain v0 through v2, or v0 through v3 if `Quad` is `true`.
 		/// @details Each vertex will contain \link ScreenCoord xy\endlink, as well as \link TexCoord uv\endlink (if `Tex` is `true`), and \link Color c\endlink (if `Grad` is `true`).
 		/// @details The color of the polygon, if `Grad` is `false`, is set by `v0.c`.
-		template<bool Grad, bool Quad, bool Tex, bool Semi, bool Raw>
+		template<bool Grad, bool Quad, bool Tex>
 		struct Poly :
 		/// @cond INTERNAL
 		public PolySet<Quad, PolyVertex<true, Tex>, PolyVertex<Grad, Tex>>
@@ -282,9 +280,27 @@ namespace CKSDK
 				this->v0.c.w = (GP0_Poly |
 					(Grad ? GP0_Poly_Grad : 0) |
 					(Quad ? GP0_Poly_Quad : 0) |
-					(Tex ? GP0_Poly_Tex : 0) |
-					(Semi ? GP0_Poly_Semi : 0) |
-					(Raw ? GP0_Poly_Raw : 0)) << 24;
+					(Tex ? GP0_Poly_Tex : 0)) << 24;
+			}
+
+			/// @brief Sets semi-transparency flag
+			/// @param semi `true` to enable semi-transparency
+			void SetSemi(bool semi)
+			{
+				if (semi)
+					this->v0.c.w |= (GP0_Poly_Semi << 24);
+				else
+					this->v0.c.w &= ~(GP0_Poly_Semi << 24);
+			}
+
+			/// @brief Sets raw flag
+			/// @param semi `true` to disable modulation
+			void SetRaw(bool raw)
+			{
+				if (raw)
+					this->v0.c.w |= (GP0_Poly_Raw << 24);
+				else
+					this->v0.c.w &= ~(GP0_Poly_Raw << 24);
 			}
 			
 			/// @brief Returns the clut
@@ -596,8 +612,8 @@ namespace CKSDK
 		/// @details Packets are linked in reverse order, but the primitives within the packet will run in the order they are written
 		/// @overload
 		template <typename T>
-		static T &AllocPacket(size_t ot)
-		{ return *((T*)AllocPacket(ot, sizeof(T) / sizeof(Word))); }
+		static T *AllocPacket(size_t ot)
+		{ return (T*)AllocPacket(ot, sizeof(T) / sizeof(Word)); }
 		
 		/// @brief Wait until GPU is ready to receive command word
 		inline void CmdSync() { while ((GPU_GP1 & (1 << 26)) == 0); }

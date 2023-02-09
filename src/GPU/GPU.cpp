@@ -294,7 +294,7 @@ namespace CKSDK
 				flip_callback();
 
 			// Set draw framebuffer area
-			AllocPacket<Buffer::GP0>(bufferp->ot_size - 1) = bufferp->gp0;
+			*(AllocPacket<Buffer::GP0>(bufferp->ot_size - 1)) = bufferp->gp0;
 
 			// Send OT to GPU
 			draw_queue.Enqueue(Queue_DrawOT, DrawQueueArgs{

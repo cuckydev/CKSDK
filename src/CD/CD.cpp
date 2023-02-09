@@ -15,6 +15,8 @@
 	OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+#ifndef CKSDK_NO_CD
+
 #include <CKSDK/CD.h>
 
 #include <CKSDK/OS.h>
@@ -543,3 +545,5 @@ namespace CKSDK
 		}
 	}
 }
+
+#endif
