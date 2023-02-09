@@ -20,7 +20,7 @@ var searchData=
   ['cksdk_43',['CKSDK',['../d8/dce/namespaceCKSDK.html',1,'']]],
   ['cksdk_2eh_44',['CKSDK.h',['../d1/d5a/CKSDK_8h.html',1,'']]],
   ['clut_45',['Clut',['../d9/dd7/structCKSDK_1_1GPU_1_1Clut.html',1,'CKSDK::GPU']]],
-  ['clut_46',['clut',['../d9/dd7/structCKSDK_1_1GPU_1_1Clut.html#a763bcdb94c49e723d31be38bac7b84d9',1,'CKSDK::GPU::Clut::clut()'],['../d8/d21/structCKSDK_1_1GPU_1_1Poly.html#aa842546c2069b94963240c818c2295bf',1,'CKSDK::GPU::Poly::clut()'],['../d8/d21/structCKSDK_1_1GPU_1_1Poly.html#a8e4b7c41d5dfeb6234a27e788cfb97f1',1,'CKSDK::GPU::Poly::clut() const']]],
+  ['clut_46',['clut',['../d9/dd7/structCKSDK_1_1GPU_1_1Clut.html#a763bcdb94c49e723d31be38bac7b84d9',1,'CKSDK::GPU::Clut::clut()'],['../d8/d21/structCKSDK_1_1GPU_1_1Poly.html#a967cd03bceb1e3c4248ff70c8b3ff036',1,'CKSDK::GPU::Poly::clut()'],['../d8/d21/structCKSDK_1_1GPU_1_1Poly.html#ab1502aff99e72984cf7c898debf66774',1,'CKSDK::GPU::Poly::clut() const']]],
   ['clut_47',['Clut',['../d9/dd7/structCKSDK_1_1GPU_1_1Clut.html#ad8c87e92953e48cdf4d260341a3a1a7d',1,'CKSDK::GPU::Clut::Clut()'],['../d9/dd7/structCKSDK_1_1GPU_1_1Clut.html#adebf23ac3822afab0f84d4fb3c324e8c',1,'CKSDK::GPU::Clut::Clut(uint16_t x, uint16_t y)']]],
   ['cmd_48',['cmd',['../d9/d1e/structCKSDK_1_1SPI_1_1PadPacket.html#add7535e5c183167da66098163ef3f3ff',1,'CKSDK::SPI::PadPacket']]],
   ['cmdsync_49',['CmdSync',['../d8/d2a/namespaceCKSDK_1_1GPU.html#ace461ad7b56cd5cd96352f0e945d876d',1,'CKSDK::GPU']]],

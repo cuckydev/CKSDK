@@ -29,6 +29,6 @@ var searchData=
   ['prefix_330',['prefix',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a9bf90b1a838d7a5d3007e0fe137b7a26',1,'CKSDK::SPI::PadResponse']]],
   ['press_331',['press',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a4fd7f014a1eafa0c6e4586f87cfde243',1,'CKSDK::SPI::PadResponse::press()'],['../db/da0/structCKSDK_1_1SPI_1_1Pad.html#a224bd04732b891e035b46f8804369ef6',1,'CKSDK::SPI::Pad::press()']]],
   ['prip_332',['prip',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html#a28cce20c1a644bccab5330d8ebbb05f6',1,'CKSDK::GPU::Buffer']]],
-  ['ptr_333',['Ptr',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a20e51e729d41512fcd424c6d1f511d13',1,'CKSDK::GPU::Tag']]],
-  ['ptr_334',['ptr',['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html#ad0a0144d6d631727cc70b5edade53268',1,'CKSDK::DLL::DLL']]]
+  ['ptr_333',['ptr',['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html#ad0a0144d6d631727cc70b5edade53268',1,'CKSDK::DLL::DLL']]],
+  ['ptr_334',['Ptr',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a20e51e729d41512fcd424c6d1f511d13',1,'CKSDK::GPU::Tag']]]
 ];
