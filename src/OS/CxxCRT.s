@@ -28,7 +28,7 @@
 .type _start, @function
 _start:
 	# Initialize pointers
-	li    $sp, 0x80200000
+	li    $sp, 0x801FFFF0
 	move  $fp, $sp
 
 	# Clear BSS
