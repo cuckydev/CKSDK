@@ -33,13 +33,12 @@ _start:
 
 	# Clear BSS
 	la    $t0, __bss_start
-	la    $t1, _end
+	la    $t1, (_end - 4)
 
 .Lclear_bss_loop:
 	sw    $zero, 0($t0)
-	addiu $t0, 4
 	bne   $t0, $t1, .Lclear_bss_loop
-	nop
+	addiu $t0, 4
 
 	# Run constructors
 	la    $t0, __CTOR_LIST__
