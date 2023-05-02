@@ -72,13 +72,13 @@ namespace CKSDK
 				}
 
 				// Overload the dereference operator
-				T& operator*() const
+				T &operator*() const
 				{
 					return *m_ptr;
 				}
 
 				// Overload the arrow operator
-				T* operator->() const
+				T *operator->() const
 				{
 					return m_ptr;
 				}
@@ -151,13 +151,13 @@ namespace CKSDK
 				}
 
 				// Overload the dereference operator
-				T& operator*() const
+				T &operator*() const
 				{
 					return *m_ptr;
 				}
 
 				// Overload the arrow operator
-				T* operator->() const
+				T *operator->() const
 				{
 					return m_ptr;
 				}
