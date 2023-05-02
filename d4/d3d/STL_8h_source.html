@@ -100,12 +100,12 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d7/d3e/namespaceCKSDK_1_1STL_1_1String.html#abfe3f644c229bb682a7e0962a4671991">   39</a></span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d3e/namespaceCKSDK_1_1STL_1_1String.html#abfe3f644c229bb682a7e0962a4671991">Compare</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s1, <span class="keyword">const</span> <span class="keywordtype">char</span> *s2)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keyword">const</span> uint8_t *p1 = (<span class="keyword">const</span> uint8_t*)s1;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keyword">const</span> uint8_t *p2 = (<span class="keyword">const</span> uint8_t*)s2;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span> *p1 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)s1;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span> *p2 = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)s2;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keywordflow">for</span> (; *p1 != <span class="charliteral">&#39;\0&#39;</span>; p1++, p2++)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    uint8_t u1 = *p1;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    uint8_t u2 = *p2;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    <span class="keywordtype">char</span> u1 = *p1;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordtype">char</span> u2 = *p2;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordflow">if</span> (u1 &gt; u2)</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    <span class="keywordflow">if</span> (u1 &lt; u2)</div>
@@ -120,12 +120,12 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
 <div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d3/d2a/namespaceCKSDK_1_1STL_1_1Memory.html#a8a4ad828d6ce319e20dcd9cdda02e028">   65</a></span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="../../d3/d2a/namespaceCKSDK_1_1STL_1_1Memory.html#a8a4ad828d6ce319e20dcd9cdda02e028">Compare</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *s1, <span class="keyword">const</span> <span class="keywordtype">void</span> *s2, <span class="keywordtype">size_t</span> n)</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keyword">const</span> uint8_t *p1 = (<span class="keyword">const</span> uint8_t*)s1;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keyword">const</span> uint8_t *p2 = (<span class="keyword">const</span> uint8_t*)s2;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span> *p1 = (<span class="keyword">const</span> <span class="keywordtype">char</span>*)s1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span> *p2 = (<span class="keyword">const</span> <span class="keywordtype">char</span>*)s2;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">for</span> (; n--; p1++, p2++)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    uint8_t u1 = *p1;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    uint8_t u2 = *p2;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    <span class="keywordtype">char</span> u1 = *p1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordtype">char</span> u2 = *p2;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    <span class="keywordflow">if</span> (u1 &gt; u2)</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    <span class="keywordflow">if</span> (u1 &lt; u2)</div>
@@ -136,8 +136,8 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d3/d2a/namespaceCKSDK_1_1STL_1_1Memory.html#a5f0653f5a87061a3c5e94d6791ba4c96">   85</a></span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d3/d2a/namespaceCKSDK_1_1STL_1_1Memory.html#a5f0653f5a87061a3c5e94d6791ba4c96">Copy</a>(<span class="keywordtype">void</span> *d, <span class="keyword">const</span> <span class="keywordtype">void</span> *s, <span class="keywordtype">size_t</span> n)</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                uint8_t *pd = (uint8_t*)d;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keyword">const</span> uint8_t *ps = (<span class="keyword">const</span> uint8_t*)s;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordtype">char</span> *pd = (<span class="keywordtype">char</span>*)d;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span> *ps = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)s;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">for</span> (; n--; pd++, ps++)</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    *pd = *ps;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
