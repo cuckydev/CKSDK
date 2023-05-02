@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vector_523',['Vector',['../d2/deb/structCKSDK_1_1GPU_1_1Vector.html',1,'CKSDK::GPU']]]
+  ['uniquepointer_523',['UniquePointer',['../de/df9/classCKSDK_1_1STL_1_1UniquePointer.html',1,'CKSDK::STL']]]
 ];
