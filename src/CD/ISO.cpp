@@ -146,13 +146,12 @@ namespace CKSDK
 		void Init()
 		{
 			// Read volume descriptors
-			char *iso_buffer = new char[2048];
-			CD::ReadSectors(ReadCallback_FindDirectory, iso_buffer, CD::Loc::Enc(0x10), 1, CD::Mode::Speed);
+			STL::UniquePointer<char[]> iso_buffer(new char[2048]);
+			CD::ReadSectors(ReadCallback_FindDirectory, iso_buffer.Get(), CD::Loc::Enc(0x10), 1, CD::Mode::Speed);
 
 			// Wait for ALL to be found
 			while (all_lba == 0);
 			CD::ReadSync();
-			delete[] iso_buffer;
 
 			g_all.loc = CD::Loc::Enc(all_lba);
 		}
