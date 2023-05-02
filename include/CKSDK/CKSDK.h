@@ -21,12 +21,9 @@
 #pragma once
 
 // Types
-#include <stddef.h>
-#include <stdint-gcc.h>
-
-// New operators
-inline void *operator new(size_t size, void *ptr) noexcept { return ptr; };
-inline void *operator new[](size_t size, void *ptr) noexcept { return ptr; };
+#include <cstddef>
+#include <cstdint>
+#include <new>
 
 // ASM macro
 #define INLINE_ASM(...) asm __volatile__( __VA_ARGS__ )

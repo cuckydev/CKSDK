@@ -34,7 +34,6 @@ extern "C"
 void *operator new(size_t size) noexcept { return CKSDK::Mem::Alloc(size); }
 void *operator new[](size_t size) noexcept { return CKSDK::Mem::Alloc(size); }
 
-namespace std { enum class align_val_t : size_t {}; } // Aligned new requires std::align_val_t apparently
 void *operator new(size_t size, std::align_val_t align) noexcept { (void)align; return CKSDK::Mem::Alloc(size); }
 void *operator new[](size_t size, std::align_val_t align) noexcept { (void)align; return CKSDK::Mem::Alloc(size); }
 

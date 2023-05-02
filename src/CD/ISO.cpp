@@ -24,6 +24,8 @@
 #include <CKSDK/STL.h>
 #include <CKSDK/TTY.h>
 
+#include <memory>
+
 namespace CKSDK
 {
 	namespace ISO
@@ -146,8 +148,8 @@ namespace CKSDK
 		void Init()
 		{
 			// Read volume descriptors
-			STL::UniquePointer<char[]> iso_buffer(new char[2048]);
-			CD::ReadSectors(ReadCallback_FindDirectory, iso_buffer.Get(), CD::Loc::Enc(0x10), 1, CD::Mode::Speed);
+			std::unique_ptr<char[]> iso_buffer(new char[2048]);
+			CD::ReadSectors(ReadCallback_FindDirectory, iso_buffer.get(), CD::Loc::Enc(0x10), 1, CD::Mode::Speed);
 
 			// Wait for ALL to be found
 			while (all_lba == 0);
