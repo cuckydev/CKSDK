@@ -41,7 +41,3 @@ void operator delete(void *ptr) noexcept { CKSDK::Mem::Free(ptr); }
 void operator delete[](void *ptr) noexcept { CKSDK::Mem::Free(ptr); }
 void operator delete(void *ptr, size_t size) noexcept { (void)size; CKSDK::Mem::Free(ptr); }
 void operator delete[](void *ptr, size_t size) noexcept { (void)size; CKSDK::Mem::Free(ptr); }
-
-// C++ placement new
-// void *operator new(size_t size, void *ptr) noexcept { (void)size; return ptr; }
-// void *operator new[](size_t size, void *ptr) noexcept { (void)size; return ptr; }

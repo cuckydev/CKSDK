@@ -38,12 +38,12 @@ namespace CKSDK
 			/// @return 0 if strings are equal, -1 if s1 < s2, 1 if s1 > s2
 			inline int Compare(const char *s1, const char *s2)
 			{
-				const uint8_t *p1 = (const uint8_t*)s1;
-				const uint8_t *p2 = (const uint8_t*)s2;
+				const char *p1 = (const char *)s1;
+				const char *p2 = (const char *)s2;
 				for (; *p1 != '\0'; p1++, p2++)
 				{
-					uint8_t u1 = *p1;
-					uint8_t u2 = *p2;
+					char u1 = *p1;
+					char u2 = *p2;
 					if (u1 > u2)
 						return 1;
 					if (u1 < u2)
@@ -64,12 +64,12 @@ namespace CKSDK
 			/// @return 0 if memory blocks are equal, -1 if s1 < s2, 1 if s1 > s2
 			inline int Compare(const void *s1, const void *s2, size_t n)
 			{
-				const uint8_t *p1 = (const uint8_t*)s1;
-				const uint8_t *p2 = (const uint8_t*)s2;
+				const char *p1 = (const char*)s1;
+				const char *p2 = (const char*)s2;
 				for (; n--; p1++, p2++)
 				{
-					uint8_t u1 = *p1;
-					uint8_t u2 = *p2;
+					char u1 = *p1;
+					char u2 = *p2;
 					if (u1 > u2)
 						return 1;
 					if (u1 < u2)
@@ -84,8 +84,8 @@ namespace CKSDK
 			/// @param n Number of bytes to copy
 			inline void Copy(void *d, const void *s, size_t n)
 			{
-				uint8_t *pd = (uint8_t*)d;
-				const uint8_t *ps = (const uint8_t*)s;
+				char *pd = (char*)d;
+				const char *ps = (const char *)s;
 				for (; n--; pd++, ps++)
 					*pd = *ps;
 			}
