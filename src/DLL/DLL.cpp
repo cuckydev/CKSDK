@@ -67,6 +67,10 @@ namespace CKSDK
 		// DLL class
 		DLL::DLL(void *_ptr, size_t _size): ptr(_ptr), size(_size)
 		{
+			// Rel reloc table
+			ELF::Elf32_Rel *rel = nullptr;
+			uint32_t rel_count = 0;
+
 			// Process segments
 			for (ELF::Elf32_Dyn *dyn = (ELF::Elf32_Dyn*)ptr; dyn->d_tag != ELF::DT_NULL; dyn++)
 			{
@@ -74,22 +78,22 @@ namespace CKSDK
 				{
 					// Offset of .got section
 					case ELF::DT_PLTGOT:
-						got = (uint32_t*)(uintptr_t(ptr) + dyn->d_un.d_val);
+						got = (uint32_t*)((uintptr_t)ptr + dyn->d_un.d_val);
 						break;
 
 					// Offset of .hash section
 					case ELF::DT_HASH:
-						hash = (const uint32_t*)(uintptr_t(ptr) + dyn->d_un.d_val);
+						hash = (const uint32_t*)((uintptr_t)ptr + dyn->d_un.d_val);
 						break;
 
 					// Offset of .dynstr (NOT .strtab) section
 					case ELF::DT_STRTAB:
-						strtab = (const char*)(uintptr_t(ptr) + dyn->d_un.d_val);
+						strtab = (const char*)((uintptr_t)ptr + dyn->d_un.d_val);
 						break;
 
 					// Offset of .dynsym (NOT .symtab) section
 					case ELF::DT_SYMTAB:
-						symtab = (ELF::Elf32_Sym*)(uintptr_t(ptr) + dyn->d_un.d_val);
+						symtab = (ELF::Elf32_Sym*)((uintptr_t)ptr + dyn->d_un.d_val);
 						break;
 
 					// Length of each .dynsym entry
@@ -97,6 +101,16 @@ namespace CKSDK
 						// Only 16-byte symbol table entries are supported
 						if (dyn->d_un.d_val != sizeof(ELF::Elf32_Sym))
 							ExScreen::Abort("Invalid DLL symtab size");
+						break;
+
+					// Offset of rel reloc table
+					case ELF::DT_REL:
+						rel = (ELF::Elf32_Rel *)((uintptr_t)ptr + dyn->d_un.d_val);
+						break;
+
+					// Size of rel reloc table
+					case ELF::DT_RELSZ:
+						rel_count = dyn->d_un.d_val / sizeof(ELF::Elf32_Rel);
 						break;
 
 					// MIPS ABI (?) version
@@ -138,6 +152,22 @@ namespace CKSDK
 				}
 			}
 
+			// Process rel reloc table
+			TTY::Out("rel: ");
+			TTY::OutHex<4>((uintptr_t)rel);
+			TTY::Out(" sZ: ");
+			TTY::OutHex<4>(rel_count);
+			TTY::Out("\n");
+			if (rel != nullptr)
+			{
+				for (uint32_t i = 0; i < rel_count; i++, rel++)
+				{
+					uint32_t *rel_ptr = (uint32_t*)((uintptr_t)ptr + rel->r_offset);
+					if (rel->r_info == 0x103) // What is this magic number?
+						*rel_ptr += (uintptr_t)ptr;
+				}
+			}
+
 			// Calculate number of GOT entries
 			got_extern_count = symbol_count - first_got_symbol;
 
@@ -163,21 +193,6 @@ namespace CKSDK
 				ELF::Elf32_Sym *sym = &symtab[i];
 				const char *_name = &strtab[sym->st_name];
 				sym->st_value = (void*)(uintptr_t(sym->st_value) + uintptr_t(ptr));
-
-				switch (sym->st_shndx)
-				{
-					// SHN_MIPS_DATA seems to represent a table of pointers, but I can't
-					// find much documentation on it
-					case ELF::SHN_MIPS_DATA:
-					{
-						// Resolve table
-						uint32_t *resp = ((uint32_t*)sym->st_value) + 2; // The first two entries seem to be reserved
-						uint32_t *rese = (uint32_t*)(uintptr_t(sym->st_value) + sym->st_size);
-						for (; resp < rese; resp++)
-							*resp += uintptr_t(ptr);
-						break;
-					}
-				}
 
 				// Resolve GOT entry
 				if (i < first_got_symbol)
@@ -213,7 +228,7 @@ namespace CKSDK
 			{
 				for (uint32_t i = ctor_list[0]; i != 0; i--)
 				{
-					OS::Function<void> ctor = (void(*)())(uintptr_t(ptr) + ctor_list[i]);
+					OS::Function<void> ctor = (void(*)())ctor_list[i];
 					ctor();
 				}
 			}
@@ -227,7 +242,7 @@ namespace CKSDK
 			{
 				for (uint32_t i = dtor_list[0]; i != 0; i--)
 				{
-					OS::Function<void> dtor = (void(*)())(uintptr_t(ptr) + dtor_list[i]);
+					OS::Function<void> dtor = (void(*)())dtor_list[i];
 					dtor();
 				}
 			}

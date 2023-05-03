@@ -187,6 +187,13 @@ namespace CKSDK
 			/// @brief Section index
 			uint16_t st_shndx;
 		};
+
+		/// @brief Relocation table entry
+		struct Elf32_Rel
+		{
+			uint32_t r_offset;
+			uint32_t r_info;
+		};
 		
 		/// @brief Symbol section index
 		enum Elf32_st_shndx
