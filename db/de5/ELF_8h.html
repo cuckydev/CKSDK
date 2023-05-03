@@ -87,11 +87,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d8f/structCKSDK_1_1ELF_1_1Elf32__Dyn.html">CKSDK::ELF::Elf32_Dyn</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dynamic symbol table entry.  <a href="../../d0/d8f/structCKSDK_1_1ELF_1_1Elf32__Dyn.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9f/structCKSDK_1_1ELF_1_1Elf32__Sym.html">CKSDK::ELF::Elf32_Sym</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symbol table entry.  <a href="../../d3/d9f/structCKSDK_1_1ELF_1_1Elf32__Sym.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d49/structCKSDK_1_1ELF_1_1Elf32__Rel.html">CKSDK::ELF::Elf32_Rel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relocation table entry.  <a href="../../d6/d49/structCKSDK_1_1ELF_1_1Elf32__Rel.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9f/structCKSDK_1_1ELF_1_1Elf32__Sym.html">CKSDK::ELF::Elf32_Sym</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symbol table entry.  <a href="../../d3/d9f/structCKSDK_1_1ELF_1_1Elf32__Sym.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -105,8 +105,17 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a52e5d1fe22f9be1ee049f70f8905e229"><td class="memItemLeft" align="right" valign="top"><a id="a52e5d1fe22f9be1ee049f70f8905e229"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_ST_BIND</b>(val)&#160;&#160;&#160;((<a class="el" href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#ae2d3d0b2a38fc8d4954c60bb7094e60a">CKSDK::ELF::Elf32_st_bind</a>) (((uint8_t)(val)) &gt;&gt; 4))</td></tr>
+<tr class="memitem:af407354d17dceb417c6e79554a45b31a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/de5/ELF_8h.html#af407354d17dceb417c6e79554a45b31a">ELF32_R_SYM</a>(info)&#160;&#160;&#160;((info) &gt;&gt; 8)</td></tr>
+<tr class="memdesc:af407354d17dceb417c6e79554a45b31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relocation type.  <a href="../../db/de5/ELF_8h.html#af407354d17dceb417c6e79554a45b31a">More...</a><br /></td></tr>
+<tr class="separator:af407354d17dceb417c6e79554a45b31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeecb1a128443aeb30505b409133fc5bf"><td class="memItemLeft" align="right" valign="top"><a id="aeecb1a128443aeb30505b409133fc5bf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_R_TYPE</b>(info)&#160;&#160;&#160;((uint8_t)(info))</td></tr>
+<tr class="separator:aeecb1a128443aeb30505b409133fc5bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50353a918aa39887e701e95ece09c37f"><td class="memItemLeft" align="right" valign="top"><a id="a50353a918aa39887e701e95ece09c37f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_R_INFO</b>(sym,  type)&#160;&#160;&#160;(((sym) &lt;&lt; 8) + (uint8_t)(type))</td></tr>
+<tr class="separator:a50353a918aa39887e701e95ece09c37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e5d1fe22f9be1ee049f70f8905e229"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/de5/ELF_8h.html#a52e5d1fe22f9be1ee049f70f8905e229">ELF32_ST_BIND</a>(val)&#160;&#160;&#160;((<a class="el" href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#ae2d3d0b2a38fc8d4954c60bb7094e60a">CKSDK::ELF::Elf32_st_bind</a>) (((uint8_t)(val)) &gt;&gt; 4))</td></tr>
+<tr class="memdesc:a52e5d1fe22f9be1ee049f70f8905e229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symbol type.  <a href="../../db/de5/ELF_8h.html#a52e5d1fe22f9be1ee049f70f8905e229">More...</a><br /></td></tr>
 <tr class="separator:a52e5d1fe22f9be1ee049f70f8905e229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeca9ca82c92b46ff2758cfd5b7ff9dc"><td class="memItemLeft" align="right" valign="top"><a id="aeeca9ca82c92b46ff2758cfd5b7ff9dc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ELF32_ST_TYPE</b>(val)&#160;&#160;&#160;((<a class="el" href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#ab2204fba7506575e1169aca2d0a3fcb1">CKSDK::ELF::Elf32_st_type</a>) ((val) &amp; 0xF))</td></tr>
@@ -188,6 +197,73 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a102f6c1b69fa8e3d04dd42b6621e2d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">MIPS specific dynamic flags.  <a href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#a102f6c1b69fa8e3d04dd42b6621e2d51">More...</a><br /></td></tr>
 <tr class="separator:a102f6c1b69fa8e3d04dd42b6621e2d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c1e40ba9a12f19a11d1998906fc4d0"><td class="memItemLeft" align="right" valign="top"><a id="aa7c1e40ba9a12f19a11d1998906fc4d0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Elf32_r_type</b> { <br />
+&#160;&#160;<b>R_MIPS_NONE</b> = 0
+, <b>R_MIPS_16</b> = 1
+, <b>R_MIPS_32</b> = 2
+, <b>R_MIPS_REL32</b> = 3
+, <br />
+&#160;&#160;<b>R_MIPS_26</b> = 4
+, <b>R_MIPS_HI16</b> = 5
+, <b>R_MIPS_LO16</b> = 6
+, <b>R_MIPS_GPREL16</b> = 7
+, <br />
+&#160;&#160;<b>R_MIPS_LITERAL</b> = 8
+, <b>R_MIPS_GOT16</b> = 9
+, <b>R_MIPS_PC16</b> = 10
+, <b>R_MIPS_CALL16</b> = 11
+, <br />
+&#160;&#160;<b>R_MIPS_GPREL32</b> = 12
+, <b>R_MIPS_SHIFT5</b> = 16
+, <b>R_MIPS_SHIFT6</b> = 17
+, <b>R_MIPS_64</b> = 18
+, <br />
+&#160;&#160;<b>R_MIPS_GOT_DISP</b> = 19
+, <b>R_MIPS_GOT_PAGE</b> = 20
+, <b>R_MIPS_GOT_OFST</b> = 21
+, <b>R_MIPS_GOT_HI16</b> = 22
+, <br />
+&#160;&#160;<b>R_MIPS_GOT_LO16</b> = 23
+, <b>R_MIPS_SUB</b> = 24
+, <b>R_MIPS_INSERT_A</b> = 25
+, <b>R_MIPS_INSERT_B</b> = 26
+, <br />
+&#160;&#160;<b>R_MIPS_DELETE</b> = 27
+, <b>R_MIPS_HIGHER</b> = 28
+, <b>R_MIPS_HIGHEST</b> = 29
+, <b>R_MIPS_CALL_HI16</b> = 30
+, <br />
+&#160;&#160;<b>R_MIPS_CALL_LO16</b> = 31
+, <b>R_MIPS_SCN_DISP</b> = 32
+, <b>R_MIPS_REL16</b> = 33
+, <b>R_MIPS_ADD_IMMEDIATE</b> = 34
+, <br />
+&#160;&#160;<b>R_MIPS_PJUMP</b> = 35
+, <b>R_MIPS_RELGOT</b> = 36
+, <b>R_MIPS_JALR</b> = 37
+, <b>R_MIPS_TLS_DTPMOD32</b> = 38
+, <br />
+&#160;&#160;<b>R_MIPS_TLS_DTPREL32</b> = 39
+, <b>R_MIPS_TLS_DTPMOD64</b> = 40
+, <b>R_MIPS_TLS_DTPREL64</b> = 41
+, <b>R_MIPS_TLS_GD</b> = 42
+, <br />
+&#160;&#160;<b>R_MIPS_TLS_LDM</b> = 43
+, <b>R_MIPS_TLS_DTPREL_HI16</b> = 44
+, <b>R_MIPS_TLS_DTPREL_LO16</b> = 45
+, <b>R_MIPS_TLS_GOTTPREL</b> = 46
+, <br />
+&#160;&#160;<b>R_MIPS_TLS_TPREL32</b> = 47
+, <b>R_MIPS_TLS_TPREL64</b> = 48
+, <b>R_MIPS_TLS_TPREL_HI16</b> = 49
+, <b>R_MIPS_TLS_TPREL_LO16</b> = 50
+, <br />
+&#160;&#160;<b>R_MIPS_GLOB_DAT</b> = 51
+, <b>R_MIPS_COPY</b> = 126
+, <b>R_MIPS_JUMP_SLOT</b> = 127
+<br />
+ }</td></tr>
+<tr class="separator:aa7c1e40ba9a12f19a11d1998906fc4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a498bcae9b9b48a152f21a955b434f66d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#a498bcae9b9b48a152f21a955b434f66d">CKSDK::ELF::Elf32_st_shndx</a> { <br />
 &#160;&#160;<a class="el" href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#a498bcae9b9b48a152f21a955b434f66da9e43f9354ce4d06c4f8a1c1e4808e651">CKSDK::ELF::SHN_UNDEF</a> = 0
 , <a class="el" href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#a498bcae9b9b48a152f21a955b434f66da94f98a04de66960d055f66e05bd65306">CKSDK::ELF::SHN_LOPROC</a> = 0xFF00
@@ -247,7 +323,48 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d8/dce/namespaceCKSDK.html" title="CKSDK namespace.">CKSDK</a> ELF types. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="af407354d17dceb417c6e79554a45b31a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af407354d17dceb417c6e79554a45b31a">&#9670;&nbsp;</a></span>ELF32_R_SYM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ELF32_R_SYM</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">info</td><td>)</td>
+          <td>&#160;&#160;&#160;((info) &gt;&gt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Relocation type. </p>
+
+</div>
+</div>
+<a id="a52e5d1fe22f9be1ee049f70f8905e229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e5d1fe22f9be1ee049f70f8905e229">&#9670;&nbsp;</a></span>ELF32_ST_BIND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ELF32_ST_BIND</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">val</td><td>)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="../../d6/dc0/namespaceCKSDK_1_1ELF.html#ae2d3d0b2a38fc8d4954c60bb7094e60a">CKSDK::ELF::Elf32_st_bind</a>) (((uint8_t)(val)) &gt;&gt; 4))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Symbol type. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
