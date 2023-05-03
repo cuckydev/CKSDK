@@ -105,7 +105,7 @@ namespace CKSDK
 
 					// Offset of rel reloc table
 					case ELF::DT_REL:
-						rel = (ELF::Elf32_Rel *)((uintptr_t)ptr + dyn->d_un.d_val);
+						rel = (ELF::Elf32_Rel*)((uintptr_t)ptr + dyn->d_un.d_val);
 						break;
 
 					// Size of rel reloc table
@@ -158,8 +158,21 @@ namespace CKSDK
 				for (uint32_t i = 0; i < rel_count; i++, rel++)
 				{
 					uint32_t *rel_ptr = (uint32_t*)((uintptr_t)ptr + rel->r_offset);
-					if (rel->r_info == 0x103) // What is this magic number?
-						*rel_ptr += (uintptr_t)ptr;
+					uint8_t rel_type = ELF32_R_TYPE(rel->r_info);
+
+					switch (rel_type)
+					{
+						case ELF::R_MIPS_NONE:
+							break;
+						case ELF::R_MIPS_REL32:
+							*rel_ptr += (uintptr_t)ptr;
+							break;
+						default:
+							TTY::OutHex<1>(rel_type);
+							TTY::Out("\n");
+							ExScreen::Abort("Unimplemented ELF relocation type");
+							break;
+					}
 				}
 			}
 
