@@ -153,11 +153,6 @@ namespace CKSDK
 			}
 
 			// Process rel reloc table
-			TTY::Out("rel: ");
-			TTY::OutHex<4>((uintptr_t)rel);
-			TTY::Out(" sZ: ");
-			TTY::OutHex<4>(rel_count);
-			TTY::Out("\n");
 			if (rel != nullptr)
 			{
 				for (uint32_t i = 0; i < rel_count; i++, rel++)
