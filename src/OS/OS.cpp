@@ -69,8 +69,8 @@ namespace CKSDK
 			}
 
 			// Issue IRQ callbacks
-			uint16_t stat = IRQ_STAT & IRQ_MASK;
-			for (; stat; stat = IRQ_STAT & IRQ_MASK)
+			uint16_t stat = OS::IrqStat() & OS::IrqMask();
+			for (; stat; stat = OS::IrqStat() & OS::IrqMask())
 			{
 				for (int i = 0, mask = 1; stat; i++, stat >>= 1, mask <<= 1)
 				{
@@ -79,7 +79,7 @@ namespace CKSDK
 						continue;
 
 					// Acknowledge IRQ and call callback
-					IRQ_STAT = (uint16_t)(mask ^ 0xFFFF);
+					OS::IrqStat() = (uint16_t)(mask ^ 0xFFFF);
 					if (interrupt_callbacks[i] != nullptr)
 						(interrupt_callbacks[i])();
 				}
@@ -92,10 +92,10 @@ namespace CKSDK
 		static void DMACallback()
 		{
 			// Issue DMA callbacks
-			uint32_t dicr = DMA_DICR;
+			uint32_t dicr = OS::DmaDicr();
 			uint32_t stat = (dicr >> 24) & 0x7F;
 
-			for (; stat; dicr = DMA_DICR, stat = (dicr >> 24) & 0x7F)
+			for (; stat; dicr = OS::DmaDicr(), stat = (dicr >> 24) & 0x7F)
 			{
 				uint32_t base = dicr & 0x00FFFFFF;
 				for (int i = 0, mask = (1 << 24); stat; i++, stat >>= 1, mask <<= 1)
@@ -105,7 +105,7 @@ namespace CKSDK
 						continue;
 
 					// Acknowledge DMA and call callback
-					DMA_DICR = base | mask;
+					OS::DmaDicr() = base | mask;
 					if (dma_callbacks[i] != nullptr)
 						(dma_callbacks[i])();
 				}
@@ -117,12 +117,12 @@ namespace CKSDK
 		{
 			// Reset interrupt controller
 			DisableIRQ_SR();
-			IRQ_MASK = 0;
-			IRQ_STAT = 0;
+			OS::IrqMask() = 0;
+			OS::IrqStat() = 0;
 
 			// Reset DMA controller
-			DMA_DPCR &= ~0x0888888;
-			DMA_DICR = 0;
+			OS::DmaDpcr() &= ~0x0888888;
+			OS::DmaDicr() = 0;
 			
 			// Recall OS functions
 			bios_FlushICache = (void(*)())bios_a0_tbl[0x44];
@@ -149,13 +149,13 @@ namespace CKSDK
 			if (cb != nullptr)
 			{
 				// Set interrupt callback
-				IRQ_MASK |= (1 << i);
+				OS::IrqMask() |= (1 << i);
 				interrupt_callbacks[i] = cb;
 			}
 			else
 			{
 				// Clear interrupt callback
-				IRQ_MASK &= ~(1 << i);
+				OS::IrqMask() &= ~(1 << i);
 				interrupt_callbacks[i] = nullptr;
 			}
 
@@ -177,7 +177,7 @@ namespace CKSDK
 
 			if (cb != nullptr && old_cb == nullptr)
 			{
-				DMA_DICR |= (0x10000 << i) | (1 << 23);
+				OS::DmaDicr() |= (0x10000 << i) | (1 << 23);
 
 				if (dma_callbacks_count++ == 0)
 					SetIRQ(IRQ::DMA, DMACallback);
@@ -186,11 +186,11 @@ namespace CKSDK
 			{
 				if (--dma_callbacks_count != 0)
 				{
-					DMA_DICR &= ~(0x10000 << i);
+					OS::DmaDicr() &= ~(0x10000 << i);
 				}
 				else
 				{
-					DMA_DICR = 0;
+					OS::DmaDicr() = 0;
 					SetIRQ(IRQ::DMA, nullptr);
 				}
 			}

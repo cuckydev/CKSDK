@@ -45,9 +45,9 @@ namespace CKSDK
 		void Init()
 		{
 			// Reset SIO
-			SIO_CTRL(0).ctrl = 0x0000;
-			SIO_CTRL(0).mode = 0x000D;
-			SIO_CTRL(0).baud = 0x0088;
+			OS::SioCtrl(0).ctrl = 0x0000;
+			OS::SioCtrl(0).mode = 0x000D;
+			OS::SioCtrl(0).baud = 0x0088;
 		}
 
 		static void StartPort(unsigned i)
@@ -58,9 +58,9 @@ namespace CKSDK
 			// require at least some small delay, and older Analog Joypads
 			// require a huge delay (around 500 clock cycles for SCPH-1150),
 			// official kernel waits more than 2000 cycles (which is much more than needed).
-			SIO_CTRL(0).ctrl = 0x0000;
+			OS::SioCtrl(0).ctrl = 0x0000;
 			OS::WaitCycles(1000);
-			SIO_CTRL(0).ctrl = 0x0007 | (i << 13);
+			OS::SioCtrl(0).ctrl = 0x0007 | (i << 13);
 			OS::WaitCycles(1000);
 			padp = &pad[i];
 		}
@@ -68,22 +68,22 @@ namespace CKSDK
 		static uint8_t Exchange(uint8_t com)
 		{
 			// Flush SPI
-			while (SIO_CTRL(0).stat & (1 << 1))
-				SIO_CTRL(0).fifo[0];
+			while (OS::SioCtrl(0).stat & (1 << 1))
+				OS::SioCtrl(0).fifo[0];
 			
 			// Send TX to SPI
 			error = false;
-			SIO_CTRL(0).fifo[0] = com;
+			OS::SioCtrl(0).fifo[0] = com;
 
 			// Wait for exchange to complete
 			for (unsigned i = SYNC_TIMEOUT; i != 0; i--)
 			{
-				if ((SIO_CTRL(0).stat & (1 << 1)) && (SIO_CTRL(0).stat & (1 << 2)))
+				if ((OS::SioCtrl(0).stat & (1 << 1)) && (OS::SioCtrl(0).stat & (1 << 2)))
 				{
 					// Retrieve RX from SPI
 					OS::WaitCycles(680 * 3); // TODO: I added this line and the bit2 check to fix digital controllers not connecting
 					// ... I'm not sure which fixed it
-					uint8_t rx = SIO_CTRL(0).fifo[0];
+					uint8_t rx = OS::SioCtrl(0).fifo[0];
 					return rx;
 				}
 			}

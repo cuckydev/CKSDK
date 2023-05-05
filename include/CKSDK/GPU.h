@@ -464,10 +464,10 @@ namespace CKSDK
 				prip = (Word*)(&GetOT(ot_size));
 
 				// Initialize ordering tables
-				DMA_CTRL(OS::DMA::OTC).madr = uint32_t(&GetOT(ot_size - 1));
-				DMA_CTRL(OS::DMA::OTC).bcr  = (ot_size + 1) & 0xFFFF;
-				DMA_CTRL(OS::DMA::OTC).chcr = 0x11000002;
-				while ((DMA_CTRL(OS::DMA::OTC).chcr & (1 << 24)) != 0);
+				OS::DmaCtrl(OS::DMA::OTC).madr = uint32_t(&GetOT(ot_size - 1));
+				OS::DmaCtrl(OS::DMA::OTC).bcr  = (ot_size + 1) & 0xFFFF;
+				OS::DmaCtrl(OS::DMA::OTC).chcr = 0x11000002;
+				while ((OS::DmaCtrl(OS::DMA::OTC).chcr & (1 << 24)) != 0);
 			}
 		};
 
@@ -616,18 +616,18 @@ namespace CKSDK
 		{ return *((T*)AllocPacket(ot, sizeof(T) / sizeof(Word))); }
 		
 		/// @brief Wait until GPU is ready to receive command word
-		inline void CmdSync() { while ((GPU_GP1 & (1 << 26)) == 0); }
+		inline void CmdSync() { while ((OS::GpuGp1() & (1 << 26)) == 0); }
 		/// @brief Wait until GPU is ready to receive DMA block
-		inline void DataSync() { while ((GPU_GP1 & (1 << 28)) == 0); }
+		inline void DataSync() { while ((OS::GpuGp1() & (1 << 28)) == 0); }
 		/// @brief Wait until GPU DMA is finished
-		inline void CHCRSync() { while ((DMA_CTRL(OS::DMA::GPU).chcr & (1 << 24)) != 0); }
+		inline void CHCRSync() { while ((OS::DmaCtrl(OS::DMA::GPU).chcr & (1 << 24)) != 0); }
 		
 		/// @brief Sends a word to the GP0 port after waiting for command ready
 		/// @param cmd Word
 		inline void GP0_Cmd(Word cmd)
 		{
 			CmdSync();
-			GPU_GP0 = cmd;
+			OS::GpuGp0() = cmd;
 		}
 		
 		/// @brief Sends a word to the GP0 port after waiting for data ready
@@ -635,7 +635,7 @@ namespace CKSDK
 		inline void GP0_Data(Word cmd)
 		{
 			DataSync();
-			GPU_GP0 = cmd;
+			OS::GpuGp0() = cmd;
 		}
 
 		/// @brief Sends a packet to the GP0 port
@@ -650,9 +650,9 @@ namespace CKSDK
 			CmdSync();
 			for (; wordp != worde; wordp++)
 			{
-				if ((GPU_GP1 & (1 << 26)) == 0)
+				if ((OS::GpuGp1() & (1 << 26)) == 0)
 					DataSync();
-				GPU_GP0 = *wordp;
+				OS::GpuGp0() = *wordp;
 			}
 		}
 		
@@ -660,7 +660,7 @@ namespace CKSDK
 		/// @param cmd Word
 		inline void GP1_Cmd(Word cmd)
 		{
-			GPU_GP1 = cmd;
+			OS::GpuGp1() = cmd;
 		}
 	}
 }

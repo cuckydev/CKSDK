@@ -95,9 +95,9 @@ namespace CKSDK
 			GP1_Cmd((GP1_DMADirection << 24) | (write ? 2 : 3));
 
 			// Start DMA
-			DMA_CTRL(OS::DMA::GPU).madr = addr;
-			DMA_CTRL(OS::DMA::GPU).bcr = bcr;
-			DMA_CTRL(OS::DMA::GPU).chcr = 0x01000200 | write;
+			OS::DmaCtrl(OS::DMA::GPU).madr = addr;
+			OS::DmaCtrl(OS::DMA::GPU).bcr = bcr;
+			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x01000200 | write;
 		}
 
 		void Queue_DrawOT(const DrawQueueArgs &args)
@@ -107,7 +107,7 @@ namespace CKSDK
 
 			// Set DMA direction
 			DataSync();
-			GPU_GP1 = (GP1_DMADirection << 24) | 2;
+			OS::GpuGp1() = (GP1_DMADirection << 24) | 2;
 
 			// Wait for DMA to be ready
 			CmdSync();
@@ -115,9 +115,9 @@ namespace CKSDK
 			CHCRSync();
 
 			// Start DMA
-			DMA_CTRL(OS::DMA::GPU).madr = ot;
-			DMA_CTRL(OS::DMA::GPU).bcr = 0;
-			DMA_CTRL(OS::DMA::GPU).chcr = 0x01000401;
+			OS::DmaCtrl(OS::DMA::GPU).madr = ot;
+			OS::DmaCtrl(OS::DMA::GPU).bcr = 0;
+			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x01000401;
 		}
 
 		// GPU functions
@@ -127,7 +127,7 @@ namespace CKSDK
 			OS::DisableIRQ();
 
 			// Get PAL flag from GPU
-			if ((GPU_GP1 >> 20) & 1)
+			if ((OS::GpuGp1() >> 20) & 1)
 				g_pal = true;
 			
 			// Disable display
@@ -138,16 +138,16 @@ namespace CKSDK
 			OS::SetDMA(OS::DMA::GPU, IRQ_DMA);
 
 			// Enable DMA2 and DMA6
-			DMA_DPCR = OS::DPCR_Set(OS::DPCR_Set(DMA_DPCR, OS::DMA::GPU, 3), OS::DMA::OTC, 3);
-			DMA_CTRL(OS::DMA::GPU).chcr = 0x201;
-			DMA_CTRL(OS::DMA::OTC).chcr = 0x200;
+			OS::DmaDpcr() = OS::DpcrSet(OS::DpcrSet(OS::DmaDpcr(), OS::DMA::GPU, 3), OS::DMA::OTC, 3);
+			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x201;
+			OS::DmaCtrl(OS::DMA::OTC).chcr = 0x200;
 
 			// Reset GPU
 			GP1_Cmd(GP1_Reset << 24);
 			GP1_Cmd(GP1_Flush << 24);
 
-			TIMER_CTRL(0).ctrl = 0x0500;
-			TIMER_CTRL(1).ctrl = 0x0500;
+			OS::TimerCtrl(0).ctrl = 0x0500;
+			OS::TimerCtrl(1).ctrl = 0x0500;
 
 			// Initialize GTE
 			{
@@ -326,7 +326,7 @@ namespace CKSDK
 			draw_queue.Sync();
 
 			// Wait for DMA to finish
-			if (GPU_GP1 & (3 << 29))
+			if (OS::GpuGp1() & (3 << 29))
 			{
 				DataSync();
 				CHCRSync();

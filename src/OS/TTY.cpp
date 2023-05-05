@@ -29,13 +29,13 @@ namespace CKSDK
 		void Init()
 		{
 			// Initialize TTY on EXP2
-			EXP2_DELAY_SIZE = 0x70777;
+			OS::Exp2DelaySize() = 0x70777;
 		}
 
 		void Out(const char *str)
 		{
 			// Check if TTY is idle
-			if (DUART_SRA != 0x0C)
+			if (OS::DuartSra() != 0x0C)
 				return;
 			
 			while (1)
@@ -46,12 +46,12 @@ namespace CKSDK
 					break;
 				
 				// Out to TTY
-				while (!(DUART_SRA & (1 << 2)));
-				DUART_HRA = (uint8_t)c;
+				while (!(OS::DuartSra() & (1 << 2)));
+				OS::DuartHra() = (uint8_t)c;
 			}
 
 			// Wait for TTY to return to idle
-			while (DUART_SRA != 0x0C);
+			while (OS::DuartSra() != 0x0C);
 		}
 	}
 }

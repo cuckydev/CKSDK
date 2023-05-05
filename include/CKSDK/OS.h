@@ -37,60 +37,54 @@ namespace CKSDK
 	/// @brief CKSDK OS namespace
 	namespace OS
 	{
-		// OS registers
-		#define MMIO(T, x) (*((volatile T*)(0xBF800000 | (x))))
-		#define MMIO8(x)  MMIO(uint8_t,  x)
-		#define MMIO16(x) MMIO(uint16_t, x)
-		#define MMIO32(x) MMIO(uint32_t, x)
+		// Memory map I/O port
+		template <typename T>
+		static inline constexpr volatile T &MMIO(uintptr_t addr)
+		{
+			return *(volatile T*)(0xBF800000 | addr);
+		}
 
 		// GPU
-		#define GPU_GP0 MMIO32(0x1810)
-		#define GPU_GP1 MMIO32(0x1814)
+		inline constexpr volatile uint32_t &GpuGp0() { return MMIO<uint32_t>(0x1810); }
+		inline constexpr volatile uint32_t &GpuGp1() { return MMIO<uint32_t>(0x1814); }
 
 		// CD drive
-		#define CD_STAT MMIO8(0x1800);
-		#define CD_CMD  MMIO8(0x1801);
-		#define CD_DATA MMIO8(0x1802);
-		#define CD_IRQ  MMIO8(0x1803);
+		inline constexpr volatile uint8_t &CdStat() { return MMIO<uint8_t>(0x1800); }
+		inline constexpr volatile uint8_t &CdCmd() { return MMIO<uint8_t>(0x1801); }
+		inline constexpr volatile uint8_t &CdData() { return MMIO<uint8_t>(0x1802); }
+		inline constexpr volatile uint8_t &CdIrq() { return MMIO<uint8_t>(0x1803); }
 		
-		#define CD_REG(i) MMIO8(0x1800 + (i))
+		inline constexpr volatile uint8_t &CdReg(uint8_t i) { return (&MMIO<uint8_t>(0x1800))[i]; }
 
 		// SPU
-		#define SPU_MASTER_VOL_L MMIO16(0x1D80)
-		#define SPU_MASTER_VOL_R MMIO16(0x1D82)
-		#define SPU_REVERB_VOL_L MMIO16(0x1D84)
-		#define SPU_REVERB_VOL_R MMIO16(0x1D86)
+		inline constexpr volatile uint16_t &SpuMasterVolL() { return MMIO<uint16_t>(0x1D80); }
+		inline constexpr volatile uint16_t &SpuMasterVolR() { return MMIO<uint16_t>(0x1D82); }
+		inline constexpr volatile uint16_t &SpuReverbVolL() { return MMIO<uint16_t>(0x1D84); }
+		inline constexpr volatile uint16_t &SpuReverbVolR() { return MMIO<uint16_t>(0x1D86); }
 
-		#define SPU_KEY_ON1 MMIO16(0x1D88)
-		#define SPU_KEY_ON2 MMIO16(0x1D8A)
+		inline constexpr volatile uint32_t &SpuKeyOn() { return MMIO<uint32_t>(0x1D88); }
+		inline constexpr volatile uint32_t &SpuKeyOff() { return MMIO<uint32_t>(0x1D8C); }
 
-		#define SPU_KEY_OFF1 MMIO16(0x1D8C)
-		#define SPU_KEY_OFF2 MMIO16(0x1D8E)
+		inline constexpr volatile uint32_t &SpuFmMode() { return MMIO<uint32_t>(0x1D90); }
+		inline constexpr volatile uint32_t &SpuNoiseMode() { return MMIO<uint32_t>(0x1D94); }
+		inline constexpr volatile uint32_t &SpuReverbOn() { return MMIO<uint32_t>(0x1D98); }
+		inline constexpr volatile uint32_t &SpuChanStatus() { return MMIO<uint32_t>(0x1D9C); }
 
-		#define SPU_FM_MODE1     MMIO16(0x1D90)
-		#define SPU_FM_MODE2     MMIO16(0x1D92)
-		#define SPU_NOISE_MODE1  MMIO16(0x1D94)
-		#define SPU_NOISE_MODE2  MMIO16(0x1D96)
-		#define SPU_REVERB_ON1   MMIO16(0x1D98)
-		#define SPU_REVERB_ON2   MMIO16(0x1D9A)
-		#define SPU_CHAN_STATUS1 MMIO16(0x1D9C)
-		#define SPU_CHAN_STATUS2 MMIO16(0x1D9E)
+		inline constexpr volatile uint16_t &SpuReverbAddr() { return MMIO<uint16_t>(0x1DA2); }
+		inline constexpr volatile uint16_t &SpuIrqAddr() { return MMIO<uint16_t>(0x1DA4); }
+		inline constexpr volatile uint16_t &SpuAddr() { return MMIO<uint16_t>(0x1DA6); }
+		inline constexpr volatile uint16_t &SpuData() { return MMIO<uint16_t>(0x1DA8); }
 
-		#define SPU_REVERB_ADDR MMIO16(0x1DA2)
-		#define SPU_IRQ_ADDR    MMIO16(0x1DA4)
-		#define SPU_ADDR        MMIO16(0x1DA6)
-		#define SPU_DATA        MMIO16(0x1DA8)
+		inline constexpr volatile uint16_t &SpuCtrl() { return MMIO<uint16_t>(0x1DAA); }
+		inline constexpr volatile uint16_t &SpuDmaCtrl() { return MMIO<uint16_t>(0x1DAC); }
+		inline constexpr volatile uint16_t &SpuStat() { return MMIO<uint16_t>(0x1DAE); }
 
-		#define SPU_CTRL     MMIO16(0x1DAA)
-		#define SPU_DMA_CTRL MMIO16(0x1DAC)
-		#define SPU_STAT     MMIO16(0x1DAE)
-
-		#define SPU_CD_VOL_L      MMIO16(0x1DB0)
-		#define SPU_CD_VOL_R      MMIO16(0x1DB2)
-		#define SPU_EXT_VOL_L     MMIO16(0x1DB4)
-		#define SPU_EXT_VOL_R     MMIO16(0x1DB6)
-		#define SPU_CURRENT_VOL_L MMIO16(0x1DB8)
-		#define SPU_CURRENT_VOL_R MMIO16(0x1DBA)
+		inline constexpr volatile uint16_t &SpuCdVolL() { return MMIO<uint16_t>(0x1DB0); }
+		inline constexpr volatile uint16_t &SpuCdVolR() { return MMIO<uint16_t>(0x1DB2); }
+		inline constexpr volatile uint16_t &SpuExtVolL() { return MMIO<uint16_t>(0x1DB4); }
+		inline constexpr volatile uint16_t &SpuExtVolR() { return MMIO<uint16_t>(0x1DB6); }
+		inline constexpr volatile uint16_t &SpuCurrentVolL() { return MMIO<uint16_t>(0x1DB8); }
+		inline constexpr volatile uint16_t &SpuCurrentVolR() { return MMIO<uint16_t>(0x1DBA); }
 
 		struct SPU_VOICE_CTRL_t
 		{
@@ -102,11 +96,12 @@ namespace CKSDK
 			uint16_t pad;
 		};
 		static_assert(sizeof(SPU_VOICE_CTRL_t) == 16);
-		#define SPU_VOICE_CTRL(i) MMIO(::CKSDK::OS::SPU_VOICE_CTRL_t, 0x1C00 + (unsigned)(i) * 16)
+		
+		inline constexpr volatile SPU_VOICE_CTRL_t &SpuVoiceCtrl(int i) { return (&MMIO<SPU_VOICE_CTRL_t>(0x1D80))[i]; }
 
 		// MDEC
-		#define MDEC0 = MMIO32(0x1820)
-		#define MDEC1 = MMIO32(0x1824)
+		inline constexpr volatile uint32_t &Mdec0() { return MMIO<uint32_t>(0x1820); }
+		inline constexpr volatile uint32_t &Mdec1() { return MMIO<uint32_t>(0x1824); }
 
 		// SIOs
 		struct SIO_CTRL_t
@@ -120,7 +115,8 @@ namespace CKSDK
 			uint16_t baud;
 		};
 		static_assert(sizeof(SIO_CTRL_t) == 16);
-		#define SIO_CTRL(i) MMIO(::CKSDK::OS::SIO_CTRL_t, 0x1040 + unsigned(i) * 16)
+
+		inline constexpr volatile SIO_CTRL_t &SioCtrl(int i) { return (&MMIO<SIO_CTRL_t>(0x1040))[i]; }
 
 		// IRQ controller
 		/// @brief IRQ causes
@@ -150,8 +146,8 @@ namespace CKSDK
 			AUX    = 10
 		};
 
-		#define IRQ_STAT MMIO16(0x1070)
-		#define IRQ_MASK MMIO16(0x1074)
+		inline constexpr volatile uint16_t &IrqStat() { return MMIO<uint16_t>(0x1070); }
+		inline constexpr volatile uint16_t &IrqMask() { return MMIO<uint16_t>(0x1074); }
 
 		// DMA controller
 		/// @brief DMA channels
@@ -173,7 +169,7 @@ namespace CKSDK
 			OTC     = 6
 		};
 
-		static constexpr uint32_t DPCR_Set(uint32_t dpcr, DMA dma, uint32_t priority)
+		static constexpr uint32_t DpcrSet(uint32_t dpcr, DMA dma, uint32_t priority)
 		{
 			unsigned i = unsigned(dma);
 			return (dpcr & ~(15 << (i << 2))) |
@@ -181,8 +177,8 @@ namespace CKSDK
 				(8 << (i << 2));
 		}
 
-		#define DMA_DPCR MMIO32(0x10F0)
-		#define DMA_DICR MMIO32(0x10F4)
+		inline constexpr volatile uint32_t &DmaDpcr() { return MMIO<uint32_t>(0x10F0); }
+		inline constexpr volatile uint32_t &DmaDicr() { return MMIO<uint32_t>(0x10F4); }
 
 		struct DMA_CTRL_t
 		{
@@ -192,7 +188,8 @@ namespace CKSDK
 			uint32_t pad;
 		};
 		static_assert(sizeof(DMA_CTRL_t) == 16);
-		#define DMA_CTRL(i) MMIO(::CKSDK::OS::DMA_CTRL_t, 0x1080 + unsigned(i) * 16)
+		
+		inline constexpr volatile DMA_CTRL_t &DmaCtrl(DMA i) { return (&MMIO<DMA_CTRL_t>(0x1080))[(int)i]; }
 		
 		// Timers
 		struct TIMER_CTRL_t
@@ -203,34 +200,34 @@ namespace CKSDK
 			uint32_t pad;
 		};
 		static_assert(sizeof(TIMER_CTRL_t) == 16);
-		#define TIMER_CTRL(i) MMIO(::CKSDK::OS::TIMER_CTRL_t, 0x1100 + unsigned(i) * 16)
+
+		inline constexpr volatile TIMER_CTRL_t &TimerCtrl(int i) { return (&MMIO<TIMER_CTRL_t>(0x1100))[i]; }
 
 		// Memory control
-		#define EXP1_ADDR       MMIO32(0x1000)
-		#define EXP2_ADDR       MMIO32(0x1004)
+		inline constexpr volatile uint32_t &Exp1Addr() { return MMIO<uint32_t>(0x1000); }
+		inline constexpr volatile uint32_t &Exp2Addr() { return MMIO<uint32_t>(0x1004); }
 
-		#define EXP1_DELAY_SIZE MMIO32(0x1008)
-		#define EXP3_DELAY_SIZE MMIO32(0x100C)
-		#define BIOS_DELAY_SIZE MMIO32(0x1010)
-		#define SPU_DELAY_SIZE  MMIO32(0x1014)
-		#define CD_DELAY_SIZE   MMIO32(0x1018)
-		#define EXP2_DELAY_SIZE MMIO32(0x101C)
+		inline constexpr volatile uint32_t &Exp1DelaySize() { return MMIO<uint32_t>(0x1008); }
+		inline constexpr volatile uint32_t &Exp3DelaySize() { return MMIO<uint32_t>(0x100C); }
+		inline constexpr volatile uint32_t &BiosDelaySize() { return MMIO<uint32_t>(0x1010); }
+		inline constexpr volatile uint32_t &SpuDelaySize() { return MMIO<uint32_t>(0x1014); }
+		inline constexpr volatile uint32_t &CdDelaySize() { return MMIO<uint32_t>(0x1018); }
+		inline constexpr volatile uint32_t &Exp2DelaySize() { return MMIO<uint32_t>(0x101C); }
 
-		#define COM_DELAY_CFG   MMIO32(0x1020)
-		#define RAM_SIZE_CFG    MMIO32(0x1060)
+		inline constexpr volatile uint32_t &ComDelayCfg() { return MMIO<uint32_t>(0x1020); }
+		inline constexpr volatile uint32_t &RamSizeCfg() { return MMIO<uint32_t>(0x1060); }
 
 		// DUART
-		/// @brief DUART mode
-		#define DUART_MODE MMIO8(0x2020)
-		#define DUART_SRA  MMIO8(0x2021)
-		#define DUART_CRA  MMIO8(0x2022)
-		#define DUART_HRA  MMIO8(0x2023)
+		inline constexpr volatile uint8_t &DuartMode() { return MMIO<uint8_t>(0x2020); }
+		inline constexpr volatile uint8_t &DuartSra() { return MMIO<uint8_t>(0x2021); }
+		inline constexpr volatile uint8_t &DuartCra() { return MMIO<uint8_t>(0x2022); }
+		inline constexpr volatile uint8_t &DuartHra() { return MMIO<uint8_t>(0x2023); }
 
 		// Clocks
 		/// @brief CPU clock rate
-		static constexpr uint32_t F_CPU = 33868800UL;
+		static constexpr uint32_t CpuHz = 33868800UL;
 		/// @brief GPU clock rate
-		static constexpr uint32_t F_GPU = 53222400UL;
+		static constexpr uint32_t GpuHz = 53222400UL;
 
 		// OS types
 		/// @brief Thread context

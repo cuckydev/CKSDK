@@ -33,12 +33,12 @@ namespace CKSDK
 
 		void Set(uint32_t rate, TimerCallback cb)
 		{
-			rate = (OS::F_CPU / 8) / rate;
+			rate = (OS::CpuHz / 8) / rate;
 			if (rate >= 0x10000)
 				rate = 0xFFFF;
 			
-			TIMER_CTRL(2).ctrl = 0x0258;
-			TIMER_CTRL(2).reload = rate;
+			OS::TimerCtrl(2).ctrl = 0x0258;
+			OS::TimerCtrl(2).reload = rate;
 			OS::SetIRQ(OS::IRQ::TIMER2, cb);
 		}
 	}
