@@ -84,7 +84,7 @@ namespace CKSDK
 		inline constexpr volatile uint16_t &SpuCurrentVolL() { return MMIO<uint16_t>(0x1DB8); }
 		inline constexpr volatile uint16_t &SpuCurrentVolR() { return MMIO<uint16_t>(0x1DBA); }
 
-		struct SPU_VOICE_CTRL_t
+		struct SPU_VOICE_CTRL
 		{
 			uint16_t vol_l, vol_r;
 			uint16_t freq;
@@ -93,16 +93,16 @@ namespace CKSDK
 			uint16_t loop_addr;
 			uint16_t pad;
 		};
-		static_assert(sizeof(SPU_VOICE_CTRL_t) == 16);
+		static_assert(sizeof(SPU_VOICE_CTRL) == 16);
 		
-		inline constexpr volatile SPU_VOICE_CTRL_t &SpuVoiceCtrl(int i) { return (&MMIO<SPU_VOICE_CTRL_t>(0x1D80))[i]; }
+		inline constexpr volatile SPU_VOICE_CTRL &SpuVoiceCtrl(int i) { return (&MMIO<SPU_VOICE_CTRL>(0x1D80))[i]; }
 
 		// MDEC
 		inline constexpr volatile uint32_t &Mdec0() { return MMIO<uint32_t>(0x1820); }
 		inline constexpr volatile uint32_t &Mdec1() { return MMIO<uint32_t>(0x1824); }
 
 		// SIOs
-		struct SIO_CTRL_t
+		struct SIO_CTRL
 		{
 			uint8_t fifo[4];
 			uint16_t stat;
@@ -112,9 +112,9 @@ namespace CKSDK
 			uint16_t reserved;
 			uint16_t baud;
 		};
-		static_assert(sizeof(SIO_CTRL_t) == 16);
+		static_assert(sizeof(SIO_CTRL) == 16);
 
-		inline constexpr volatile SIO_CTRL_t &SioCtrl(int i) { return (&MMIO<SIO_CTRL_t>(0x1040))[i]; }
+		inline constexpr volatile SIO_CTRL &SioCtrl(int i) { return (&MMIO<SIO_CTRL>(0x1040))[i]; }
 
 		// IRQ controller
 		/// @brief IRQ causes
@@ -178,28 +178,28 @@ namespace CKSDK
 		inline constexpr volatile uint32_t &DmaDpcr() { return MMIO<uint32_t>(0x10F0); }
 		inline constexpr volatile uint32_t &DmaDicr() { return MMIO<uint32_t>(0x10F4); }
 
-		struct DMA_CTRL_t
+		struct DMA_CTRL
 		{
 			uint32_t madr;
 			uint32_t bcr;
 			uint32_t chcr;
 			uint32_t pad;
 		};
-		static_assert(sizeof(DMA_CTRL_t) == 16);
+		static_assert(sizeof(DMA_CTRL) == 16);
 		
-		inline constexpr volatile DMA_CTRL_t &DmaCtrl(DMA i) { return (&MMIO<DMA_CTRL_t>(0x1080))[(int)i]; }
+		inline constexpr volatile DMA_CTRL &DmaCtrl(DMA i) { return (&MMIO<DMA_CTRL>(0x1080))[(int)i]; }
 		
 		// Timers
-		struct TIMER_CTRL_t
+		struct TIMER_CTRL
 		{
 			uint32_t value;
 			uint32_t ctrl;
 			uint32_t reload;
 			uint32_t pad;
 		};
-		static_assert(sizeof(TIMER_CTRL_t) == 16);
+		static_assert(sizeof(TIMER_CTRL) == 16);
 
-		inline constexpr volatile TIMER_CTRL_t &TimerCtrl(int i) { return (&MMIO<TIMER_CTRL_t>(0x1100))[i]; }
+		inline constexpr volatile TIMER_CTRL &TimerCtrl(int i) { return (&MMIO<TIMER_CTRL>(0x1100))[i]; }
 
 		// Memory control
 		inline constexpr volatile uint32_t &Exp1Addr() { return MMIO<uint32_t>(0x1000); }
