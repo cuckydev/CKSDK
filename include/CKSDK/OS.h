@@ -53,8 +53,6 @@ namespace CKSDK
 		inline constexpr volatile uint8_t &CdCmd() { return MMIO<uint8_t>(0x1801); }
 		inline constexpr volatile uint8_t &CdData() { return MMIO<uint8_t>(0x1802); }
 		inline constexpr volatile uint8_t &CdIrq() { return MMIO<uint8_t>(0x1803); }
-		
-		inline constexpr volatile uint8_t &CdReg(uint8_t i) { return (&MMIO<uint8_t>(0x1800))[i]; }
 
 		// SPU
 		inline constexpr volatile uint16_t &SpuMasterVolL() { return MMIO<uint16_t>(0x1D80); }

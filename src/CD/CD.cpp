@@ -139,21 +139,21 @@ namespace CKSDK
 			dispatch_pending = true;
 
 			// Reset parameter buffer
-			while (OS::CdReg(0) & (1 << 7)); // Wait for command/parameter transfer to clear
+			while (OS::CdStat() & (1 << 7)); // Wait for command/parameter transfer to clear
 
-			OS::CdReg(0) = 0x01;
-			OS::CdReg(3) = 0x40;
+			OS::CdStat() = 0x01;
+			OS::CdIrq() = 0x40;
 			// OS::WaitCycles(50); // Wait for parameter buffer reset
 
 			// Wait for CD drive to be ready
-			while (OS::CdReg(0) & ((1 << 7) | (1 << 6) | (1 << 5)));
+			while (OS::CdStat() & ((1 << 7) | (1 << 6) | (1 << 5)));
 
 			// Acknowledge all IRQs
-			OS::CdReg(0) = 0x01;
-			OS::CdReg(3) = 0x1F;
+			OS::CdStat() = 0x01;
+			OS::CdIrq() = 0x1F;
 
 			// Write parameters
-			OS::CdReg(0) = 0;
+			OS::CdStat() = 0;
 
 			unsigned length = args.length;
 			if (length != 0)
@@ -161,14 +161,14 @@ namespace CKSDK
 				const volatile uint8_t *pp = args.param;
 				for (; length != 0; length--)
 				{
-					// OS::CdReg(0) = 0;
-					OS::CdReg(2) = *pp++;
+					// OS::CdStat() = 0;
+					OS::CdData() = *pp++;
 				}
 			}
 
 			// Write command
-			OS::CdReg(0) = 0;
-			OS::CdReg(1) = com;
+			OS::CdStat() = 0;
+			OS::CdCmd() = com;
 		}
 
 		// CD IRQ
@@ -201,22 +201,22 @@ namespace CKSDK
 		static unsigned IRQ_HandleIRQ()
 		{
 			// Request interrupt status
-			OS::CdReg(0) = 0x01;
-			IRQStatus irq_status = IRQStatus(OS::CdReg(3) & 0x07);
+			OS::CdStat() = 0x01;
+			IRQStatus irq_status = IRQStatus(OS::CdIrq() & 0x07);
 			if (irq_status == IRQStatus::NoIRQ)
 				return 0;
-			while (irq_status != IRQStatus(OS::CdReg(3) & 0x07))
-				irq_status = IRQStatus(OS::CdReg(3) & 0x07);
+			while (irq_status != IRQStatus(OS::CdIrq() & 0x07))
+				irq_status = IRQStatus(OS::CdIrq() & 0x07);
 			
 			// Request result
 			Result result;
 			unsigned results = 0;
 
 			uint8_t first_byte = 0;
-			if ((OS::CdReg(0) & (1 << 5)) != 0)
+			if ((OS::CdStat() & (1 << 5)) != 0)
 			{
 				// Read first byte (status)
-				first_byte = OS::CdReg(1);
+				first_byte = OS::CdCmd();
 				results++;
 
 				// Read bytes to result pointer
@@ -225,9 +225,9 @@ namespace CKSDK
 				if (resultp != nullptr)
 				{
 					*resultp++ = first_byte;
-					while (resultp != resulte && (OS::CdReg(0) & (1 << 5)) != 0)
+					while (resultp != resulte && (OS::CdStat() & (1 << 5)) != 0)
 					{
-						*resultp++ = OS::CdReg(1);
+						*resultp++ = OS::CdCmd();
 						results++;
 					}
 					while (resultp != resulte)
@@ -236,14 +236,14 @@ namespace CKSDK
 
 				// Flush result
 				uint8_t reg;
-				while (OS::CdReg(0) & (1 << 5))
-					reg = OS::CdReg(1);
+				while (OS::CdStat() & (1 << 5))
+					reg = OS::CdCmd();
 			}
 
 			// Reset and mask interrupt causes
-			OS::CdReg(0) = 0x01;
-			OS::CdReg(3) = 0x07;
-			OS::CdReg(2) = 0x07;
+			OS::CdStat() = 0x01;
+			OS::CdIrq() = 0x07;
+			OS::CdData() = 0x07;
 
 			// Update status
 			uint8_t status_error = 0;
@@ -321,7 +321,7 @@ namespace CKSDK
 
 		static void InterruptCallback()
 		{
-			uint8_t reg0 = OS::CdReg(0);
+			uint8_t reg0 = OS::CdStat();
 			while (1)
 			{
 				// Handle IRQ
@@ -351,7 +351,7 @@ namespace CKSDK
 				if (!dispatch_pending)
 					command_queue.Dispatch();
 			}
-			OS::CdReg(0) = reg0 & 0x03;
+			OS::CdStat() = reg0 & 0x03;
 		}
 
 		// CD functions
@@ -366,12 +366,12 @@ namespace CKSDK
 			OS::CdDelaySize() = 0x00020943;
 			OS::ComDelayCfg() = 0x1325;
 
-			OS::CdReg(0) = 0x01;
-			OS::CdReg(3) = 0x1F; // Acknowledge all IRQs
-			OS::CdReg(2) = 0x1F; // Enable all IRQs
+			OS::CdStat() = 0x01;
+			OS::CdIrq() = 0x1F; // Acknowledge all IRQs
+			OS::CdData() = 0x1F; // Enable all IRQs
 
-			OS::CdReg(0) = 0x00;
-			OS::CdReg(3) = 0x00; // Clear any pending request
+			OS::CdStat() = 0x00;
+			OS::CdIrq() = 0x00; // Clear any pending request
 
 			// Enable CD DMA
 			OS::DmaDpcr() = OS::DpcrSet(OS::DmaDpcr(), OS::DMA::CDROM, 3);
@@ -428,14 +428,14 @@ namespace CKSDK
 		void GetSector(void *addr, size_t size)
 		{
 			// Unlock sector buffer
-			OS::CdReg(0) = 0x00;
-			OS::CdReg(3) = 0x80;
+			OS::CdStat() = 0x00;
+			OS::CdIrq() = 0x80;
 
 			// Prepare sector buffer DMA
 			OS::DmaCtrl(OS::DMA::CDROM).madr = (uint32_t)addr;
 			OS::DmaCtrl(OS::DMA::CDROM).bcr  = size | (1 << 16);
 
-			while ((OS::CdReg(0) & (1 << 6)) == 0); // Wait for sector buffer to be ready
+			while ((OS::CdStat() & (1 << 6)) == 0); // Wait for sector buffer to be ready
 
 			// Start sector buffer DMA
 			OS::DmaCtrl(OS::DMA::CDROM).chcr = 0x11000000;
