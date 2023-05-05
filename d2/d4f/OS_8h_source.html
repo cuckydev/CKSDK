@@ -151,7 +151,7 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> uint16_t &amp;SpuCurrentVolL() { <span class="keywordflow">return</span> MMIO&lt;uint16_t&gt;(0x1DB8); }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> uint16_t &amp;SpuCurrentVolR() { <span class="keywordflow">return</span> MMIO&lt;uint16_t&gt;(0x1DBA); }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d0/d57/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL__t.html">   87</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../d0/d57/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL__t.html">SPU_VOICE_CTRL_t</a></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html">   87</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html">SPU_VOICE_CTRL</a></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        {</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            uint16_t vol_l, vol_r;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            uint16_t freq;</div>
@@ -160,16 +160,16 @@ $(function() {
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            uint16_t loop_addr;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            uint16_t pad;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        };</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../d0/d57/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL__t.html">SPU_VOICE_CTRL_t</a>) == 16);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html">SPU_VOICE_CTRL</a>) == 16);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../d0/d57/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL__t.html">SPU_VOICE_CTRL_t</a> &amp;SpuVoiceCtrl(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;SPU_VOICE_CTRL_t&gt;(0x1D80))[i]; }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html">SPU_VOICE_CTRL</a> &amp;SpuVoiceCtrl(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;SPU_VOICE_CTRL&gt;(0x1D80))[i]; }</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// MDEC</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> uint32_t &amp;Mdec0() { <span class="keywordflow">return</span> MMIO&lt;uint32_t&gt;(0x1820); }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> uint32_t &amp;Mdec1() { <span class="keywordflow">return</span> MMIO&lt;uint32_t&gt;(0x1824); }</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="comment">// SIOs</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../dd/d1c/structCKSDK_1_1OS_1_1SIO__CTRL__t.html">  105</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../dd/d1c/structCKSDK_1_1OS_1_1SIO__CTRL__t.html">SIO_CTRL_t</a></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../da/de2/structCKSDK_1_1OS_1_1SIO__CTRL.html">  105</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../da/de2/structCKSDK_1_1OS_1_1SIO__CTRL.html">SIO_CTRL</a></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            uint8_t fifo[4];</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            uint16_t stat;</div>
@@ -179,9 +179,9 @@ $(function() {
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            uint16_t reserved;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            uint16_t baud;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        };</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../dd/d1c/structCKSDK_1_1OS_1_1SIO__CTRL__t.html">SIO_CTRL_t</a>) == 16);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../da/de2/structCKSDK_1_1OS_1_1SIO__CTRL.html">SIO_CTRL</a>) == 16);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../dd/d1c/structCKSDK_1_1OS_1_1SIO__CTRL__t.html">SIO_CTRL_t</a> &amp;SioCtrl(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;SIO_CTRL_t&gt;(0x1040))[i]; }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../da/de2/structCKSDK_1_1OS_1_1SIO__CTRL.html">SIO_CTRL</a> &amp;SioCtrl(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;SIO_CTRL&gt;(0x1040))[i]; }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="comment">// IRQ controller</span></div>
 <div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="../../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828">  121</a></span>&#160;<span class="comment"></span>        <span class="keyword">enum class</span> <a class="code" href="../../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828">IRQ</a></div>
@@ -225,28 +225,28 @@ $(function() {
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> uint32_t &amp;DmaDpcr() { <span class="keywordflow">return</span> MMIO&lt;uint32_t&gt;(0x10F0); }</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> uint32_t &amp;DmaDicr() { <span class="keywordflow">return</span> MMIO&lt;uint32_t&gt;(0x10F4); }</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="../../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html">  181</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html">DMA_CTRL_t</a></div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="../../d9/dad/structCKSDK_1_1OS_1_1DMA__CTRL.html">  181</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../d9/dad/structCKSDK_1_1OS_1_1DMA__CTRL.html">DMA_CTRL</a></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        {</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            uint32_t madr;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            uint32_t bcr;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            uint32_t chcr;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            uint32_t pad;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        };</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html">DMA_CTRL_t</a>) == 16);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../d9/dad/structCKSDK_1_1OS_1_1DMA__CTRL.html">DMA_CTRL</a>) == 16);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html">DMA_CTRL_t</a> &amp;DmaCtrl(<a class="code" href="../../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab">DMA</a> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;DMA_CTRL_t&gt;(0x1080))[(int)i]; }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../d9/dad/structCKSDK_1_1OS_1_1DMA__CTRL.html">DMA_CTRL</a> &amp;DmaCtrl(<a class="code" href="../../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab">DMA</a> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;DMA_CTRL&gt;(0x1080))[(int)i]; }</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        </div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="comment">// Timers</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="../../d4/d61/structCKSDK_1_1OS_1_1TIMER__CTRL__t.html">  193</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../d4/d61/structCKSDK_1_1OS_1_1TIMER__CTRL__t.html">TIMER_CTRL_t</a></div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="../../d9/df4/structCKSDK_1_1OS_1_1TIMER__CTRL.html">  193</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="../../d9/df4/structCKSDK_1_1OS_1_1TIMER__CTRL.html">TIMER_CTRL</a></div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            uint32_t value;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            uint32_t ctrl;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            uint32_t reload;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            uint32_t pad;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        };</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../d4/d61/structCKSDK_1_1OS_1_1TIMER__CTRL__t.html">TIMER_CTRL_t</a>) == 16);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        static_assert(<span class="keyword">sizeof</span>(<a class="code" href="../../d9/df4/structCKSDK_1_1OS_1_1TIMER__CTRL.html">TIMER_CTRL</a>) == 16);</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../d4/d61/structCKSDK_1_1OS_1_1TIMER__CTRL__t.html">TIMER_CTRL_t</a> &amp;TimerCtrl(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;TIMER_CTRL_t&gt;(0x1100))[i]; }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> <a class="code" href="../../d9/df4/structCKSDK_1_1OS_1_1TIMER__CTRL.html">TIMER_CTRL</a> &amp;TimerCtrl(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> (&amp;MMIO&lt;TIMER_CTRL&gt;(0x1100))[i]; }</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="comment">// Memory control</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keyword">inline</span> constexpr <span class="keyword">volatile</span> uint32_t &amp;Exp1Addr() { <span class="keywordflow">return</span> MMIO&lt;uint32_t&gt;(0x1000); }</div>
@@ -429,10 +429,10 @@ $(function() {
 <div class="ttc" id="anamespaceCKSDK_1_1OS_html_aeca51feef485f5889a4f6d93690a9eabada8a0d4a6c802e4d0bb48065258582b1"><div class="ttname"><a href="../../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eabada8a0d4a6c802e4d0bb48065258582b1">CKSDK::OS::DMA::SPU</a></div><div class="ttdeci">@ SPU</div><div class="ttdoc">SPU.</div></div>
 <div class="ttc" id="anamespaceCKSDK_1_1OS_html_af73d5b5380a3745f81791a2a6d4de221"><div class="ttname"><a href="../../db/d79/namespaceCKSDK_1_1OS.html#af73d5b5380a3745f81791a2a6d4de221">CKSDK::OS::WaitCycles</a></div><div class="ttdeci">void WaitCycles(uint32_t cycles)</div><div class="ttdoc">Wait for a number of cycles.</div><div class="ttdef"><b>Definition:</b> OS.h:387</div></div>
 <div class="ttc" id="anamespaceCKSDK_html"><div class="ttname"><a href="../../d8/dce/namespaceCKSDK.html">CKSDK</a></div><div class="ttdoc">CKSDK namespace.</div><div class="ttdef"><b>Definition:</b> CD.h:29</div></div>
-<div class="ttc" id="astructCKSDK_1_1OS_1_1DMA__CTRL__t_html"><div class="ttname"><a href="../../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html">CKSDK::OS::DMA_CTRL_t</a></div><div class="ttdef"><b>Definition:</b> OS.h:182</div></div>
-<div class="ttc" id="astructCKSDK_1_1OS_1_1SIO__CTRL__t_html"><div class="ttname"><a href="../../dd/d1c/structCKSDK_1_1OS_1_1SIO__CTRL__t.html">CKSDK::OS::SIO_CTRL_t</a></div><div class="ttdef"><b>Definition:</b> OS.h:106</div></div>
-<div class="ttc" id="astructCKSDK_1_1OS_1_1SPU__VOICE__CTRL__t_html"><div class="ttname"><a href="../../d0/d57/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL__t.html">CKSDK::OS::SPU_VOICE_CTRL_t</a></div><div class="ttdef"><b>Definition:</b> OS.h:88</div></div>
-<div class="ttc" id="astructCKSDK_1_1OS_1_1TIMER__CTRL__t_html"><div class="ttname"><a href="../../d4/d61/structCKSDK_1_1OS_1_1TIMER__CTRL__t.html">CKSDK::OS::TIMER_CTRL_t</a></div><div class="ttdef"><b>Definition:</b> OS.h:194</div></div>
+<div class="ttc" id="astructCKSDK_1_1OS_1_1DMA__CTRL_html"><div class="ttname"><a href="../../d9/dad/structCKSDK_1_1OS_1_1DMA__CTRL.html">CKSDK::OS::DMA_CTRL</a></div><div class="ttdef"><b>Definition:</b> OS.h:182</div></div>
+<div class="ttc" id="astructCKSDK_1_1OS_1_1SIO__CTRL_html"><div class="ttname"><a href="../../da/de2/structCKSDK_1_1OS_1_1SIO__CTRL.html">CKSDK::OS::SIO_CTRL</a></div><div class="ttdef"><b>Definition:</b> OS.h:106</div></div>
+<div class="ttc" id="astructCKSDK_1_1OS_1_1SPU__VOICE__CTRL_html"><div class="ttname"><a href="../../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html">CKSDK::OS::SPU_VOICE_CTRL</a></div><div class="ttdef"><b>Definition:</b> OS.h:88</div></div>
+<div class="ttc" id="astructCKSDK_1_1OS_1_1TIMER__CTRL_html"><div class="ttname"><a href="../../d9/df4/structCKSDK_1_1OS_1_1TIMER__CTRL.html">CKSDK::OS::TIMER_CTRL</a></div><div class="ttdef"><b>Definition:</b> OS.h:194</div></div>
 <div class="ttc" id="astructCKSDK_1_1OS_1_1Thread_html"><div class="ttname"><a href="../../de/d07/structCKSDK_1_1OS_1_1Thread.html">CKSDK::OS::Thread</a></div><div class="ttdoc">Thread context.</div><div class="ttdef"><b>Definition:</b> OS.h:234</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -20,7 +20,7 @@ var searchData=
   ['dll_91',['DLL',['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html',1,'CKSDK::DLL::DLL'],['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html#aed627c5c7797d2098155f98c7468dd10',1,'CKSDK::DLL::DLL::DLL()']]],
   ['dll_2eh_92',['DLL.h',['../db/dbf/DLL_8h.html',1,'']]],
   ['dma_93',['DMA',['../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab',1,'CKSDK::OS::DMA()'],['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828a33fd5f6391f2f0cb4c91179d7f521949',1,'CKSDK::OS::DMA()']]],
-  ['dma_5fctrl_5ft_94',['DMA_CTRL_t',['../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html',1,'CKSDK::OS']]],
+  ['dma_5fctrl_94',['DMA_CTRL',['../d9/dad/structCKSDK_1_1OS_1_1DMA__CTRL.html',1,'CKSDK::OS']]],
   ['dmaimage_95',['DMAImage',['../d8/d2a/namespaceCKSDK_1_1GPU.html#a19c8e63cff91f9f9d414f295419c6079',1,'CKSDK::GPU']]],
   ['drawmode_96',['DrawMode',['../d3/d68/structCKSDK_1_1GPU_1_1DrawMode.html',1,'CKSDK::GPU']]],
   ['dt_5fbind_5fnow_97',['DT_BIND_NOW',['../d6/dc0/namespaceCKSDK_1_1ELF.html#a266a85ce379a37b37e1d4ce28391676ead7f2efbf67bdb5ed35eabd9c4d17b34d',1,'CKSDK::ELF']]],

@@ -12,7 +12,7 @@ var searchData=
   ['timer0_454',['TIMER0',['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828a3796280163770b0769e370ecb8cc0e1e',1,'CKSDK::OS']]],
   ['timer1_455',['TIMER1',['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828a348f042a61f1305861ca45be3e592054',1,'CKSDK::OS']]],
   ['timer2_456',['TIMER2',['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828ad57d6591c17265fd7be950b8dc43c2d0',1,'CKSDK::OS']]],
-  ['timer_5fctrl_5ft_457',['TIMER_CTRL_t',['../d4/d61/structCKSDK_1_1OS_1_1TIMER__CTRL__t.html',1,'CKSDK::OS']]],
+  ['timer_5fctrl_457',['TIMER_CTRL',['../d9/df4/structCKSDK_1_1OS_1_1TIMER__CTRL.html',1,'CKSDK::OS']]],
   ['timercallback_458',['TimerCallback',['../de/d25/namespaceCKSDK_1_1Timer.html#a4def85aff63a5def0dea826aeeec402b',1,'CKSDK::Timer']]],
   ['tl_459',['tl',['../dc/d0d/structCKSDK_1_1GPU_1_1Buffer_1_1GP0.html#a04abfc23734d2735482f88dd105b1a90',1,'CKSDK::GPU::Buffer::GP0']]],
   ['tpage_460',['tpage',['../db/dfd/structCKSDK_1_1GPU_1_1TexPage.html#a5e8a72c45d936a400ce6693d950b0d30',1,'CKSDK::GPU::TexPage::tpage()'],['../d8/d21/structCKSDK_1_1GPU_1_1Poly.html#af6e010a47a8156ee6b7e987bb1ed19d4',1,'CKSDK::GPU::Poly::tpage()'],['../d8/d21/structCKSDK_1_1GPU_1_1Poly.html#a5ef949bc970261250d28b3c37be5f423',1,'CKSDK::GPU::Poly::tpage() const']]],
