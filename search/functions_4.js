@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['fixed_579',['Fixed',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#ad93108eab51b0d39c02e83433e8dd828',1,'CKSDK::Fixed::Fixed::Fixed()'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#afe4949fcb834ae715fc1e9871f52f889',1,'CKSDK::Fixed::Fixed::Fixed(U _x)'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#aab4bff5e267972a26dfe26b1327a61ea',1,'CKSDK::Fixed::Fixed::Fixed(Fixed&lt; T2, FRAC2 &gt; const &amp;rhs)']]],
-  ['flip_580',['Flip',['../d8/d2a/namespaceCKSDK_1_1GPU.html#ae6b15b296ecfce34e982a1288ca14a97',1,'CKSDK::GPU']]],
-  ['floor_581',['Floor',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a0cca97488e3ea40ed11e861680ca8c75',1,'CKSDK::Fixed::Fixed']]],
-  ['flushicache_582',['FlushICache',['../db/d79/namespaceCKSDK_1_1OS.html#a1af27a87b640bb05aaba1697c2c20ff8',1,'CKSDK::OS']]],
-  ['free_583',['Free',['../db/dd5/namespaceCKSDK_1_1Mem.html#a1d23e399fbf9fbc33ddc04d5fff68fe2',1,'CKSDK::Mem']]],
-  ['frombuffer_584',['FromBuffer',['../dc/db0/namespaceCKSDK_1_1Hash.html#a4b6ae403c840b6cc33fcda619df736ff',1,'CKSDK::Hash']]],
-  ['fromconst_585',['FromConst',['../dc/db0/namespaceCKSDK_1_1Hash.html#a694c2369cd295ca9c5e6564e32b2c82c',1,'CKSDK::Hash']]],
-  ['fromstring_586',['FromString',['../dc/db0/namespaceCKSDK_1_1Hash.html#a71b37fe3b1e9de694dbe8ab0368e13a7',1,'CKSDK::Hash']]]
+  ['elfhash_652',['ElfHash',['../d6/dc0/namespaceCKSDK_1_1ELF.html#a019cd61bb58b1a2399770d882e4e49ec',1,'CKSDK::ELF']]],
+  ['enableirq_653',['EnableIRQ',['../db/d79/namespaceCKSDK_1_1OS.html#a51088ad81bbc491fa7ab3a9bb0eb6e36',1,'CKSDK::OS']]],
+  ['enableirq_5fsr_654',['EnableIRQ_SR',['../db/d79/namespaceCKSDK_1_1OS.html#a174e105327dda31e7b163aa59f3102fa',1,'CKSDK::OS']]],
+  ['enableirq_5fsr_5frfe_655',['EnableIRQ_SR_RFE',['../db/d79/namespaceCKSDK_1_1OS.html#ab291abaa8e246906fdad2b8beee2094f',1,'CKSDK::OS']]],
+  ['enc_656',['Enc',['../d3/df4/structCKSDK_1_1CD_1_1BCD.html#ad6b0ad9be25453b574ca5a633f4f9499',1,'CKSDK::CD::BCD::Enc()'],['../df/d17/structCKSDK_1_1CD_1_1Loc.html#a1cd44a265a118465d4944021905d8eee',1,'CKSDK::CD::Loc::Enc()']]],
+  ['enqueue_657',['Enqueue',['../d7/d7a/classCKSDK_1_1Queue_1_1Queue.html#a2293be18da14ec7cd2ddcde310ab041f',1,'CKSDK::Queue::Queue']]],
+  ['exp1addr_658',['Exp1Addr',['../db/d79/namespaceCKSDK_1_1OS.html#a785fa8e1d00c535845d51c6a1a45e1f5',1,'CKSDK::OS']]],
+  ['exp1delaysize_659',['Exp1DelaySize',['../db/d79/namespaceCKSDK_1_1OS.html#a4be10fb9de938261d9707c673c87bd53',1,'CKSDK::OS']]],
+  ['exp2addr_660',['Exp2Addr',['../db/d79/namespaceCKSDK_1_1OS.html#a8fb63d8a349328b6ecaf2e086d951bec',1,'CKSDK::OS']]],
+  ['exp2delaysize_661',['Exp2DelaySize',['../db/d79/namespaceCKSDK_1_1OS.html#adb60b8e376cba672bb06f393945d7447',1,'CKSDK::OS']]],
+  ['exp3delaysize_662',['Exp3DelaySize',['../db/d79/namespaceCKSDK_1_1OS.html#ae788f79917913ca577f19344908aa4cc',1,'CKSDK::OS']]]
 ];
