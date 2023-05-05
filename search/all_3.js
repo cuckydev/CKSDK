@@ -17,7 +17,7 @@ var searchData=
   ['disableirq_5fsr_5frfe_86',['DisableIRQ_SR_RFE',['../db/d79/namespaceCKSDK_1_1OS.html#a95d481c47c648ac83cba5152b3c0da40',1,'CKSDK::OS']]],
   ['discerror_87',['DiscError',['../dc/d2b/namespaceCKSDK_1_1CD.html#aed4f27d936ff8d0dafbe58039047bf05a75be4b30320e9dcf1eac728951dd3bf6',1,'CKSDK::CD']]],
   ['dispatch_88',['Dispatch',['../d7/d7a/classCKSDK_1_1Queue_1_1Queue.html#a0f8560ae44fdc5544a2f3284502e4da5',1,'CKSDK::Queue::Queue']]],
-  ['dll_89',['DLL',['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html',1,'CKSDK::DLL::DLL'],['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html#a33cd4387cc5a1c0cff13cce5e4376bd9',1,'CKSDK::DLL::DLL::DLL()']]],
+  ['dll_89',['DLL',['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html',1,'CKSDK::DLL::DLL'],['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html#aed627c5c7797d2098155f98c7468dd10',1,'CKSDK::DLL::DLL::DLL()']]],
   ['dll_2eh_90',['DLL.h',['../db/dbf/DLL_8h.html',1,'']]],
   ['dma_91',['DMA',['../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab',1,'CKSDK::OS::DMA()'],['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828a33fd5f6391f2f0cb4c91179d7f521949',1,'CKSDK::OS::DMA()']]],
   ['dma_5fctrl_5ft_92',['DMA_CTRL_t',['../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html',1,'CKSDK::OS']]],
