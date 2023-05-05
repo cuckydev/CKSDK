@@ -37,83 +37,135 @@ namespace CKSDK
 	/// @brief CKSDK OS namespace
 	namespace OS
 	{
-		// Memory map I/O port
+		// @brief Memory map I/O port
 		template <typename T>
-		static inline constexpr volatile T &MMIO(uintptr_t addr)
+		inline constexpr volatile T &MMIO(uintptr_t addr)
 		{
 			return *(volatile T*)(0xBF800000 | addr);
 		}
 
 		// GPU
+		/// @brief GPU GP0 command port
 		inline constexpr volatile uint32_t &GpuGp0() { return MMIO<uint32_t>(0x1810); }
+		/// @brief GPU GP1 command port
 		inline constexpr volatile uint32_t &GpuGp1() { return MMIO<uint32_t>(0x1814); }
 
 		// CD drive
+		/// @brief CD drive status port
 		inline constexpr volatile uint8_t &CdStat() { return MMIO<uint8_t>(0x1800); }
+		/// @brief CD drive command port
 		inline constexpr volatile uint8_t &CdCmd() { return MMIO<uint8_t>(0x1801); }
+		/// @brief CD drive data port
 		inline constexpr volatile uint8_t &CdData() { return MMIO<uint8_t>(0x1802); }
+		/// @brief CD drive interrupt port
 		inline constexpr volatile uint8_t &CdIrq() { return MMIO<uint8_t>(0x1803); }
 
 		// SPU
+		/// @brief SPU master volume left port
 		inline constexpr volatile uint16_t &SpuMasterVolL() { return MMIO<uint16_t>(0x1D80); }
+		/// @brief SPU master volume right port
 		inline constexpr volatile uint16_t &SpuMasterVolR() { return MMIO<uint16_t>(0x1D82); }
+		/// @brief SPU reverb volume left port
 		inline constexpr volatile uint16_t &SpuReverbVolL() { return MMIO<uint16_t>(0x1D84); }
+		/// @brief SPU reverb volume right port
 		inline constexpr volatile uint16_t &SpuReverbVolR() { return MMIO<uint16_t>(0x1D86); }
 
+		/// @brief SPU key on port
 		inline constexpr volatile uint32_t &SpuKeyOn() { return MMIO<uint32_t>(0x1D88); }
+		/// @brief SPU key off port
 		inline constexpr volatile uint32_t &SpuKeyOff() { return MMIO<uint32_t>(0x1D8C); }
 
+		/// @brief SPU FM mode port
+		/// @note When FM is enabled for a channel, the frequency is modulated by the previous channel's amplitude
 		inline constexpr volatile uint32_t &SpuFmMode() { return MMIO<uint32_t>(0x1D90); }
+		/// @brief SPU noise mode port
 		inline constexpr volatile uint32_t &SpuNoiseMode() { return MMIO<uint32_t>(0x1D94); }
+		/// @brief SPU reverb on port
 		inline constexpr volatile uint32_t &SpuReverbOn() { return MMIO<uint32_t>(0x1D98); }
+		/// @brief SPU channel status port
+		/// @note This doesn't actually reflect if the channel is playing or not
 		inline constexpr volatile uint32_t &SpuChanStatus() { return MMIO<uint32_t>(0x1D9C); }
 
+		/// @brief SPU voice frequency port
 		inline constexpr volatile uint16_t &SpuReverbAddr() { return MMIO<uint16_t>(0x1DA2); }
+		/// @brief SPU IRQ address port
 		inline constexpr volatile uint16_t &SpuIrqAddr() { return MMIO<uint16_t>(0x1DA4); }
+		/// @brief SPU address port
 		inline constexpr volatile uint16_t &SpuAddr() { return MMIO<uint16_t>(0x1DA6); }
+		/// @brief SPU data port
 		inline constexpr volatile uint16_t &SpuData() { return MMIO<uint16_t>(0x1DA8); }
 
+		/// @brief SPU control port
 		inline constexpr volatile uint16_t &SpuCtrl() { return MMIO<uint16_t>(0x1DAA); }
+		/// @brief SPU DMA control port
 		inline constexpr volatile uint16_t &SpuDmaCtrl() { return MMIO<uint16_t>(0x1DAC); }
+		/// @brief SPU status port
 		inline constexpr volatile uint16_t &SpuStat() { return MMIO<uint16_t>(0x1DAE); }
 
+		/// @brief SPU CD volume left port
 		inline constexpr volatile uint16_t &SpuCdVolL() { return MMIO<uint16_t>(0x1DB0); }
+		/// @brief SPU CD volume right port
 		inline constexpr volatile uint16_t &SpuCdVolR() { return MMIO<uint16_t>(0x1DB2); }
+		/// @brief SPU external volume left port (expansion port)
 		inline constexpr volatile uint16_t &SpuExtVolL() { return MMIO<uint16_t>(0x1DB4); }
+		/// @brief SPU external volume right port (expansion port)
 		inline constexpr volatile uint16_t &SpuExtVolR() { return MMIO<uint16_t>(0x1DB6); }
+		/// @brief SPU current volume left port
+		/// @note Not sure what this is. Maybe the last mixed digital sample?
 		inline constexpr volatile uint16_t &SpuCurrentVolL() { return MMIO<uint16_t>(0x1DB8); }
+		/// @brief SPU current volume right port
+		/// @note Not sure what this is. Maybe the last mixed digital sample?
 		inline constexpr volatile uint16_t &SpuCurrentVolR() { return MMIO<uint16_t>(0x1DBA); }
 
+		/// @brief SPU voice control structure
 		struct SPU_VOICE_CTRL
 		{
-			uint16_t vol_l, vol_r;
+			/// @brief Voice left volume
+			uint16_t vol_l;
+			/// @brief Voice right volume
+			uint16_t vol_r;
+			/// @brief Voice frequency (0x1000 = 44100Hz)
 			uint16_t freq;
+			/// @brief Voice start address
 			uint16_t addr;
-			uint16_t adsr1, adsr2;
+			/// @brief Voice ADSR
+			uint32_t adsr;
+			/// @brief Voice loop address
 			uint16_t loop_addr;
 			uint16_t pad;
 		};
 		static_assert(sizeof(SPU_VOICE_CTRL) == 16);
 		
+		/// @brief SPU voice control ports (0-23)
 		inline constexpr volatile SPU_VOICE_CTRL &SpuVoiceCtrl(int i) { return (&MMIO<SPU_VOICE_CTRL>(0x1D80))[i]; }
 
 		// MDEC
+		/// @brief MDEC0 control port
 		inline constexpr volatile uint32_t &Mdec0() { return MMIO<uint32_t>(0x1820); }
+		/// @brief MDEC1 control port
 		inline constexpr volatile uint32_t &Mdec1() { return MMIO<uint32_t>(0x1824); }
 
 		// SIOs
+		/// @brief SIO control structure
 		struct SIO_CTRL
 		{
+			/// @brief SIO data FIFO
+			/// @note You can technically read ahead, but behavior is undefined and it's not recommended
 			uint8_t fifo[4];
+			/// @brief SIO status
 			uint16_t stat;
 			uint16_t pad3;
+			/// @brief SIO mode
 			uint16_t mode;
+			/// @brief SIO control
 			uint16_t ctrl;
 			uint16_t reserved;
+			/// @brief SIO baud rate
 			uint16_t baud;
 		};
 		static_assert(sizeof(SIO_CTRL) == 16);
 
+		/// @brief SIO control ports (0-1)
 		inline constexpr volatile SIO_CTRL &SioCtrl(int i) { return (&MMIO<SIO_CTRL>(0x1040))[i]; }
 
 		// IRQ controller
@@ -144,7 +196,9 @@ namespace CKSDK
 			AUX    = 10
 		};
 
+		/// @brief IRQ status port
 		inline constexpr volatile uint16_t &IrqStat() { return MMIO<uint16_t>(0x1070); }
+		/// @brief IRQ mask port
 		inline constexpr volatile uint16_t &IrqMask() { return MMIO<uint16_t>(0x1074); }
 
 		// DMA controller
@@ -167,6 +221,11 @@ namespace CKSDK
 			OTC     = 6
 		};
 
+		/// @brief DMA DPCR helper
+		/// @param dpcr DPCR value
+		/// @param dma DMA channel
+		/// @param priority DMA priority
+		/// @return New DPCR value
 		static constexpr uint32_t DpcrSet(uint32_t dpcr, DMA dma, uint32_t priority)
 		{
 			unsigned i = unsigned(dma);
@@ -175,50 +234,77 @@ namespace CKSDK
 				(8 << (i << 2));
 		}
 
+		/// @brief DMA DPCR port
 		inline constexpr volatile uint32_t &DmaDpcr() { return MMIO<uint32_t>(0x10F0); }
+		/// @brief DMA DICR port
 		inline constexpr volatile uint32_t &DmaDicr() { return MMIO<uint32_t>(0x10F4); }
 
+		/// @brief DMA control structure
 		struct DMA_CTRL
 		{
+			/// @brief DMA MADR
 			uint32_t madr;
+			/// @brief DMA BCR
 			uint32_t bcr;
+			/// @brief DMA CHCR
 			uint32_t chcr;
 			uint32_t pad;
 		};
 		static_assert(sizeof(DMA_CTRL) == 16);
 		
+		/// @brief DMA control ports (0-6)
+		/// @see DMA
 		inline constexpr volatile DMA_CTRL &DmaCtrl(DMA i) { return (&MMIO<DMA_CTRL>(0x1080))[(int)i]; }
 		
 		// Timers
+		/// @brief Timer control structure
 		struct TIMER_CTRL
 		{
+			/// @brief Timer value
 			uint32_t value;
+			/// @brief Timer control
 			uint32_t ctrl;
+			/// @brief Timer reload value
 			uint32_t reload;
 			uint32_t pad;
 		};
 		static_assert(sizeof(TIMER_CTRL) == 16);
 
+		/// @brief Timer control ports (0-2)
 		inline constexpr volatile TIMER_CTRL &TimerCtrl(int i) { return (&MMIO<TIMER_CTRL>(0x1100))[i]; }
 
 		// Memory control
+		/// @brief EXP1 address port
 		inline constexpr volatile uint32_t &Exp1Addr() { return MMIO<uint32_t>(0x1000); }
+		/// @brief EXP3 address port
 		inline constexpr volatile uint32_t &Exp2Addr() { return MMIO<uint32_t>(0x1004); }
 
+		/// @brief EXP1 delay size port
 		inline constexpr volatile uint32_t &Exp1DelaySize() { return MMIO<uint32_t>(0x1008); }
+		/// @brief EXP3 delay size port
 		inline constexpr volatile uint32_t &Exp3DelaySize() { return MMIO<uint32_t>(0x100C); }
+		/// @brief BIOS delay size port
 		inline constexpr volatile uint32_t &BiosDelaySize() { return MMIO<uint32_t>(0x1010); }
+		/// @brief SPU delay size port
 		inline constexpr volatile uint32_t &SpuDelaySize() { return MMIO<uint32_t>(0x1014); }
+		/// @brief CD delay size port
 		inline constexpr volatile uint32_t &CdDelaySize() { return MMIO<uint32_t>(0x1018); }
+		/// @brief EXP2 delay size port
 		inline constexpr volatile uint32_t &Exp2DelaySize() { return MMIO<uint32_t>(0x101C); }
 
+		/// @brief Common delay configuration port
 		inline constexpr volatile uint32_t &ComDelayCfg() { return MMIO<uint32_t>(0x1020); }
+		/// @brief RAM size configuration port
 		inline constexpr volatile uint32_t &RamSizeCfg() { return MMIO<uint32_t>(0x1060); }
 
 		// DUART
+		/// @brief DUART mode port
 		inline constexpr volatile uint8_t &DuartMode() { return MMIO<uint8_t>(0x2020); }
+		/// @brief DUART status port
 		inline constexpr volatile uint8_t &DuartSra() { return MMIO<uint8_t>(0x2021); }
+		/// @brief DUART command port
 		inline constexpr volatile uint8_t &DuartCra() { return MMIO<uint8_t>(0x2022); }
+		/// @brief DUART data port
 		inline constexpr volatile uint8_t &DuartHra() { return MMIO<uint8_t>(0x2023); }
 
 		// Clocks
@@ -228,8 +314,8 @@ namespace CKSDK
 		static constexpr uint32_t GpuHz = 53222400UL;
 
 		// OS types
+		/// @cond INTERNAL
 		/// @brief Thread context
-		/// @note For internal use only
 		struct Thread
 		{
 			uint32_t zero;
@@ -245,6 +331,7 @@ namespace CKSDK
 			uint32_t sr, cause;
 		};
 		static_assert(sizeof(Thread) == (4 * 34));
+		/// @endcond
 
 		/// @brief Function pointer wrapper for shared library functions
 		/// @tparam R Return type
