@@ -200,7 +200,7 @@ namespace CKSDK
 				// Resolve symbol
 				ELF::Elf32_Sym *sym = &symtab[i];
 				const char *_name = &strtab[sym->st_name];
-				sym->st_value = (void*)(uintptr_t(sym->st_value) + PtrInt());
+				sym->st_value = (void*)(PtrInt() + (uintptr_t)sym->st_value);
 
 				// Resolve GOT entry
 				if (i < first_got_symbol)
