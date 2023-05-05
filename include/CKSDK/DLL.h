@@ -72,7 +72,6 @@ namespace CKSDK
 				/// @param _size Data size
 				DLL(std::unique_ptr<char[]> _ptr, size_t _size);
 				/// @brief Destructor
-				/// @note This does not free the data blob or restore it to its original state
 				~DLL();
 
 				/// @brief Get symbol address
@@ -89,7 +88,7 @@ namespace CKSDK
 		/// @brief Symbol callback type
 		/// @param name Symbol name
 		/// @return Symbol address
-		/// @details This callback should return the address of the symbol with the given name
+		/// @details This callback should return the address of the symbol with the given name. If null is returned, the program is aborted.
 		typedef OS::Function<void*, const char*> SymbolCallback;
 
 		/// @brief Set symbol callback
