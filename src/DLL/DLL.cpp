@@ -36,8 +36,8 @@ namespace CKSDK
 		// DLL globals
 		static SymbolCallback symbol_callback;
 		
-		// DLL resolver
-		void Resolver(uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3)
+		// DLL resolver callback
+		void DLL::Resolver(uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3)
 		{
 			// We placed a pointer to the DLL in got[1] in DLL::DLL
 			// gp-7FF0h points to the start of the .got section,
@@ -65,35 +65,35 @@ namespace CKSDK
 		}
 
 		// DLL class
-		DLL::DLL(void *_ptr, size_t _size): ptr(_ptr), size(_size)
+		DLL::DLL(std::unique_ptr<char[]> _ptr, size_t _size): ptr(std::move(_ptr)), size(_size)
 		{
 			// Rel reloc table
 			ELF::Elf32_Rel *rel = nullptr;
 			uint32_t rel_count = 0;
 
 			// Process segments
-			for (ELF::Elf32_Dyn *dyn = (ELF::Elf32_Dyn*)ptr; dyn->d_tag != ELF::DT_NULL; dyn++)
+			for (ELF::Elf32_Dyn *dyn = (ELF::Elf32_Dyn*)PtrInt(); dyn->d_tag != ELF::DT_NULL; dyn++)
 			{
 				switch (dyn->d_tag)
 				{
 					// Offset of .got section
 					case ELF::DT_PLTGOT:
-						got = (uint32_t*)((uintptr_t)ptr + dyn->d_un.d_val);
+						got = (uint32_t*)(PtrInt() + dyn->d_un.d_val);
 						break;
 
 					// Offset of .hash section
 					case ELF::DT_HASH:
-						hash = (const uint32_t*)((uintptr_t)ptr + dyn->d_un.d_val);
+						hash = (const uint32_t*)(PtrInt() + dyn->d_un.d_val);
 						break;
 
 					// Offset of .dynstr (NOT .strtab) section
 					case ELF::DT_STRTAB:
-						strtab = (const char*)((uintptr_t)ptr + dyn->d_un.d_val);
+						strtab = (const char*)(PtrInt() + dyn->d_un.d_val);
 						break;
 
 					// Offset of .dynsym (NOT .symtab) section
 					case ELF::DT_SYMTAB:
-						symtab = (ELF::Elf32_Sym*)((uintptr_t)ptr + dyn->d_un.d_val);
+						symtab = (ELF::Elf32_Sym*)(PtrInt() + dyn->d_un.d_val);
 						break;
 
 					// Length of each .dynsym entry
@@ -105,7 +105,7 @@ namespace CKSDK
 
 					// Offset of rel reloc table
 					case ELF::DT_REL:
-						rel = (ELF::Elf32_Rel*)((uintptr_t)ptr + dyn->d_un.d_val);
+						rel = (ELF::Elf32_Rel*)(PtrInt() + dyn->d_un.d_val);
 						break;
 
 					// Size of rel reloc table
@@ -157,7 +157,7 @@ namespace CKSDK
 			{
 				for (uint32_t i = 0; i < rel_count; i++, rel++)
 				{
-					uint32_t *rel_ptr = (uint32_t*)((uintptr_t)ptr + rel->r_offset);
+					uint32_t *rel_ptr = (uint32_t*)(PtrInt() + rel->r_offset);
 					uint8_t rel_type = ELF32_R_TYPE(rel->r_info);
 
 					switch (rel_type)
@@ -165,7 +165,7 @@ namespace CKSDK
 						case ELF::R_MIPS_NONE:
 							break;
 						case ELF::R_MIPS_REL32:
-							*rel_ptr += (uintptr_t)ptr;
+							*rel_ptr += PtrInt();
 							break;
 						default:
 							TTY::OutHex<1>(rel_type);
@@ -189,7 +189,7 @@ namespace CKSDK
 			got[1] = uint32_t(this);
 
 			for (uint32_t i = 2; i < got_local_count; i++)
-				got[i] += uint32_t(ptr);
+				got[i] += PtrInt();
 			
 			// Relocate all pointers in the symbol table and populate the global
 			// section of the GOT.
@@ -200,7 +200,7 @@ namespace CKSDK
 				// Resolve symbol
 				ELF::Elf32_Sym *sym = &symtab[i];
 				const char *_name = &strtab[sym->st_name];
-				sym->st_value = (void*)(uintptr_t(sym->st_value) + uintptr_t(ptr));
+				sym->st_value = (void*)(uintptr_t(sym->st_value) + PtrInt());
 
 				// Resolve GOT entry
 				if (i < first_got_symbol)
@@ -216,12 +216,12 @@ namespace CKSDK
 						TTY::Out("\n");
 						ExScreen::Abort("GOT failed get boot symbol");
 					}
-					_got[i] = uint32_t(sym_ptr);
+					_got[i] = (uint32_t)sym_ptr;
 				}
 				else
 				{
 					// Resolve GOT entry using pointer
-					_got[i] += uint32_t(ptr);
+					_got[i] += PtrInt();
 				}
 			}
 

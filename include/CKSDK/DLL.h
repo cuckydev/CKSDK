@@ -25,6 +25,8 @@
 #include <CKSDK/OS.h>
 #include <CKSDK/ELF.h>
 
+#include <memory>
+
 /// @brief CKSDK namespace
 namespace CKSDK
 {
@@ -35,46 +37,40 @@ namespace CKSDK
 		/// @brief DLL class
 		class DLL
 		{
-			public:
-				/// @brief DLL data address
-				/// @note For internal use only
-				void *ptr;
+			private:
+				/// @brief DLL data pointer
+				std::unique_ptr<char[]> ptr;
+				uintptr_t PtrInt() { return (uintptr_t)ptr.get(); }
+
 				/// @brief DLL data size
-				/// @note For internal use only
 				size_t size;
 
-				/// @brief ELF hash address
-				/// @note For internal use only
+				/// @brief ELF hash pointer
 				const uint32_t *hash;
-				/// @brief ELF GOT address
-				/// @note For internal use only
+				/// @brief ELF GOT pointer
 				uint32_t *got;
-				/// @brief ELF symtab address
-				/// @note For internal use only
+				/// @brief ELF symtab pointer
 				ELF::Elf32_Sym *symtab;
-				/// @brief ELF strtab address
-				/// @note For internal use only
+				/// @brief ELF strtab pointer
 				const char *strtab;
 				/// @brief ELF symbol count
-				/// @note For internal use only
 				uint32_t symbol_count;
 
 				/// @brief ELF first GOT symbol
-				/// @note For internal use only
 				uint32_t first_got_symbol;
 				/// @brief ELF local GOT symbol count
-				/// @note For internal use only
 				uint32_t got_local_count;
 				/// @brief ELF external GOT symbol count
-				/// @note For internal use only
 				uint32_t got_extern_count;
+
+				// @brief Resolver callback
+				static void Resolver(uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3);
 
 			public:
 				/// @brief DLL from data blob
-				/// @param _ptr Data address
+				/// @param _ptr Data pointer
 				/// @param _size Data size
-				/// @note The data blob is not copied, so it must remain valid for the lifetime of the DLL object
-				DLL(void *_ptr, size_t _size);
+				DLL(std::unique_ptr<char[]> _ptr, size_t _size);
 				/// @brief Destructor
 				/// @note This does not free the data blob or restore it to its original state
 				~DLL();
