@@ -138,9 +138,175 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a849129486073204e589c8c7d697f1ad4"><td class="memItemLeft" align="right" valign="top"><a id="a849129486073204e589c8c7d697f1ad4"></a>
-static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DPCR_Set</b> (uint32_t dpcr, <a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab">DMA</a> dma, uint32_t priority)</td></tr>
-<tr class="separator:a849129486073204e589c8c7d697f1ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a280f23878b0143fb9b01ad879ba468e3"><td class="memTemplParams" colspan="2"><a id="a280f23878b0143fb9b01ad879ba468e3"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a280f23878b0143fb9b01ad879ba468e3"><td class="memTemplItemLeft" align="right" valign="top">static constexpr volatile T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MMIO</b> (uintptr_t addr)</td></tr>
+<tr class="separator:a280f23878b0143fb9b01ad879ba468e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2cef360ba825da804341b0b037a5b7"><td class="memItemLeft" align="right" valign="top"><a id="a1c2cef360ba825da804341b0b037a5b7"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GpuGp0</b> ()</td></tr>
+<tr class="separator:a1c2cef360ba825da804341b0b037a5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1ce7885c3de7a61e94d972ec6612df4"><td class="memItemLeft" align="right" valign="top"><a id="ae1ce7885c3de7a61e94d972ec6612df4"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GpuGp1</b> ()</td></tr>
+<tr class="separator:ae1ce7885c3de7a61e94d972ec6612df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605ecfc63dd13ad26623c770bcace277"><td class="memItemLeft" align="right" valign="top"><a id="a605ecfc63dd13ad26623c770bcace277"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>CdStat</b> ()</td></tr>
+<tr class="separator:a605ecfc63dd13ad26623c770bcace277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8754ce6c6374ebb1e23ad132261a721c"><td class="memItemLeft" align="right" valign="top"><a id="a8754ce6c6374ebb1e23ad132261a721c"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>CdCmd</b> ()</td></tr>
+<tr class="separator:a8754ce6c6374ebb1e23ad132261a721c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad84df5cdce44750978dd3a4a42bd968a"><td class="memItemLeft" align="right" valign="top"><a id="ad84df5cdce44750978dd3a4a42bd968a"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>CdData</b> ()</td></tr>
+<tr class="separator:ad84df5cdce44750978dd3a4a42bd968a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26be88a7df608140e7ca1fcda0a7b6b6"><td class="memItemLeft" align="right" valign="top"><a id="a26be88a7df608140e7ca1fcda0a7b6b6"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>CdIrq</b> ()</td></tr>
+<tr class="separator:a26be88a7df608140e7ca1fcda0a7b6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa27bca68f8528bcddd392b8fc5b54b58"><td class="memItemLeft" align="right" valign="top"><a id="aa27bca68f8528bcddd392b8fc5b54b58"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>CdReg</b> (uint8_t i)</td></tr>
+<tr class="separator:aa27bca68f8528bcddd392b8fc5b54b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e39b4b321cb942fdbde637e5497218"><td class="memItemLeft" align="right" valign="top"><a id="a21e39b4b321cb942fdbde637e5497218"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuMasterVolL</b> ()</td></tr>
+<tr class="separator:a21e39b4b321cb942fdbde637e5497218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c2e21920a29b80749f2b2a81883da76"><td class="memItemLeft" align="right" valign="top"><a id="a2c2e21920a29b80749f2b2a81883da76"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuMasterVolR</b> ()</td></tr>
+<tr class="separator:a2c2e21920a29b80749f2b2a81883da76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a540186cc8f5a7dca9f45eb5c3a17ce11"><td class="memItemLeft" align="right" valign="top"><a id="a540186cc8f5a7dca9f45eb5c3a17ce11"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuReverbVolL</b> ()</td></tr>
+<tr class="separator:a540186cc8f5a7dca9f45eb5c3a17ce11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0791cdb82733021c1339c906c57732de"><td class="memItemLeft" align="right" valign="top"><a id="a0791cdb82733021c1339c906c57732de"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuReverbVolR</b> ()</td></tr>
+<tr class="separator:a0791cdb82733021c1339c906c57732de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f7f2a482a1889ffb50d2d0e1911a922"><td class="memItemLeft" align="right" valign="top"><a id="a8f7f2a482a1889ffb50d2d0e1911a922"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuKeyOn</b> ()</td></tr>
+<tr class="separator:a8f7f2a482a1889ffb50d2d0e1911a922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd28130671915d701ec96b64d833cdd9"><td class="memItemLeft" align="right" valign="top"><a id="acd28130671915d701ec96b64d833cdd9"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuKeyOff</b> ()</td></tr>
+<tr class="separator:acd28130671915d701ec96b64d833cdd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b6e17dc748ef2c8f776f0491b1eef28"><td class="memItemLeft" align="right" valign="top"><a id="a6b6e17dc748ef2c8f776f0491b1eef28"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuFmMode</b> ()</td></tr>
+<tr class="separator:a6b6e17dc748ef2c8f776f0491b1eef28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47767d1515ff4fe1e5a6439bb195aff5"><td class="memItemLeft" align="right" valign="top"><a id="a47767d1515ff4fe1e5a6439bb195aff5"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuNoiseMode</b> ()</td></tr>
+<tr class="separator:a47767d1515ff4fe1e5a6439bb195aff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4532d1e92df53b4e4e8fafd8260c86eb"><td class="memItemLeft" align="right" valign="top"><a id="a4532d1e92df53b4e4e8fafd8260c86eb"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuReverbOn</b> ()</td></tr>
+<tr class="separator:a4532d1e92df53b4e4e8fafd8260c86eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa74e73c84ca5f12a6d1e1bbf79716405"><td class="memItemLeft" align="right" valign="top"><a id="aa74e73c84ca5f12a6d1e1bbf79716405"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuChanStatus</b> ()</td></tr>
+<tr class="separator:aa74e73c84ca5f12a6d1e1bbf79716405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8292d88a9508861d45693c5f6f8187f4"><td class="memItemLeft" align="right" valign="top"><a id="a8292d88a9508861d45693c5f6f8187f4"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuReverbAddr</b> ()</td></tr>
+<tr class="separator:a8292d88a9508861d45693c5f6f8187f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a941ef42b90753f2b8c92a6dcf133788a"><td class="memItemLeft" align="right" valign="top"><a id="a941ef42b90753f2b8c92a6dcf133788a"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuIrqAddr</b> ()</td></tr>
+<tr class="separator:a941ef42b90753f2b8c92a6dcf133788a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab10acc9f26758fed6c60447fad1ea6be"><td class="memItemLeft" align="right" valign="top"><a id="ab10acc9f26758fed6c60447fad1ea6be"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuAddr</b> ()</td></tr>
+<tr class="separator:ab10acc9f26758fed6c60447fad1ea6be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f44132fc83d64827a1cf670998e59c"><td class="memItemLeft" align="right" valign="top"><a id="ab0f44132fc83d64827a1cf670998e59c"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuData</b> ()</td></tr>
+<tr class="separator:ab0f44132fc83d64827a1cf670998e59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac01a146669cfb782c6f93f2be2c9a372"><td class="memItemLeft" align="right" valign="top"><a id="ac01a146669cfb782c6f93f2be2c9a372"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuCtrl</b> ()</td></tr>
+<tr class="separator:ac01a146669cfb782c6f93f2be2c9a372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c60716ea67b10b6e509dec139dc549a"><td class="memItemLeft" align="right" valign="top"><a id="a3c60716ea67b10b6e509dec139dc549a"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuDmaCtrl</b> ()</td></tr>
+<tr class="separator:a3c60716ea67b10b6e509dec139dc549a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d1aecf606d9ae8b140397ce47745bc"><td class="memItemLeft" align="right" valign="top"><a id="aa5d1aecf606d9ae8b140397ce47745bc"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuStat</b> ()</td></tr>
+<tr class="separator:aa5d1aecf606d9ae8b140397ce47745bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5844be67b0824c52feef96b1bc62ee99"><td class="memItemLeft" align="right" valign="top"><a id="a5844be67b0824c52feef96b1bc62ee99"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuCdVolL</b> ()</td></tr>
+<tr class="separator:a5844be67b0824c52feef96b1bc62ee99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0744a6503bc023177dbfac779c3d0621"><td class="memItemLeft" align="right" valign="top"><a id="a0744a6503bc023177dbfac779c3d0621"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuCdVolR</b> ()</td></tr>
+<tr class="separator:a0744a6503bc023177dbfac779c3d0621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad77e056e2623324fae100f3143fb8d8c"><td class="memItemLeft" align="right" valign="top"><a id="ad77e056e2623324fae100f3143fb8d8c"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuExtVolL</b> ()</td></tr>
+<tr class="separator:ad77e056e2623324fae100f3143fb8d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af26e061282b60a0cddb2a332d3421ae1"><td class="memItemLeft" align="right" valign="top"><a id="af26e061282b60a0cddb2a332d3421ae1"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuExtVolR</b> ()</td></tr>
+<tr class="separator:af26e061282b60a0cddb2a332d3421ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bb22442f738ad18957c56a36e3134bb"><td class="memItemLeft" align="right" valign="top"><a id="a9bb22442f738ad18957c56a36e3134bb"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuCurrentVolL</b> ()</td></tr>
+<tr class="separator:a9bb22442f738ad18957c56a36e3134bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984a6ace5086b5ce60b87cb10b37459e"><td class="memItemLeft" align="right" valign="top"><a id="a984a6ace5086b5ce60b87cb10b37459e"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuCurrentVolR</b> ()</td></tr>
+<tr class="separator:a984a6ace5086b5ce60b87cb10b37459e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d67e4d886c9cdf5ee6a28737aa43517"><td class="memItemLeft" align="right" valign="top"><a id="a1d67e4d886c9cdf5ee6a28737aa43517"></a>
+constexpr volatile <a class="el" href="../../d0/d57/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL__t.html">SPU_VOICE_CTRL_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuVoiceCtrl</b> (int i)</td></tr>
+<tr class="separator:a1d67e4d886c9cdf5ee6a28737aa43517"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96b95dca982f8b7f2cf185d441625e17"><td class="memItemLeft" align="right" valign="top"><a id="a96b95dca982f8b7f2cf185d441625e17"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Mdec0</b> ()</td></tr>
+<tr class="separator:a96b95dca982f8b7f2cf185d441625e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab27a64276eaf87f90e215fb5a0c35dd"><td class="memItemLeft" align="right" valign="top"><a id="aab27a64276eaf87f90e215fb5a0c35dd"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Mdec1</b> ()</td></tr>
+<tr class="separator:aab27a64276eaf87f90e215fb5a0c35dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86166d9293905dcbd9babc1dca951a5e"><td class="memItemLeft" align="right" valign="top"><a id="a86166d9293905dcbd9babc1dca951a5e"></a>
+constexpr volatile <a class="el" href="../../dd/d1c/structCKSDK_1_1OS_1_1SIO__CTRL__t.html">SIO_CTRL_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SioCtrl</b> (int i)</td></tr>
+<tr class="separator:a86166d9293905dcbd9babc1dca951a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae060f548ffa3626bbf2522198560349f"><td class="memItemLeft" align="right" valign="top"><a id="ae060f548ffa3626bbf2522198560349f"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>IrqStat</b> ()</td></tr>
+<tr class="separator:ae060f548ffa3626bbf2522198560349f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada89041bc3a7554e0b048ee0720e199c"><td class="memItemLeft" align="right" valign="top"><a id="ada89041bc3a7554e0b048ee0720e199c"></a>
+constexpr volatile uint16_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>IrqMask</b> ()</td></tr>
+<tr class="separator:ada89041bc3a7554e0b048ee0720e199c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23fca9046cbc225140b5b9ea33ba6d0a"><td class="memItemLeft" align="right" valign="top"><a id="a23fca9046cbc225140b5b9ea33ba6d0a"></a>
+static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DpcrSet</b> (uint32_t dpcr, <a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab">DMA</a> dma, uint32_t priority)</td></tr>
+<tr class="separator:a23fca9046cbc225140b5b9ea33ba6d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c6420949588bf06bea81e0c0fc6f10a"><td class="memItemLeft" align="right" valign="top"><a id="a2c6420949588bf06bea81e0c0fc6f10a"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>DmaDpcr</b> ()</td></tr>
+<tr class="separator:a2c6420949588bf06bea81e0c0fc6f10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24abe72cc9af4eb9f6b1811585f45644"><td class="memItemLeft" align="right" valign="top"><a id="a24abe72cc9af4eb9f6b1811585f45644"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>DmaDicr</b> ()</td></tr>
+<tr class="separator:a24abe72cc9af4eb9f6b1811585f45644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1cead1a70af91c72109ee3906a60660"><td class="memItemLeft" align="right" valign="top"><a id="af1cead1a70af91c72109ee3906a60660"></a>
+constexpr volatile <a class="el" href="../../de/d17/structCKSDK_1_1OS_1_1DMA__CTRL__t.html">DMA_CTRL_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>DmaCtrl</b> (<a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab">DMA</a> i)</td></tr>
+<tr class="separator:af1cead1a70af91c72109ee3906a60660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafdd6aa8f6e10b0b0afce5dfcd420dc3"><td class="memItemLeft" align="right" valign="top"><a id="aafdd6aa8f6e10b0b0afce5dfcd420dc3"></a>
+constexpr volatile <a class="el" href="../../d4/d61/structCKSDK_1_1OS_1_1TIMER__CTRL__t.html">TIMER_CTRL_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>TimerCtrl</b> (int i)</td></tr>
+<tr class="separator:aafdd6aa8f6e10b0b0afce5dfcd420dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a785fa8e1d00c535845d51c6a1a45e1f5"><td class="memItemLeft" align="right" valign="top"><a id="a785fa8e1d00c535845d51c6a1a45e1f5"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Exp1Addr</b> ()</td></tr>
+<tr class="separator:a785fa8e1d00c535845d51c6a1a45e1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fb63d8a349328b6ecaf2e086d951bec"><td class="memItemLeft" align="right" valign="top"><a id="a8fb63d8a349328b6ecaf2e086d951bec"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Exp2Addr</b> ()</td></tr>
+<tr class="separator:a8fb63d8a349328b6ecaf2e086d951bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be10fb9de938261d9707c673c87bd53"><td class="memItemLeft" align="right" valign="top"><a id="a4be10fb9de938261d9707c673c87bd53"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Exp1DelaySize</b> ()</td></tr>
+<tr class="separator:a4be10fb9de938261d9707c673c87bd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae788f79917913ca577f19344908aa4cc"><td class="memItemLeft" align="right" valign="top"><a id="ae788f79917913ca577f19344908aa4cc"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Exp3DelaySize</b> ()</td></tr>
+<tr class="separator:ae788f79917913ca577f19344908aa4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a9e165c45b55404dd444357dcdf1511"><td class="memItemLeft" align="right" valign="top"><a id="a5a9e165c45b55404dd444357dcdf1511"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>BiosDelaySize</b> ()</td></tr>
+<tr class="separator:a5a9e165c45b55404dd444357dcdf1511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00cc4e7efa945f3f1db6624fc9de2e73"><td class="memItemLeft" align="right" valign="top"><a id="a00cc4e7efa945f3f1db6624fc9de2e73"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>SpuDelaySize</b> ()</td></tr>
+<tr class="separator:a00cc4e7efa945f3f1db6624fc9de2e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ed6abb5f930d097faf2a5edab90c25c"><td class="memItemLeft" align="right" valign="top"><a id="a3ed6abb5f930d097faf2a5edab90c25c"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>CdDelaySize</b> ()</td></tr>
+<tr class="separator:a3ed6abb5f930d097faf2a5edab90c25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb60b8e376cba672bb06f393945d7447"><td class="memItemLeft" align="right" valign="top"><a id="adb60b8e376cba672bb06f393945d7447"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Exp2DelaySize</b> ()</td></tr>
+<tr class="separator:adb60b8e376cba672bb06f393945d7447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf892bab51183600c24961eff42ba902"><td class="memItemLeft" align="right" valign="top"><a id="abf892bab51183600c24961eff42ba902"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ComDelayCfg</b> ()</td></tr>
+<tr class="separator:abf892bab51183600c24961eff42ba902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8445758970bcb75903b651b924e83461"><td class="memItemLeft" align="right" valign="top"><a id="a8445758970bcb75903b651b924e83461"></a>
+constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>RamSizeCfg</b> ()</td></tr>
+<tr class="separator:a8445758970bcb75903b651b924e83461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4995ddf85eae43f566beb5d77510f6a6"><td class="memItemLeft" align="right" valign="top"><a id="a4995ddf85eae43f566beb5d77510f6a6"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>DuartMode</b> ()</td></tr>
+<tr class="separator:a4995ddf85eae43f566beb5d77510f6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecd7842a15074fe3b79416ff3fc90fc6"><td class="memItemLeft" align="right" valign="top"><a id="aecd7842a15074fe3b79416ff3fc90fc6"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>DuartSra</b> ()</td></tr>
+<tr class="separator:aecd7842a15074fe3b79416ff3fc90fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a488442df40df30a09df596dbb02e4676"><td class="memItemLeft" align="right" valign="top"><a id="a488442df40df30a09df596dbb02e4676"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>DuartCra</b> ()</td></tr>
+<tr class="separator:a488442df40df30a09df596dbb02e4676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df989c1b766ccd51770d34b9e00a0b8"><td class="memItemLeft" align="right" valign="top"><a id="a1df989c1b766ccd51770d34b9e00a0b8"></a>
+constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>DuartHra</b> ()</td></tr>
+<tr class="separator:a1df989c1b766ccd51770d34b9e00a0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adddd9135045256a60ecaf5bb6c47a705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#adddd9135045256a60ecaf5bb6c47a705">Init</a> ()</td></tr>
 <tr class="memdesc:adddd9135045256a60ecaf5bb6c47a705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the <a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html" title="CKSDK OS namespace.">OS</a>.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#adddd9135045256a60ecaf5bb6c47a705">More...</a><br /></td></tr>
 <tr class="separator:adddd9135045256a60ecaf5bb6c47a705"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,12 +349,12 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:af6ce6c6d54475ed7d1a05bb95c2c0e66"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#af6ce6c6d54475ed7d1a05bb95c2c0e66">F_CPU</a> = 33868800UL</td></tr>
-<tr class="memdesc:af6ce6c6d54475ed7d1a05bb95c2c0e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">CPU clock rate.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#af6ce6c6d54475ed7d1a05bb95c2c0e66">More...</a><br /></td></tr>
-<tr class="separator:af6ce6c6d54475ed7d1a05bb95c2c0e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c28a6cac068d33d13661d74c78d1f46"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a6c28a6cac068d33d13661d74c78d1f46">F_GPU</a> = 53222400UL</td></tr>
-<tr class="memdesc:a6c28a6cac068d33d13661d74c78d1f46"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html" title="CKSDK GPU namespace.">GPU</a> clock rate.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a6c28a6cac068d33d13661d74c78d1f46">More...</a><br /></td></tr>
-<tr class="separator:a6c28a6cac068d33d13661d74c78d1f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a478d374bd7702304c74ffff21bcced88"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a478d374bd7702304c74ffff21bcced88">CpuHz</a> = 33868800UL</td></tr>
+<tr class="memdesc:a478d374bd7702304c74ffff21bcced88"><td class="mdescLeft">&#160;</td><td class="mdescRight">CPU clock rate.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a478d374bd7702304c74ffff21bcced88">More...</a><br /></td></tr>
+<tr class="separator:a478d374bd7702304c74ffff21bcced88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39d53851251a7e169398bcbce0b80795"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a39d53851251a7e169398bcbce0b80795">GpuHz</a> = 53222400UL</td></tr>
+<tr class="memdesc:a39d53851251a7e169398bcbce0b80795"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html" title="CKSDK GPU namespace.">GPU</a> clock rate.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a39d53851251a7e169398bcbce0b80795">More...</a><br /></td></tr>
+<tr class="separator:a39d53851251a7e169398bcbce0b80795"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d8/dce/namespaceCKSDK.html" title="CKSDK namespace.">CKSDK</a> <a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html" title="CKSDK OS namespace.">OS</a> namespace. </p>
@@ -679,8 +845,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="af6ce6c6d54475ed7d1a05bb95c2c0e66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6ce6c6d54475ed7d1a05bb95c2c0e66">&#9670;&nbsp;</a></span>F_CPU</h2>
+<a id="a478d374bd7702304c74ffff21bcced88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a478d374bd7702304c74ffff21bcced88">&#9670;&nbsp;</a></span>CpuHz</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -689,7 +855,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint32_t CKSDK::OS::F_CPU = 33868800UL</td>
+          <td class="memname">constexpr uint32_t CKSDK::OS::CpuHz = 33868800UL</td>
         </tr>
       </table>
   </td>
@@ -703,8 +869,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a6c28a6cac068d33d13661d74c78d1f46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c28a6cac068d33d13661d74c78d1f46">&#9670;&nbsp;</a></span>F_GPU</h2>
+<a id="a39d53851251a7e169398bcbce0b80795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39d53851251a7e169398bcbce0b80795">&#9670;&nbsp;</a></span>GpuHz</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -713,7 +879,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint32_t CKSDK::OS::F_GPU = 53222400UL</td>
+          <td class="memname">constexpr uint32_t CKSDK::OS::GpuHz = 53222400UL</td>
         </tr>
       </table>
   </td>
