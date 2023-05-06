@@ -103,6 +103,21 @@ namespace CKSDK
 			Word w;
 		};
 
+		/// @brief 2D sceren dimensions
+		union ScreenDim
+		{
+			/// @brief Struct
+			struct
+			{
+				/// @brief Width
+				uint16_t w;
+				/// @brief Height
+				uint16_t h;
+			} s;
+			/// @brief Word
+			Word w;
+		};
+
 		/// @brief 2D texture coordinate with an extra half word
 		union TexCoord
 		{
@@ -261,7 +276,7 @@ namespace CKSDK
 		{ V0 v0; V v1, v2, v3; };
 		/// @endcond
 
-		/// @brief Poly is a template for a polygon primitive
+		/// @brief Polygon primitive template structure
 		/// @tparam Grad `true` if each vertex has a color
 		/// @tparam Quad `true` if the polygon is a quad
 		/// @tparam Tex `true` if textured
@@ -270,12 +285,12 @@ namespace CKSDK
 		/// @details Each vertex will contain \link ScreenCoord xy\endlink, as well as \link TexCoord uv\endlink (if `Tex` is `true`), and \link Color c\endlink (if `Grad` is `true`).
 		/// @details The color of the polygon, if `Grad` is `false`, is set by `v0.c`.
 		template<bool Grad, bool Quad, bool Tex>
-		struct Poly :
+		struct PolyPrim :
 		/// @cond INTERNAL
-		public PolySet<Quad, PolyVertex<true, Tex>, PolyVertex<Grad, Tex>>
+			public PolySet<Quad, PolyVertex<true, Tex>, PolyVertex<Grad, Tex>>
 		/// @endcond
 		{
-			Poly()
+			PolyPrim()
 			{
 				this->v0.c.w = (GP0_Poly |
 					(Grad ? GP0_Poly_Grad : 0) |
@@ -337,6 +352,71 @@ namespace CKSDK
 			GP0_Rect_Raw   = (1 << 0),
 		};
 
+		enum class GP0_RectSize
+		{
+			Variable = 0,
+			Fixed1x1 = 1,
+			Fixed8x8 = 2,
+			Fixed16x16 = 3,
+		};
+
+		/// @cond INTERNAL
+		/// RectData contains the header data for a rectangle
+		template <bool Tex, bool Dim>
+		struct RectData;
+
+		template <>
+		struct RectData<false, false>
+		{ Color c; ScreenCoord xy; };
+
+		template <>
+		struct RectData<true, false>
+		{ Color c; ScreenCoord xy; TexCoord uv; };
+
+		template <>
+		struct RectData<false, true>
+		{ Color c; ScreenCoord xy; ScreenDim wh; };
+
+		template <>
+		struct RectData<true, true>
+		{ Color c; ScreenCoord xy; TexCoord uv; ScreenDim wh; };
+		/// @endcond
+
+		/// @brief Rectangle primitive template structure
+		template <bool Tex, GP0_RectSize Size = GP0_RectSize::Variable>
+		struct RectPrim :
+		/// @cond INTERNAL
+			public RectData<Tex, Size == GP0_RectSize::Variable>
+		/// @endcond
+		{
+			RectPrim()
+			{
+				this->c.w = (GP0_Rect |
+					((uint32_t)Size << 3) |
+					(Tex ? GP0_Rect_Tex : 0)) << 24;
+			}
+
+			/// @brief Sets semi-transparency flag
+			/// @param semi `true` to enable semi-transparency
+			void SetSemi(bool semi)
+			{
+				if (semi)
+					this->c.w |= (GP0_Rect_Semi << 24);
+				else
+					this->c.w &= ~(GP0_Rect_Semi << 24);
+			}
+
+			/// @brief Sets raw flag
+			/// @param semi `true` to disable modulation
+			void SetRaw(bool raw)
+			{
+				if (raw)
+					this->c.w |= (GP0_Rect_Raw << 24);
+				else
+					this->c.w &= ~(GP0_Rect_Raw << 24);
+			}
+		};
+
 		// GP0_Env
 		enum GP0_EnvCmds
 		{
@@ -369,6 +449,37 @@ namespace CKSDK
 			DrawMode(Word x, Word y, Word semi, Word bpp, Word dither, Word draw_enable, Word tex_disable, Word xflip, Word yflip)
 				: mode((x & 0xF) | ((y & 1) << 4) | ((semi & 3) << 5) | ((bpp & 3) << 7) | ((dither & 1) << 9) | ((draw_enable & 1) << 10) | ((tex_disable & 1) << 11) | ((xflip & 1) << 12) | ((yflip & 1) << 13))
 			{}
+
+			/// @brief Returns the texture page X base
+			/// @return Texture page X base
+			Word X() const { return mode & 0xF; }
+			/// @brief Returns the texture page Y base
+			/// @return Texture page Y base
+			Word Y() const { return (mode >> 4) & 1; }
+
+			/// @brief Returns the semi transparency mode
+			/// @return Semi transparency mode
+			Word Semi() const { return (mode >> 5) & 3; }
+			/// @brief Returns the texture bit depth
+			/// @return Texture bit depth
+			Word Bpp() const { return (mode >> 7) & 3; }
+			/// @brief Returns dither enabled
+			/// @return Dither enabled
+			Word Dither() const { return (mode >> 9) & 1; }
+
+			/// @brief Returns draw enabled
+			/// @return Draw enabled
+			Word DrawEnable() const { return (mode >> 10) & 1; }
+			/// @brief Returns texture disabled
+			/// @return Texture disabled
+			Word TexDisable() const { return (mode >> 11) & 1; }
+
+			/// @brief Returns X-Flip enabled
+			/// @return X-Flip enabled
+			Word XFlip() const { return (mode >> 12) & 1; }
+			/// @brief Returns Y-Flip enabled
+			/// @return Y-Flip enabled
+			Word YFlip() const { return (mode >> 13) & 1; }
 		};
 		
 		// GP1 commands

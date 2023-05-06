@@ -38,8 +38,8 @@ extern "C" void main()
 		// Allocate polys
 		struct PolyTest
 		{
-			CKSDK::GPU::Poly<false, true, false> bg;
-			CKSDK::GPU::Poly<true, true, false> poly;
+			CKSDK::GPU::PolyPrim<false, true, false> bg;
+			CKSDK::GPU::PolyPrim<true, true, false> poly;
 		};
 
 		PolyTest &poly_test = CKSDK::GPU::AllocPacket<PolyTest>(0);

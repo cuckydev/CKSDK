@@ -38,7 +38,7 @@ namespace CKSDK
 			while (*str != '\0')
 			{
 				value <<= 4;
-				value += uint32_t(*(str++));
+				value += (uint32_t)*str++;
 
 				uint32_t nibble = value & 0xF0000000;
 				if (nibble != 0)
