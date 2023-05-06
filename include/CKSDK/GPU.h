@@ -724,7 +724,11 @@ namespace CKSDK
 		/// @overload
 		template <typename T>
 		static T &AllocPacket(size_t ot)
-		{ return *((T*)AllocPacket(ot, sizeof(T) / sizeof(Word))); }
+		{
+			T &packet = *((T*)AllocPacket(ot, sizeof(T) / sizeof(Word)));
+			new (&packet) T();
+			return packet;
+		}
 		
 		/// @brief Wait until GPU is ready to receive command word
 		inline void CmdSync() { while ((OS::GpuGp1() & (1 << 26)) == 0); }
