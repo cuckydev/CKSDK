@@ -28,6 +28,15 @@ extern "C"
 
 	// Pure virtual call
 	void __cxa_pure_virtual(void) { CKSDK::ExScreen::Abort("Pure virtual call"); }
+
+	// C library functions
+	void *memset(void *dst, int val, register size_t len)
+	{
+		char *ptr = (char *)dst;
+		while (len-- > 0)
+			*ptr++ = val;
+		return dst;
+	}
 }
 
 // C++ new and delete

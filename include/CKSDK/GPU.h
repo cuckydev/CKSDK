@@ -577,6 +577,11 @@ namespace CKSDK
 		{
 			int16_t m[3][3];
 			int32_t t[3];
+
+			static Matrix Identity()
+			{
+				return {{{0x1000, 0, 0}, {0, 0x1000, 0}, {0, 0, 0x1000}}, {0, 0, 0}};
+			}
 		};
 
 		// GPU buffers
