@@ -71,6 +71,7 @@ target_compile_options(
 		-fno-unwind-tables
 		-fno-threadsafe-statics
 		-fno-use-cxa-atexit
+		-fcoroutines
 	>
 	$<$<STREQUAL:$<UPPER_CASE:$<TARGET_PROPERTY:CKSDK_TARGET_TYPE>>,EXECUTABLE_GPREL>:
 		# Options for executables with $gp-relative addressing
