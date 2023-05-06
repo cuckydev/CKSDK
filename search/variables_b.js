@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['neg_814',['neg',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a26dc0e4ecb239e7e4553e113d0554379',1,'CKSDK::SPI::PadResponse']]]
+  ['neg_839',['neg',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#af33b4d104658523db99c0a7e9983bd1e',1,'CKSDK::SPI::PadResponse']]]
 ];

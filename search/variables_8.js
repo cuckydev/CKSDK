@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jog_803',['jog',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#af2c7e4a2f8a8b452981a4d4e2812d6d9',1,'CKSDK::SPI::PadResponse']]]
+  ['jog_828',['jog',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#af4f0374160915bf05aee25c20d3b0d30',1,'CKSDK::SPI::PadResponse']]]
 ];

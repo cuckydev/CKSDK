@@ -12,10 +12,11 @@ var searchData=
   ['bitdepth_5f24bit_21',['BitDepth_24Bit',['../d8/d2a/namespaceCKSDK_1_1GPU.html#aff5339924a9b48c00f2a3eac9c6e35c2aa3803d388b6bf3ab578c885987e8b7f2',1,'CKSDK::GPU']]],
   ['bitdepth_5f4bit_22',['BitDepth_4Bit',['../d8/d2a/namespaceCKSDK_1_1GPU.html#aff5339924a9b48c00f2a3eac9c6e35c2ab32b6e62769d87fe0b8654908c5b4bf0',1,'CKSDK::GPU']]],
   ['bitdepth_5f8bit_23',['BitDepth_8Bit',['../d8/d2a/namespaceCKSDK_1_1GPU.html#aff5339924a9b48c00f2a3eac9c6e35c2a0b5771fb12d83002fbca1eaa8fa733ba',1,'CKSDK::GPU']]],
-  ['br_24',['br',['../dc/d0d/structCKSDK_1_1GPU_1_1Buffer_1_1GP0.html#a9f8af49911e3ca9d0b6c434d4d06840c',1,'CKSDK::GPU::Buffer::GP0']]],
-  ['btn_25',['btn',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a3a98912a80a1b24e2eb06000661ffa5a',1,'CKSDK::SPI::PadResponse']]],
-  ['btn_5fi_26',['btn_i',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a9e368279590f3774692031e047897937',1,'CKSDK::SPI::PadResponse']]],
-  ['btn_5fii_27',['btn_ii',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#abbbd97b29dbc511425cc12dece94a03d',1,'CKSDK::SPI::PadResponse']]],
-  ['buffer_28',['buffer',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html#a8ef4c4dca018392b827d5ad3dc47eaac',1,'CKSDK::GPU::Buffer']]],
-  ['buffer_29',['Buffer',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html',1,'CKSDK::GPU']]]
+  ['bpp_24',['Bpp',['../d3/d68/structCKSDK_1_1GPU_1_1DrawMode.html#a84c8cc4cceb3c7b43c5912c7cfd21895',1,'CKSDK::GPU::DrawMode']]],
+  ['br_25',['br',['../dc/d0d/structCKSDK_1_1GPU_1_1Buffer_1_1GP0.html#a9f8af49911e3ca9d0b6c434d4d06840c',1,'CKSDK::GPU::Buffer::GP0']]],
+  ['btn_26',['btn',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a3a98912a80a1b24e2eb06000661ffa5a',1,'CKSDK::SPI::PadResponse']]],
+  ['btn_5fi_27',['btn_i',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a9e368279590f3774692031e047897937',1,'CKSDK::SPI::PadResponse']]],
+  ['btn_5fii_28',['btn_ii',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#abbbd97b29dbc511425cc12dece94a03d',1,'CKSDK::SPI::PadResponse']]],
+  ['buffer_29',['buffer',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html#a8ef4c4dca018392b827d5ad3dc47eaac',1,'CKSDK::GPU::Buffer']]],
+  ['buffer_30',['Buffer',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html',1,'CKSDK::GPU']]]
 ];

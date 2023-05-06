@@ -7,7 +7,7 @@ var searchData=
   ['alloc_4',['Alloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#add55e8bba2c73b30c1a0ab6f3d50aa42',1,'CKSDK::Mem']]],
   ['allocpacket_5',['AllocPacket',['../d8/d2a/namespaceCKSDK_1_1GPU.html#aff79ac26014abd75f2964798512e543b',1,'CKSDK::GPU::AllocPacket(size_t ot, size_t words)'],['../d8/d2a/namespaceCKSDK_1_1GPU.html#a05931672a873b090ef0737d08af8030d',1,'CKSDK::GPU::AllocPacket(size_t ot)']]],
   ['america_6',['America',['../dc/d2b/namespaceCKSDK_1_1CD.html#aabe89ede4a564e2e9533eff996fbb41fa088f003833d523d9dccc529e929afdc7',1,'CKSDK::CD']]],
-  ['analog_7',['analog',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#aae9201a4234a39253e34a883065e4ff3',1,'CKSDK::SPI::PadResponse']]],
+  ['analog_7',['analog',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#afdc89f379c77fb627466f9e8cd7a9e8d',1,'CKSDK::SPI::PadResponse']]],
   ['analog_8',['Analog',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a8fadab7f8bbc7a54e79b3e6e858a0da9aa3002b111f6b8eac54284351e975c857',1,'CKSDK::SPI']]],
   ['analogstick_9',['AnalogStick',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a8fadab7f8bbc7a54e79b3e6e858a0da9ac47ea704112991c4b943f0d4ec85f4e3',1,'CKSDK::SPI']]],
   ['autopause_10',['AutoPause',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0b496e9e5f753107893cc47c07e91954ac73a0eb9a60b2f2db8662c34e708fad6',1,'CKSDK::CD']]],

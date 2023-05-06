@@ -101,7 +101,7 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">while</span> (*str != <span class="charliteral">&#39;\0&#39;</span>)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                value &lt;&lt;= 4;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                value += uint32_t(*(str++));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                value += (uint32_t)*str++;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                uint32_t nibble = value &amp; 0xF0000000;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">if</span> (nibble != 0)</div>
