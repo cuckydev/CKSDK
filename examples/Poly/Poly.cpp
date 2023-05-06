@@ -38,57 +38,27 @@ extern "C" void main()
 		// Allocate polys
 		struct PolyTest
 		{
-			CKSDK::GPU::PolyPrim<false, true, false> bg;
+			CKSDK::GPU::FillPrim<> bg;
 			CKSDK::GPU::PolyPrim<true, true, false> poly;
 		};
 
 		PolyTest &poly_test = CKSDK::GPU::AllocPacket<PolyTest>(0);
 
 		// Setup background polygon to fill entire screen
-		poly_test.bg.v0.c.s.r = 0x00;
-		poly_test.bg.v0.c.s.g = 0x80;
-		poly_test.bg.v0.c.s.b = 0x80;
-
-		poly_test.bg.v0.xy.s.x = 0;
-		poly_test.bg.v0.xy.s.y = 0;
-
-		poly_test.bg.v1.xy.s.x = g_width;
-		poly_test.bg.v1.xy.s.y = 0;
-
-		poly_test.bg.v2.xy.s.x = 0;
-		poly_test.bg.v2.xy.s.y = g_height;
-
-		poly_test.bg.v3.xy.s.x = g_width;
-		poly_test.bg.v3.xy.s.y = g_height;
+		poly_test.bg.c = CKSDK::GPU::Color(0x00, 0x80, 0x80);
+		poly_test.bg.xy = CKSDK::GPU::ScreenCoord(0, 0);
+		poly_test.bg.wh = CKSDK::GPU::ScreenDim(g_width, g_height);
 
 		// Setup foreground polygon
-		poly_test.poly.v0.c.s.r = 0x80;
-		poly_test.poly.v0.c.s.g = 0x00;
-		poly_test.poly.v0.c.s.b = 0x00;
-
-		poly_test.poly.v1.c.s.r = 0x00;
-		poly_test.poly.v1.c.s.g = 0x80;
-		poly_test.poly.v1.c.s.b = 0x00;
-
-		poly_test.poly.v2.c.s.r = 0x00;
-		poly_test.poly.v2.c.s.g = 0x00;
-		poly_test.poly.v2.c.s.b = 0x80;
-
-		poly_test.poly.v3.c.s.r = 0x80;
-		poly_test.poly.v3.c.s.g = 0x80;
-		poly_test.poly.v3.c.s.b = 0x80;
-
-		poly_test.poly.v0.xy.s.x = 64;
-		poly_test.poly.v0.xy.s.y = 64;
-
-		poly_test.poly.v1.xy.s.x = 256;
-		poly_test.poly.v1.xy.s.y = 64;
-
-		poly_test.poly.v2.xy.s.x = 64;
-		poly_test.poly.v2.xy.s.y = 176;
-
-		poly_test.poly.v3.xy.s.x = 256;
-		poly_test.poly.v3.xy.s.y = 176;
+		poly_test.poly.v0.c = CKSDK::GPU::Color(0xFF, 0x00, 0x00);
+		poly_test.poly.v1.c = CKSDK::GPU::Color(0x00, 0xFF, 0x00);
+		poly_test.poly.v2.c = CKSDK::GPU::Color(0x00, 0x00, 0xFF);
+		poly_test.poly.v3.c = CKSDK::GPU::Color(0xFF, 0xFF, 0xFF);
+		
+		poly_test.poly.v0.xy = CKSDK::GPU::ScreenCoord(64, 64);
+		poly_test.poly.v1.xy = CKSDK::GPU::ScreenCoord(256, 64);
+		poly_test.poly.v2.xy = CKSDK::GPU::ScreenCoord(64, 176);
+		poly_test.poly.v3.xy = CKSDK::GPU::ScreenCoord(256, 176);
 
 		// Flip screen
 		CKSDK::GPU::Flip();

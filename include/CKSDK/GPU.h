@@ -85,7 +85,21 @@ namespace CKSDK
 				uint8_t x;
 			} s;
 			/// @brief Word
-			Word w;
+			Word w = 0;
+
+			/// @brief Constructor
+			Color() {}
+
+			/// @brief Constructor
+			/// @param r Red component
+			/// @param g Green component
+			/// @param b Blue component
+			Color(uint8_t r, uint8_t g, uint8_t b) : w(((Word)r << 0) | ((Word)g << 8) | ((Word)b << 16)) {}
+
+			/// @brief Assignment operator
+			/// @param c Color
+			/// @return Reference to this
+			Color &operator=(const Color &c) { w = (c.w & 0xFFFFFF) | ((Word)this->s.x << 24); return *this; }
 		};
 
 		/// @brief 2D screen coordinates
@@ -95,12 +109,20 @@ namespace CKSDK
 			struct
 			{
 				/// @brief X coordinate
-				uint16_t x;
+				int16_t x;
 				/// @brief Y coordinate
-				uint16_t y;
+				int16_t y;
 			} s;
 			/// @brief Word
-			Word w;
+			Word w = 0;
+
+			/// @brief Constructor
+			ScreenCoord() {}
+
+			/// @brief Constructor
+			/// @param x X coordinate
+			/// @param y Y coordinate
+			ScreenCoord(int16_t x, int16_t y) : w(((Word)x << 0) | ((Word)y << 16)) {}
 		};
 
 		/// @brief 2D sceren dimensions
@@ -115,7 +137,15 @@ namespace CKSDK
 				uint16_t h;
 			} s;
 			/// @brief Word
-			Word w;
+			Word w = 0;
+
+			/// @brief Constructor
+			ScreenDim() {}
+
+			/// @brief Constructor
+			/// @param w Width
+			/// @param h Height
+			ScreenDim(uint16_t w, uint16_t h) : w(((Word)w << 0) | ((Word)h << 16)) {}
 		};
 
 		/// @brief 2D texture coordinate with an extra half word
@@ -132,7 +162,15 @@ namespace CKSDK
 				uint16_t x;
 			} s;
 			/// @brief Word
-			Word w;
+			Word w = 0;
+
+			/// @brief Constructor
+			TexCoord() {}
+
+			/// @brief Constructor
+			/// @param u U coordinate
+			/// @param v V coordinate
+			TexCoord(uint8_t u, uint8_t v) : w(((Word)u << 0) | ((Word)v << 8)) {}
 		};
 
 		/// @brief Semi transparency modes
@@ -140,9 +178,9 @@ namespace CKSDK
 		{
 			/// @brief Background 50% + Foreground 50%
 			SemiMode_Blend,
-			/// @brief Background 100% + Foreground 0%
+			/// @brief Background 100% + Foreground 100%
 			SemiMode_Add,
-			/// @brief Background 0% + Foreground 100%
+			/// @brief Background 100% - Foreground 100%
 			SemiMode_Sub,
 			/// @brief Background 25% + Foreground 75%
 			SemiMode_AddQuarter,
@@ -164,6 +202,9 @@ namespace CKSDK
 		/// @brief Texture page
 		struct TexPage
 		{
+			/// @brief Word
+			uint16_t tpage = 0;
+
 			/// @brief Constructor
 			TexPage() {}
 
@@ -173,14 +214,14 @@ namespace CKSDK
 			/// @param semi Semi transparency mode
 			/// @param bpp Texture bit depth
 			TexPage(uint16_t x, uint16_t y, uint16_t semi, uint16_t bpp) : tpage((x << 0) | (y << 4) | (semi << 5) | (bpp << 7)) {}
-
-			/// @brief Word
-			uint16_t tpage;
 		};
 
 		/// @brief Clut page
 		struct Clut
 		{
+			/// @brief Word
+			uint16_t clut = 0;
+
 			/// @brief Constructor
 			Clut() {}
 
@@ -188,9 +229,6 @@ namespace CKSDK
 			/// @param x X coordinate
 			/// @param y Y coordinate
 			Clut(uint16_t x, uint16_t y) : clut((x << 0) | (y << 6)) {}
-			
-			/// @brief Word
-			uint16_t clut;
 		};
 
 		// GP0 commands
@@ -454,13 +492,13 @@ namespace CKSDK
 		/// @param tex_disable Texture Disable
 		/// @param xflip Textured Rectangle X-Flip (Does nothing on retail GPUs?)
 		/// @param yflip Textured Rectangle Y-Flip (Does nothing on retail GPUs?)
-		struct DrawMode
+		struct DrawModePrim
 		{
 			Word mode;
 
-			DrawMode() {}
-			DrawMode(Word x, Word y, Word semi, Word bpp, Word dither, Word draw_enable, Word tex_disable, Word xflip, Word yflip)
-				: mode((x & 0xF) | ((y & 1) << 4) | ((semi & 3) << 5) | ((bpp & 3) << 7) | ((dither & 1) << 9) | ((draw_enable & 1) << 10) | ((tex_disable & 1) << 11) | ((xflip & 1) << 12) | ((yflip & 1) << 13))
+			DrawModePrim() {}
+			DrawModePrim(Word x, Word y, Word semi, Word bpp, Word dither, Word draw_enable, Word tex_disable, Word xflip, Word yflip)
+				: mode((GP0_DrawMode << 24) | (x & 0xF) | ((y & 1) << 4) | ((semi & 3) << 5) | ((bpp & 3) << 7) | ((dither & 1) << 9) | ((draw_enable & 1) << 10) | ((tex_disable & 1) << 11) | ((xflip & 1) << 12) | ((yflip & 1) << 13))
 			{}
 
 			/// @brief Returns the texture page X base
