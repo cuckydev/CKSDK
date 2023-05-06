@@ -43,7 +43,6 @@ extern "C" void main()
 		};
 
 		PolyTest &poly_test = CKSDK::GPU::AllocPacket<PolyTest>(0);
-		new(&poly_test) PolyTest(); // Call constructor
 
 		// Setup background polygon to fill entire screen
 		poly_test.bg.v0.c.s.r = 0x00;
