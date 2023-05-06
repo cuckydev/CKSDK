@@ -383,6 +383,8 @@ namespace CKSDK
 		/// @endcond
 
 		/// @brief Rectangle primitive template structure
+		/// @tparam Tex `true` if textured
+		/// @tparam Size Size of the rectangle (Variable by default, set size using `wh`)
 		template <bool Tex, GP0_RectSize Size = GP0_RectSize::Variable>
 		struct RectPrim :
 		/// @cond INTERNAL
@@ -416,6 +418,17 @@ namespace CKSDK
 					this->c.w &= ~(GP0_Rect_Raw << 24);
 			}
 		};
+
+		// Common rect types
+		/// @brief Fill primitive type
+		/// @tparam Size Size of the rectangle
+		template <GP0_RectSize Size = GP0_RectSize::Variable>
+		using FillPrim = RectPrim<false, Size>;
+
+		/// @brief Sprite primitive type
+		/// @tparam Size Size of the rectangle
+		template <GP0_RectSize Size = GP0_RectSize::Variable>
+		using SpritePrim = RectPrim<true, Size>;
 
 		// GP0_Env
 		enum GP0_EnvCmds
