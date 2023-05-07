@@ -759,7 +759,7 @@ namespace CKSDK
 		/// @return Packet
 		/// @details Allocates and links a packet of a given size onto the given ordering table
 		/// @details Packets are linked in reverse order, but the primitives within the packet will run in the order they are written
-		static Word *AllocPacket(size_t ot, size_t words)
+		inline Word *AllocPacket(size_t ot, size_t words)
 		{
 			Tag *otp = (Tag*)&g_bufferp->GetOT(ot);
 			Word *prip = g_bufferp->prip;
@@ -779,8 +779,10 @@ namespace CKSDK
 		/// @details Packets are linked in reverse order, but the primitives within the packet will run in the order they are written
 		/// @overload
 		template <typename T>
-		static T &AllocPacket(size_t ot)
+		inline T &AllocPacket(size_t ot)
 		{
+			static_assert((sizeof(T) / sizeof(Word)) <= 16, "Packet type too big");
+
 			T &packet = *((T*)AllocPacket(ot, sizeof(T) / sizeof(Word)));
 			new (&packet) T();
 			return packet;
