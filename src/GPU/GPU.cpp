@@ -107,7 +107,7 @@ namespace CKSDK
 
 			// Set DMA direction
 			DataSync();
-			OS::GpuGp1() = (GP1_DMADirection << 24) | 2;
+			GP1_Cmd((GP1_DMADirection << 24) | 2);
 
 			// Wait for DMA to be ready
 			CmdSync();
@@ -212,13 +212,13 @@ namespace CKSDK
 			buffers[0].gp0.br  = (GP0_DrawBR << 24)     | ((x0 + w - 1) << 0) | ((y0 + h - 1) << 10);
 			buffers[0].gp0.off = (GP0_DrawOffset << 24) | ((x0 + ox) << 0)    | ((y0 + oy) << 11);
 
-			buffers[0].gp1_vram = (GP1_DisplayVRAM << 24) | (x0 << 0) | (y0 << 10);
+			buffers[0].gp1_vram = (GP1_DisplayVRAM << 24) | (x1 << 0) | (y1 << 10);
 
 			buffers[1].gp0.tl  = (GP0_DrawTL << 24)     | ((x1) << 0)         | ((y1) << 10);
 			buffers[1].gp0.br  = (GP0_DrawBR << 24)     | ((x1 + w - 1) << 0) | ((y1 + h - 1) << 10);
 			buffers[1].gp0.off = (GP0_DrawOffset << 24) | ((x1 + ox) << 0)    | ((y1 + oy) << 11);
 
-			buffers[1].gp1_vram = (GP1_DisplayVRAM << 24) | (x1 << 0) | (y1 << 10);
+			buffers[1].gp1_vram = (GP1_DisplayVRAM << 24) | (x0 << 0) | (y0 << 10);
 			
 			buffers[0].gp0.mode = DrawModePrim(0, 0, false, BitDepth_4Bit, false, true, false, false, false);
 			buffers[1].gp0.mode = DrawModePrim(0, 0, false, BitDepth_4Bit, false, true, false, false, false);
@@ -326,15 +326,10 @@ namespace CKSDK
 			// Wait for queue to clear up
 			draw_queue.Sync();
 
-			// Wait for DMA to finish
-			if (OS::GpuGp1() & (3 << 29))
-			{
-				DataSync();
-				CHCRSync();
-			}
-			
-			// Wait until GPU is ready to receive a new command
+			// Sync
+			CHCRSync();
 			CmdSync();
+			DataSync();
 		}
 
 		void QueueReset()
