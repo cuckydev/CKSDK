@@ -599,7 +599,7 @@ namespace CKSDK
 				/// @brief GP0_DrawOffset
 				Word off;
 				/// @brief GP0_DisplayMode
-				Word mode;
+				DrawModePrim mode;
 			} gp0;
 			/// @brief GP1_DisplayVRAM
 			Word gp1_vram;
@@ -821,10 +821,10 @@ namespace CKSDK
 			CmdSync();
 			for (; wordp != worde; wordp++)
 			{
-				if ((OS::GpuGp1() & (1 << 26)) == 0)
-					DataSync();
+				DataSync();
 				OS::GpuGp0() = *wordp;
 			}
+			CmdSync();
 		}
 		
 		/// @brief Sends a word to the GP1 port

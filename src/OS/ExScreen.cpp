@@ -207,7 +207,7 @@ namespace CKSDK
 				GPU::GP0_Cmd(GPU::g_bufferp->gp0.tl);
 				GPU::GP0_Cmd(GPU::g_bufferp->gp0.br);
 				GPU::GP0_Cmd(GPU::g_bufferp->gp0.off);
-				GPU::GP0_Cmd(GPU::g_bufferp->gp0.mode);
+				GPU::GP0_Cmd(GPU::g_bufferp->gp0.mode.mode);
 
 				GPU::GP0_Cmd((GPU::GP0_FillRect << 24) | (0xFF << 16) | (0 << 8) | (0 << 0));
 				GPU::GP0_Data((0 << 0) | (0 << 16));

@@ -220,8 +220,8 @@ namespace CKSDK
 
 			buffers[1].gp1_vram = (GP1_DisplayVRAM << 24) | (x1 << 0) | (y1 << 10);
 			
-			buffers[0].gp0.mode = (GP0_DrawMode << 24) | (0 << 9) | (1 << 10);
-			buffers[1].gp0.mode = (GP0_DrawMode << 24) | (0 << 9) | (1 << 10);
+			buffers[0].gp0.mode = DrawModePrim(0, 0, false, BitDepth_4Bit, false, true, false, false, false);
+			buffers[1].gp0.mode = DrawModePrim(0, 0, false, BitDepth_4Bit, false, true, false, false, false);
 
 			// Setup mode
 			uint32_t mode = (GP1_DisplayMode << 24);
@@ -293,8 +293,9 @@ namespace CKSDK
 			if (flip_callback != nullptr)
 				flip_callback();
 
-			// Set draw framebuffer area
-			AllocPacket<Buffer::GP0>(bufferp->ot_size - 1) = bufferp->gp0;
+			// Send GP0 setup packet
+			// These commands are not safe to send during the OT, so we send them here
+			GP0_Packet<Buffer::GP0>(bufferp->gp0);
 
 			// Send OT to GPU
 			draw_queue.Enqueue(Queue_DrawOT, DrawQueueArgs{
