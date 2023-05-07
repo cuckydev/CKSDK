@@ -778,7 +778,6 @@ namespace CKSDK
 		/// @details Allocates, constructs, and links a packet of a given size onto the given ordering table
 		/// @details Packets are linked in reverse order, but the primitives within the packet will run in the order they are written
 		/// @note The packet type must not be larger than 16 words, as this will overflow the GPU's FIFO
-		/// @overload
 		template <typename T>
 		inline T &AllocPacket(size_t ot)
 		{
