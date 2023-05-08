@@ -40,6 +40,7 @@ namespace CKSDK
 		/// @brief Set timer
 		/// @param rate Timer rate (Hz)
 		/// @param cb Timer callback
+		/// @note `rate` must be greater than 64
 		void Set(uint32_t rate, TimerCallback cb);
 	}
 }

@@ -183,6 +183,17 @@ namespace CKSDK
 					: "=r"(v0), "=r"(v1), "=r"(t0) ::
 				);
 			}
+
+			// Clear VRAM
+			for (int x = 0; x < 1024; x += 512)
+			{
+				for (int y = 0; y < 512; y += 256)
+				{
+					GP0_Cmd((GP0_FillRect << 24) | (0x00 << 0) | (0x00 << 8) | (0x00 << 16));
+					GP0_Data((x << 0) | (y << 16));
+					GP0_Data((512 << 0) | (256 << 16));
+				}
+			}
 			
 			// Restore IRQs
 			OS::EnableIRQ();

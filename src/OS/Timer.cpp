@@ -34,7 +34,7 @@ namespace CKSDK
 		void Set(uint32_t rate, TimerCallback cb)
 		{
 			rate = (OS::CpuHz / 8) / rate;
-			if (rate >= 0x10000)
+			if (rate >= 0x10000) // Timer cannot run below 65hz
 				rate = 0xFFFF;
 			
 			OS::TimerCtrl(2).ctrl = 0x0258;

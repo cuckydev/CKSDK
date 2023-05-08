@@ -559,6 +559,15 @@ namespace CKSDK
 		struct Vector
 		{
 			int32_t x, y, z;
+
+			/// @brief Constructor
+			Vector() {}
+
+			/// @brief Constructor
+			/// @param x X component
+			/// @param y Y component
+			/// @param z Z component
+			Vector(int32_t x, int32_t y, int32_t z) : x(x), y(y), z(z) {}
 		};
 		/// @brief 16-bit 3D vector
 		struct SVector
@@ -576,7 +585,7 @@ namespace CKSDK
 		struct Matrix
 		{
 			int16_t m[3][3];
-			int32_t t[3];
+			Vector t;
 
 			static Matrix Identity()
 			{
@@ -828,7 +837,7 @@ namespace CKSDK
 			}
 			CmdSync();
 		}
-		
+
 		/// @brief Sends a word to the GP1 port
 		/// @param cmd Word
 		inline void GP1_Cmd(Word cmd)
