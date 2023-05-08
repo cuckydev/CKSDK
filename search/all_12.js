@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['tag_518',['Tag',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html',1,'CKSDK::GPU::Tag'],['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a035983515f25ec206490959f4ffafe88',1,'CKSDK::GPU::Tag::Tag()'],['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#aac040e58bae9766cf3a4c767092dde4a',1,'CKSDK::GPU::Tag::Tag(uintptr_t ptr, size_t words)'],['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#ac8f0c49b299d796f4a2e7489b36c23ca',1,'CKSDK::GPU::Tag::Tag(void *ptr, size_t words)']]],
-  ['tag_519',['tag',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a7a7307655c224f0bd63a4f4c31c5b81c',1,'CKSDK::GPU::Tag']]],
+  ['tag_517',['Tag',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html',1,'CKSDK::GPU']]],
+  ['tag_518',['tag',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a7a7307655c224f0bd63a4f4c31c5b81c',1,'CKSDK::GPU::Tag']]],
+  ['tag_519',['Tag',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a035983515f25ec206490959f4ffafe88',1,'CKSDK::GPU::Tag::Tag()'],['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#aac040e58bae9766cf3a4c767092dde4a',1,'CKSDK::GPU::Tag::Tag(uintptr_t ptr, size_t words)'],['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#ac8f0c49b299d796f4a2e7489b36c23ca',1,'CKSDK::GPU::Tag::Tag(void *ptr, size_t words)']]],
   ['tap_5fmode_520',['tap_mode',['../d9/d1e/structCKSDK_1_1SPI_1_1PadPacket.html#a75a4e29ae6d8ed44c9a72e30eae11b00',1,'CKSDK::SPI::PadPacket']]],
   ['test_521',['Test',['../dc/d2b/namespaceCKSDK_1_1CD.html#ac8dabbfdb2b4f83f71326a8dc89c57dba0cbc6611f5540bd0809a388dc95a615b',1,'CKSDK::CD']]],
   ['texcoord_522',['TexCoord',['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html',1,'CKSDK::GPU::TexCoord'],['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html#a1f79b8beebb7674055ccc05c870b2c79',1,'CKSDK::GPU::TexCoord::TexCoord()'],['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html#a4643c06c792933b84f53ec3789a252fb',1,'CKSDK::GPU::TexCoord::TexCoord(uint8_t u, uint8_t v)']]],
