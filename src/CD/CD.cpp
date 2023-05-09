@@ -510,7 +510,10 @@ namespace CKSDK
 			read_addr = (char*)read_addr + 2048;
 
 			// Decrement sectors
-			if (--read_sectors == 0)
+			uint32_t sectors = read_sectors;
+			read_sectors = --sectors;
+
+			if (sectors == 0)
 			{
 				// Pause and call read callback
 				Issue(Command::Pause, nullptr, nullptr, nullptr, nullptr, 0);
@@ -523,9 +526,14 @@ namespace CKSDK
 		{
 			// Setup read
 			ReadSync();
+
 			read_callback = cb;
-			read_start_addr = read_addr = addr;
-			read_start_sectors = read_sectors = sectors;
+
+			read_start_addr = addr;
+			read_start_sectors = sectors;
+
+			read_sectors = sectors;
+			read_addr = addr;
 			
 			// Start reading
 			uint8_t param[1] = { mode };

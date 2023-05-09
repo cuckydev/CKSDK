@@ -52,7 +52,7 @@ namespace CKSDK
 					FT func;
 					T args;
 				} queue[N];
-				volatile uint32_t queue_head = 0, queue_tail = 0, queue_length = 0;
+				uint32_t queue_head = 0, queue_tail = 0, queue_length = 0;
 
 			public:
 				// Queue functions
@@ -60,9 +60,14 @@ namespace CKSDK
 				/// @return True if queue is empty
 				bool Dispatch()
 				{
-					if (queue_length == 0)
+					// Check if queue is empty
+					uint32_t length = queue_length;
+					if (length == 0)
 						return true;
-					if (--queue_length != 0)
+
+					// Decrement queue length and check if we have another entry to run
+					queue_length = --length;
+					if (length != 0)
 					{
 						// Call next entry in queue
 						uint32_t head = queue_head;

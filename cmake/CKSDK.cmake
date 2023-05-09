@@ -72,6 +72,12 @@ target_compile_options(
 		-fno-threadsafe-statics
 		-fno-use-cxa-atexit
 		-fcoroutines
+		# Use C++20
+		-std=c++20
+	>
+	$<$<COMPILE_LANGUAGE:C>:
+		# Use C17
+		-std=c17
 	>
 	$<$<STREQUAL:$<UPPER_CASE:$<TARGET_PROPERTY:CKSDK_TARGET_TYPE>>,EXECUTABLE_GPREL>:
 		# Options for executables with $gp-relative addressing

@@ -46,12 +46,12 @@ namespace CKSDK
 
 				// Constructors
 				/// @brief Default constructor
-				constexpr Fixed() {}
+				constexpr Fixed() noexcept {}
 
 				/// @brief Copy constructor
 				/// @param _x Numerical value
 				template<typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
-				constexpr Fixed(U _x)
+				constexpr Fixed(U _x) noexcept
 				{
 					if constexpr (std::is_integral_v<U>)
 						x = T(_x << FRAC);
@@ -64,7 +64,7 @@ namespace CKSDK
 				/// @tparam FRAC2 Other fixed point fractional bits
 				/// @param rhs Other fixed point value
 				template<typename T2, T2 FRAC2>
-				constexpr Fixed(Fixed<T2, FRAC2> const &rhs) : x(*((T2*)&rhs))
+				constexpr Fixed(Fixed<T2, FRAC2> const &rhs) noexcept : x(*((T2*)&rhs))
 				{ 
 					if constexpr (FRAC2 > FRAC)
 						x >>= FRAC2 - FRAC;
