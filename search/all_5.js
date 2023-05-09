@@ -3,7 +3,7 @@ var searchData=
   ['fifo_186',['fifo',['../da/de2/structCKSDK_1_1OS_1_1SIO__CTRL.html#aa03b6268a2207f3ea817f36ae82e7eb5',1,'CKSDK::OS::SIO_CTRL']]],
   ['file_187',['File',['../d9/d9e/structCKSDK_1_1CD_1_1File.html',1,'CKSDK::CD']]],
   ['fillprim_188',['FillPrim',['../d8/d2a/namespaceCKSDK_1_1GPU.html#ac8d083006eb9507047f13473b932f5ee',1,'CKSDK::GPU']]],
-  ['fixed_189',['Fixed',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html',1,'CKSDK::Fixed::Fixed&lt; T, FRAC &gt;'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#ad93108eab51b0d39c02e83433e8dd828',1,'CKSDK::Fixed::Fixed::Fixed()'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#afe4949fcb834ae715fc1e9871f52f889',1,'CKSDK::Fixed::Fixed::Fixed(U _x)'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#aab4bff5e267972a26dfe26b1327a61ea',1,'CKSDK::Fixed::Fixed::Fixed(Fixed&lt; T2, FRAC2 &gt; const &amp;rhs)']]],
+  ['fixed_189',['Fixed',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html',1,'CKSDK::Fixed::Fixed&lt; T, FRAC &gt;'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a3c17c9c007754f5ee7e9e87d10c477db',1,'CKSDK::Fixed::Fixed::Fixed() noexcept'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a204ef4a7be4e6b5aa956a5e13cad2c77',1,'CKSDK::Fixed::Fixed::Fixed(U _x) noexcept'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a5fb0ed3b1ce555c8c63c5cff244f4db1',1,'CKSDK::Fixed::Fixed::Fixed(Fixed&lt; T2, FRAC2 &gt; const &amp;rhs) noexcept']]],
   ['fixed_2eh_190',['Fixed.h',['../d4/d76/Fixed_8h.html',1,'']]],
   ['flip_191',['Flip',['../d8/d2a/namespaceCKSDK_1_1GPU.html#ae6b15b296ecfce34e982a1288ca14a97',1,'CKSDK::GPU']]],
   ['flipcallback_192',['FlipCallback',['../d8/d2a/namespaceCKSDK_1_1GPU.html#aa4908d0b3306910de6ad327a8e985efc',1,'CKSDK::GPU']]],
