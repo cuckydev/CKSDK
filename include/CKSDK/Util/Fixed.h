@@ -35,7 +35,7 @@ namespace CKSDK
 		/// @brief Fixed point class template
 		/// @tparam T Fixed point type
 		/// @tparam FRAC Fixed point fractional bits
-		template <typename T, T FRAC>
+		template <typename T, int FRAC>
 		class Fixed
 		{
 			private:
@@ -44,6 +44,7 @@ namespace CKSDK
 			public:
 				/// @brief Fixed point type
 				using Type = T;
+				static constexpr int Frac = FRAC;
 
 				// Constructors
 				/// @brief Default constructor
@@ -64,7 +65,7 @@ namespace CKSDK
 				/// @tparam T2 Other fixed point type
 				/// @tparam FRAC2 Other fixed point fractional bits
 				/// @param rhs Other fixed point value
-				template<typename T2, T2 FRAC2>
+				template<typename T2, int FRAC2>
 				constexpr Fixed(Fixed<T2, FRAC2> const &rhs) noexcept : x(*((T2*)&rhs))
 				{ 
 					if constexpr (FRAC2 > FRAC)
@@ -77,7 +78,7 @@ namespace CKSDK
 				/// @tparam T2 Other fixed point type
 				/// @tparam FRAC2 Other fixed point fractional bits
 				/// @param rhs Other fixed point value
-				template<typename T2, T2 FRAC2>
+				template<typename T2, int FRAC2>
 				Fixed<T, FRAC> &operator=(Fixed<T2, FRAC2> const &rhs)
 				{
 					if constexpr (FRAC2 > FRAC)
