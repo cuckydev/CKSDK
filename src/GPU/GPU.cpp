@@ -43,7 +43,7 @@ namespace CKSDK
 		static void IRQ_VBlank()
 		{
 			// Call vblank callback
-			vblank_counter++;
+			vblank_counter = vblank_counter + 1;
 			if (vblank_callback != nullptr)
 				vblank_callback();
 		}

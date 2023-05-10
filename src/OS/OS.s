@@ -26,7 +26,7 @@
 .section .bss.CKSDK_OS_ISR_Thread
 .align 4
 CKSDK_OS_ISR_Thread:
-	.space 34*4
+	.space 36*4
 
 # void CKSDK_OS_Syscall_DisableIRQ(void);
 .section .text.CKSDK_OS_Syscall_DisableIRQ
@@ -142,9 +142,21 @@ CKSDK_OS_ISR:
 	addiu $t1, 1
 	sw    $t1, 0($t0)
 
+	# Store mfhi and mflo
+	mfhi  $t0
+	mflo  $t1
+	sw    $t0, 34*4($k0)
+	sw    $t1, 35*4($k0)
+
 	# Enter user ISR
 	jal   CKSDK_OS_ISR_Callback
 	move  $a0, $k0
+
+	# Restore mfhi and mflo
+	lw    $t0, 34*4($k0)
+	lw    $t1, 35*4($k0)
+	mthi  $t0
+	mtlo  $t1
 	
 	# Decrement IRQ recursion
 	la    $t0, CKSDK_OS_irq_recurse

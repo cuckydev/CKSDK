@@ -30,7 +30,7 @@ extern "C"
 	void __cxa_pure_virtual(void) { CKSDK::ExScreen::Abort("Pure virtual call"); }
 
 	// C library functions
-	void *memset(void *dst, int val, register size_t len)
+	void *memset(void *dst, int val, size_t len)
 	{
 		char *ptr = (char *)dst;
 		while (len-- > 0)

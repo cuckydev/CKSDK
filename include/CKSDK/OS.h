@@ -329,8 +329,9 @@ namespace CKSDK
 			uint32_t gp, sp, fp;
 			uint32_t ra;
 			uint32_t sr, cause;
+			uint32_t mfhi, mflo;
 		};
-		static_assert(sizeof(Thread) == (4 * 34));
+		static_assert(sizeof(Thread) == (4 * 36));
 		/// @endcond
 
 		/// @brief Function pointer wrapper for shared library functions
