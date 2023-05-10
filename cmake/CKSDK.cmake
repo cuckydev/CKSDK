@@ -103,6 +103,7 @@ target_compile_options(
 		-mshared
 	>
 )
+
 target_link_options(
 	CKSDK_defs INTERFACE
 		# Options common to all target types
@@ -123,11 +124,14 @@ target_link_options(
 		-shared
 	>
 )
+
 target_compile_definitions(
 	CKSDK_defs INTERFACE
 		MIPSEL=1
 		$<$<CONFIG:Release>:NDEBUG=1>
 )
+
+target_link_libraries(CKSDK_defs INTERFACE -lgcc)
 
 target_include_directories(CKSDK_defs INTERFACE "${CKSDK_DIR}/include")
 
