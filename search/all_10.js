@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['r_378',['r',['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#ae6e1576ccee92806416e39f624591d64',1,'CKSDK::GPU::Color']]],
-  ['ramsizecfg_379',['RamSizeCfg',['../db/d79/namespaceCKSDK_1_1OS.html#a8445758970bcb75903b651b924e83461',1,'CKSDK::OS']]],
+  ['r_377',['r',['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#ae6e1576ccee92806416e39f624591d64',1,'CKSDK::GPU::Color']]],
+  ['ramsizecfg_378',['RamSizeCfg',['../db/d79/namespaceCKSDK_1_1OS.html#a8445758970bcb75903b651b924e83461',1,'CKSDK::OS']]],
+  ['raw_379',['Raw',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a42c3f7f450e16dde6c596afa41a0d95a',1,'CKSDK::Fixed::Fixed']]],
   ['read_380',['Read',['../dc/d2b/namespaceCKSDK_1_1CD.html#a51499f9472e027d6012fba710da86fbaa71face01372f8b3ec34aa23e759b54c4',1,'CKSDK::CD']]],
   ['readcallback_381',['ReadCallback',['../dc/d2b/namespaceCKSDK_1_1CD.html#a779100f4cd4762dce804586b88dfea36',1,'CKSDK::CD']]],
   ['readn_382',['ReadN',['../dc/d2b/namespaceCKSDK_1_1CD.html#ac8dabbfdb2b4f83f71326a8dc89c57dbacc4861d4bbeb72559fc228e3a76189dc',1,'CKSDK::CD']]],
