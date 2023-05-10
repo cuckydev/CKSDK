@@ -114,6 +114,10 @@ namespace CKSDK
 				/// @return Rounded integer value
 				Fixed<T, FRAC> Round() const
 				{ Fixed<T, FRAC> result; result.x = (x + ((1 << FRAC) >> 1)) & ~((1 << FRAC) - 1); return result; }
+				/// @brief Get raw value
+				/// @return Raw value
+				T Raw() const
+				{ return x; }
 
 				// Operators
 				// Fixed + Fixed

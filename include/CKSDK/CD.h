@@ -48,6 +48,15 @@ namespace CKSDK
 		{
 			/// @brief BCD encoded byte
 			uint8_t b;
+
+			/// @brief Assignment operator
+			/// @param b Byte to assign
+			/// @return Reference to self
+			BCD &operator=(uint8_t b)
+			{
+				this->b = b;
+				return *this;
+			}
 			
 			/// @brief Decode BCD encoded byte
 			/// @return	Decoded byte
@@ -55,6 +64,15 @@ namespace CKSDK
 			{
 				return b - 6 * (b >> 4);
 			}
+
+			/// @brief Decode BCD encoded byte
+			/// @param b Byte to decode
+			/// @return	Decoded byte
+			static uint8_t Dec(uint8_t b)
+			{
+				return b - 6 * (b >> 4);
+			}
+
 			/// @brief Encode byte to BCD
 			/// @param dec	Byte to encode
 			/// @return	BCD encoded byte

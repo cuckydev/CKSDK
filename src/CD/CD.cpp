@@ -481,7 +481,7 @@ namespace CKSDK
 		{
 			// Play track
 			{
-				uint8_t param[1] = { Mode::Report | Mode::AutoPause };
+				uint8_t param[1] = { Mode::AutoPause };
 				if (report_cb != nullptr)
 					param[0] |= Mode::Report;
 				Issue(Command::SetMode, nullptr, nullptr, nullptr, param, 1);
