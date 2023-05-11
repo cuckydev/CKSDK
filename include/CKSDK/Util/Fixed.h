@@ -31,6 +31,9 @@ namespace CKSDK
 	/// @brief CKSDK fixed point namespace
 	namespace Fixed
 	{
+		// TODO: The operators here don't work properly with floating numbers
+		// This is because we cast the number directly to T, which is correct for integers but not for floating point numbers
+
 		// Fixed point types
 		/// @brief Fixed point class template
 		/// @tparam T Fixed point type

@@ -330,9 +330,9 @@ namespace CKSDK
 				/// @brief CD status
 				uint8_t stat;
 				/// @brief Track number
-				uint16_t track;
+				uint8_t track;
 				/// @brief Index number
-				uint16_t index;
+				uint8_t index;
 				/// @brief Minutes (BCD)
 				BCD minute;
 				/// @brief Seconds (BCD)
@@ -348,11 +348,12 @@ namespace CKSDK
 			/// @brief Result
 			uint8_t b[8];
 		};
+
 		/// @brief Play a track
+		/// @param track Track to play
 		/// @param report_cb Digital audio report callback
 		/// @param end_cb Track end callback
-		/// @param track Track to play
-		void PlayTrack(Callback report_cb, Callback end_cb, uint8_t track);
+		void PlayTrack(uint8_t track, Callback report_cb, Callback end_cb);
 
 		/// @brief Read callback type
 		/// @param addr Address read to

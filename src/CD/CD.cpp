@@ -477,7 +477,7 @@ namespace CKSDK
 		}
 
 		// Play track
-		void PlayTrack(Callback report_cb, Callback end_cb, uint8_t track)
+		void PlayTrack(uint8_t track, Callback report_cb, Callback end_cb)
 		{
 			// Play track
 			{
