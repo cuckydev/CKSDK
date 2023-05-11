@@ -23,7 +23,7 @@ var searchData=
   ['peak_5flo_365',['peak_lo',['../d2/d5e/unionCKSDK_1_1CD_1_1DAReport.html#a8312db3ec9ff28efb944f345e3648daa',1,'CKSDK::CD::DAReport']]],
   ['pio_366',['PIO',['../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eaba7a876fbec890f829703bc77a76e8ef45',1,'CKSDK::OS']]],
   ['play_367',['Play',['../dc/d2b/namespaceCKSDK_1_1CD.html#a51499f9472e027d6012fba710da86fbaade3c731be5633838089a07179d301d7b',1,'CKSDK::CD::Play()'],['../dc/d2b/namespaceCKSDK_1_1CD.html#a51499f9472e027d6012fba710da86fbaa70c2bfab944e98557868fcb077f8108e',1,'CKSDK::CD::Play()']]],
-  ['playtrack_368',['PlayTrack',['../dc/d2b/namespaceCKSDK_1_1CD.html#a97a1b5a119966d55b92ca45ffd0a5193',1,'CKSDK::CD']]],
+  ['playtrack_368',['PlayTrack',['../dc/d2b/namespaceCKSDK_1_1CD.html#ad9e5044690555ecad65169a67926b732',1,'CKSDK::CD']]],
   ['pollpads_369',['PollPads',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a7e250bd62ffeb2affc2f8b8b9f0c9b93',1,'CKSDK::SPI']]],
   ['polyprim_370',['PolyPrim',['../d8/d7c/structCKSDK_1_1GPU_1_1PolyPrim.html',1,'CKSDK::GPU']]],
   ['prefix_371',['prefix',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a9bf90b1a838d7a5d3007e0fe137b7a26',1,'CKSDK::SPI::PadResponse']]],

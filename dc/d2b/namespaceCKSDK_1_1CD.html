@@ -219,9 +219,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a6453c52733b27d2f93d7fb947a17e9a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#aed4f27d936ff8d0dafbe58039047bf05">IRQStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#a6453c52733b27d2f93d7fb947a17e9a3">Sync</a> (uint8_t *result)</td></tr>
 <tr class="memdesc:a6453c52733b27d2f93d7fb947a17e9a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for <a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html" title="CKSDK CD namespace.">CD</a> to be idle.  <a href="../../dc/d2b/namespaceCKSDK_1_1CD.html#a6453c52733b27d2f93d7fb947a17e9a3">More...</a><br /></td></tr>
 <tr class="separator:a6453c52733b27d2f93d7fb947a17e9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97a1b5a119966d55b92ca45ffd0a5193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#a97a1b5a119966d55b92ca45ffd0a5193">PlayTrack</a> (<a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ab5043d69e88a08c705425244aaa36d05">Callback</a> report_cb, <a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ab5043d69e88a08c705425244aaa36d05">Callback</a> end_cb, uint8_t track)</td></tr>
-<tr class="memdesc:a97a1b5a119966d55b92ca45ffd0a5193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play a track.  <a href="../../dc/d2b/namespaceCKSDK_1_1CD.html#a97a1b5a119966d55b92ca45ffd0a5193">More...</a><br /></td></tr>
-<tr class="separator:a97a1b5a119966d55b92ca45ffd0a5193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9e5044690555ecad65169a67926b732"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ad9e5044690555ecad65169a67926b732">PlayTrack</a> (uint8_t track, <a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ab5043d69e88a08c705425244aaa36d05">Callback</a> report_cb, <a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ab5043d69e88a08c705425244aaa36d05">Callback</a> end_cb)</td></tr>
+<tr class="memdesc:ad9e5044690555ecad65169a67926b732"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play a track.  <a href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ad9e5044690555ecad65169a67926b732">More...</a><br /></td></tr>
+<tr class="separator:ad9e5044690555ecad65169a67926b732"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae154ed014a4e83459ea904572b3d89fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ae154ed014a4e83459ea904572b3d89fa">ReadSectors</a> (<a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#a779100f4cd4762dce804586b88dfea36">ReadCallback</a> cb, void *addr, const <a class="el" href="../../df/d17/structCKSDK_1_1CD_1_1Loc.html">CD::Loc</a> &amp;loc, size_t sectors, uint8_t mode)</td></tr>
 <tr class="memdesc:ae154ed014a4e83459ea904572b3d89fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read sectors from <a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html" title="CKSDK CD namespace.">CD</a> drive.  <a href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ae154ed014a4e83459ea904572b3d89fa">More...</a><br /></td></tr>
 <tr class="separator:ae154ed014a4e83459ea904572b3d89fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -702,8 +702,8 @@ You must read all 2048 bytes of the sector for each ready callback, or the drive
 
 </div>
 </div>
-<a id="a97a1b5a119966d55b92ca45ffd0a5193"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97a1b5a119966d55b92ca45ffd0a5193">&#9670;&nbsp;</a></span>PlayTrack()</h2>
+<a id="ad9e5044690555ecad65169a67926b732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9e5044690555ecad65169a67926b732">&#9670;&nbsp;</a></span>PlayTrack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -711,6 +711,12 @@ You must read all 2048 bytes of the sector for each ready callback, or the drive
         <tr>
           <td class="memname">void CKSDK::CD::PlayTrack </td>
           <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>track</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ab5043d69e88a08c705425244aaa36d05">Callback</a>&#160;</td>
           <td class="paramname"><em>report_cb</em>, </td>
         </tr>
@@ -718,13 +724,7 @@ You must read all 2048 bytes of the sector for each ready callback, or the drive
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html#ab5043d69e88a08c705425244aaa36d05">Callback</a>&#160;</td>
-          <td class="paramname"><em>end_cb</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>track</em>&#160;</td>
+          <td class="paramname"><em>end_cb</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -737,9 +737,9 @@ You must read all 2048 bytes of the sector for each ready callback, or the drive
 <p>Play a track. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">track</td><td>Track to play </td></tr>
     <tr><td class="paramname">report_cb</td><td>Digital audio report callback </td></tr>
     <tr><td class="paramname">end_cb</td><td>Track end callback </td></tr>
-    <tr><td class="paramname">track</td><td>Track to play </td></tr>
   </table>
   </dd>
 </dl>
