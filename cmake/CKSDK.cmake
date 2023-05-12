@@ -245,3 +245,17 @@ function(cksdk_dll name target_dll)
 		BYPRODUCTS ${target_dll}
 	)
 endfunction()
+
+function(cksdk_static_library name)
+	# Compile library
+	add_library(${name} STATIC ${ARGN})
+	set_target_properties(${name} PROPERTIES CKSDK_TARGET_TYPE EXECUTABLE_NOGPREL)
+	target_link_libraries(${name} PRIVATE CKSDK_defs)
+endfunction()
+
+function(cksdk_dll_static_library name)
+	# Compile library
+	add_library(${name} STATIC ${ARGN})
+	set_target_properties(${name} PROPERTIES CKSDK_TARGET_TYPE SHARED_LIBRARY)
+	target_link_libraries(${name} PRIVATE CKSDK_defs)
+endfunction()
