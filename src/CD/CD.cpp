@@ -396,15 +396,15 @@ namespace CKSDK
 					// The CD drive will give us a string that represents which region it's designed for
 					if (result[1] == 0x10)
 						g_region = Region::Japan; // SPCH-1000 will return an error
-					else if (!STL::Memory::Compare(&result[0], "for Japan", 8))
+					else if (!STL::Memory::Compare(&result[0], "for Japan", 9))
 						g_region = Region::Japan;
 					else if (!STL::Memory::Compare(&result[0], "for U/C", 7))
 						g_region = Region::America;
-					else if (!STL::Memory::Compare(&result[0], "for Europe", 8))
+					else if (!STL::Memory::Compare(&result[0], "for Europe", 10))
 						g_region = Region::Europe;
-					else if (!STL::Memory::Compare(&result[0], "for NETNA", 8) || !STL::Memory::Compare(&result[0], "for NETEU", 8))
+					else if (!STL::Memory::Compare(&result[0], "for NETNA", 9) || !STL::Memory::Compare(&result[0], "for NETEU", 9))
 						g_region = Region::Worldwide;
-					else if (!STL::Memory::Compare(&result[0], "for US/AEP", 8))
+					else if (!STL::Memory::Compare(&result[0], "for US/AEP", 10))
 						g_region = Region::Debug;
 				}, nullptr, nullptr, param, sizeof(param));
 				Sync(nullptr);

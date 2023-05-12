@@ -32,11 +32,11 @@ namespace CKSDK
 	{
 		// CD types
 		/// @brief CD command result
-		/// @details This is simply an array of 8 bytes
+		/// @details This is simply an array of 16 bytes
 		struct Result
 		{
 			private:
-				uint8_t b[8];
+				uint8_t b[16];
 
 			public:
 				uint8_t &operator[](int i) { return b[i]; }
