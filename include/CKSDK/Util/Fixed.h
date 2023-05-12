@@ -123,6 +123,11 @@ namespace CKSDK
 				/// @return Raw value
 				constexpr T Raw() const
 				{ return x; }
+				/// @brief Construct from raw value
+				/// @param _x Raw value
+				/// @return Fixed point value
+				constexpr static Fixed<T, FRAC> Raw(T _x)
+				{ Fixed<T, FRAC> result; result.x = _x; return result; }
 
 				/// @brief Get lowest representable value
 				/// @return Lowest representable value
