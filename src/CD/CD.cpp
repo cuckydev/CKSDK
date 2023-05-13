@@ -334,17 +334,17 @@ namespace CKSDK
 					dispatch_pending = false;
 					complete_pending = false;
 					if (complete_callback != nullptr)
-						complete_callback(handle_complete.last_irq_status, *((const Result*)&handle_complete.last_result));
+						complete_callback(handle_complete.last_irq_status, handle_complete.last_result);
 				}
 				if ((handle & HandleIRQ::HandleDataReady) != 0)
 				{
 					if (ready_callback != nullptr)
-						ready_callback(handle_ready.last_irq_status, *((const Result*)&handle_ready.last_result));
+						ready_callback(handle_ready.last_irq_status, handle_ready.last_result);
 				}
 				if ((handle & HandleIRQ::HandleDataEnd) != 0)
 				{
 					if (end_callback != nullptr)
-						end_callback(handle_end.last_irq_status, *((const Result*)&handle_end.last_result));
+						end_callback(handle_end.last_irq_status, handle_end.last_result);
 				}
 
 				// Dispatch command, only if the callbacks didn't dispatch a new command
