@@ -31,8 +31,39 @@ namespace CKSDK
 	/// @brief CKSDK fixed point namespace
 	namespace Fixed
 	{
-		// TODO: The operators here don't work properly with floating numbers
-		// This is because we cast the number directly to T, which is correct for integers but not for floating point numbers
+		// Integer type extension for multiplication
+		template <typename T>
+		struct extend_integral_type {
+			using type = T;
+		};
+
+		template <>
+		struct extend_integral_type<char> {
+			using type = short;
+		};
+
+		template <>
+		struct extend_integral_type<short> {
+			using type = int;
+		};
+
+		template <>
+		struct extend_integral_type<int> {
+			using type = long;
+		};
+
+		template <>
+		struct extend_integral_type<long> {
+			using type = long long;
+		};
+
+		template <>
+		struct extend_integral_type<long long> {
+			using type = long long; // No standard integral type larger than long long.
+		};
+
+		template <typename T>
+		using extend_integral_t = typename extend_integral_type<T>::type;
 
 		// Fixed point types
 		/// @brief Fixed point class template
@@ -42,6 +73,7 @@ namespace CKSDK
 		class Fixed
 		{
 			private:
+				// Raw value
 				T x;
 
 			public:
@@ -149,7 +181,7 @@ namespace CKSDK
 				// Fixed + number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr Fixed<T, FRAC> operator+(const U &_x) const
-				{ Fixed<T, FRAC> result; result.x = this->x + (T(_x) << FRAC); return result; }
+				{ Fixed<T, FRAC> result; result.x = this->x + Fixed<T, FRAC>(_x); return result; }
 				// Fixed += number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				void operator+=(const U &_x)
@@ -165,7 +197,7 @@ namespace CKSDK
 				// Fixed - number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr Fixed<T, FRAC> operator-(const U &_x) const
-				{ Fixed<T, FRAC> result; result.x = this->x - (T(_x) << FRAC); return result; }
+				{ Fixed<T, FRAC> result; result.x = this->x - Fixed<T, FRAC>(_x); return result; }
 				// Fixed -= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				void operator-=(const U &_x)
@@ -180,7 +212,7 @@ namespace CKSDK
 
 				// Fixed * Fixed
 				constexpr Fixed<T, FRAC> operator*(const Fixed<T, FRAC> &_x) const
-				{ Fixed<T, FRAC> result; result.x = (this->x * _x.x) >> FRAC; return result; }
+				{ Fixed<T, FRAC> result; result.x = ((extend_integral_t<T>)this->x * _x.x) >> FRAC; return result; }
 				// Fixed *= Fixed
 				Fixed<T, FRAC> operator*=(const Fixed<T, FRAC> &_x)
 				{ *this = *this * _x; }
@@ -188,7 +220,7 @@ namespace CKSDK
 				// Fixed * number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr Fixed<T, FRAC> operator*(U _x) const
-				{ Fixed<T, FRAC> result; result.x = this->x * _x; return result; }
+				{ return *this * Fixed<T, FRAC>(_x); }
 				// Fixed *= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				Fixed<T, FRAC> operator*=(U _x)
@@ -196,7 +228,7 @@ namespace CKSDK
 
 				// Fixed / Fixed
 				constexpr Fixed<T, FRAC> operator/(const Fixed<T, FRAC> &_x) const
-				{ Fixed<T, FRAC> result; result.x = (this->x << FRAC) / _x.x; return result; }
+				{ Fixed<T, FRAC> result; result.x = ((extend_integral_t<T>)this->x << FRAC) / _x.x; return result; }
 				// Fixed /= Fixed
 				Fixed<T, FRAC> operator/=(const Fixed<T, FRAC> &_x)
 				{ *this = *this * _x; }
@@ -204,9 +236,7 @@ namespace CKSDK
 				// Fixed / number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr Fixed<T, FRAC> operator/(U _x) const
-				{
-					Fixed<T, FRAC> result; result.x = this->x / _x; return result;
-				}
+				{ return *this / Fixed<T, FRAC>(_x); }
 				// Fixed /= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				Fixed<T, FRAC> operator/=(U _x)
