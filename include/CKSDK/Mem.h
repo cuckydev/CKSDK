@@ -45,5 +45,11 @@ namespace CKSDK
 		/// @param ptr Pointer to the memory to free
 		/// @note No-operation if ptr is null
 		void Free(void *ptr);
+
+		/// @brief Profile memory
+		/// @param used Pointer to a size_t to store the used memory in
+		/// @param total Pointer to a size_t to store the total memory in
+		/// @param blocks Pointer to a size_t to store the number of blocks in
+		void Profile(size_t *used, size_t *total, size_t *blocks);
 	}
 }

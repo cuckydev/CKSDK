@@ -121,5 +121,25 @@ namespace CKSDK
 			if ((head->prev->next = head->next) != nullptr)
 				head->next->prev = head->prev;
 		}
+
+		void Profile(size_t *used, size_t *total, size_t *blocks)
+		{
+			if (used != nullptr)
+			{
+				size_t u = 0;
+				for (Header *head = mem->next; head != nullptr; head = head->next)
+					u += head->size;
+				*used = u;
+			}
+			if (total != nullptr)
+				*total = mem->size - Align(sizeof(Header));
+			if (blocks != nullptr)
+			{
+				size_t b = 0;
+				for (Header *head = mem->next; head != nullptr; head = head->next)
+					b++;
+				*blocks = b;
+			}
+		}
 	}
 }
