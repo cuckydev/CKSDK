@@ -86,6 +86,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1d23e399fbf9fbc33ddc04d5fff68fe2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd5/namespaceCKSDK_1_1Mem.html#a1d23e399fbf9fbc33ddc04d5fff68fe2">Free</a> (void *ptr)</td></tr>
 <tr class="memdesc:a1d23e399fbf9fbc33ddc04d5fff68fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free memory.  <a href="../../db/dd5/namespaceCKSDK_1_1Mem.html#a1d23e399fbf9fbc33ddc04d5fff68fe2">More...</a><br /></td></tr>
 <tr class="separator:a1d23e399fbf9fbc33ddc04d5fff68fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab21f3ddff335f5dc09df1d756b1e805e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd5/namespaceCKSDK_1_1Mem.html#ab21f3ddff335f5dc09df1d756b1e805e">Profile</a> (size_t *used, size_t *total, size_t *blocks)</td></tr>
+<tr class="memdesc:ab21f3ddff335f5dc09df1d756b1e805e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Profile memory.  <a href="../../db/dd5/namespaceCKSDK_1_1Mem.html#ab21f3ddff335f5dc09df1d756b1e805e">More...</a><br /></td></tr>
+<tr class="separator:ab21f3ddff335f5dc09df1d756b1e805e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d8/dce/namespaceCKSDK.html" title="CKSDK namespace.">CKSDK</a> Memory allocation namespace. </p>
@@ -181,6 +184,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>No-operation if ptr is null </dd></dl>
+
+</div>
+</div>
+<a id="ab21f3ddff335f5dc09df1d756b1e805e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab21f3ddff335f5dc09df1d756b1e805e">&#9670;&nbsp;</a></span>Profile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CKSDK::Mem::Profile </td>
+          <td>(</td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>used</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>total</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>blocks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Profile memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">used</td><td>Pointer to a size_t to store the used memory in </td></tr>
+    <tr><td class="paramname">total</td><td>Pointer to a size_t to store the total memory in </td></tr>
+    <tr><td class="paramname">blocks</td><td>Pointer to a size_t to store the number of blocks in </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

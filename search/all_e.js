@@ -29,5 +29,6 @@ var searchData=
   ['prefix_378',['prefix',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a9bf90b1a838d7a5d3007e0fe137b7a26',1,'CKSDK::SPI::PadResponse']]],
   ['press_379',['press',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a4fd7f014a1eafa0c6e4586f87cfde243',1,'CKSDK::SPI::PadResponse::press()'],['../db/da0/structCKSDK_1_1SPI_1_1Pad.html#a224bd04732b891e035b46f8804369ef6',1,'CKSDK::SPI::Pad::press()']]],
   ['prip_380',['prip',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html#a28cce20c1a644bccab5330d8ebbb05f6',1,'CKSDK::GPU::Buffer']]],
-  ['ptr_381',['Ptr',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a20e51e729d41512fcd424c6d1f511d13',1,'CKSDK::GPU::Tag']]]
+  ['profile_381',['Profile',['../db/dd5/namespaceCKSDK_1_1Mem.html#ab21f3ddff335f5dc09df1d756b1e805e',1,'CKSDK::Mem']]],
+  ['ptr_382',['Ptr',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a20e51e729d41512fcd424c6d1f511d13',1,'CKSDK::GPU::Tag']]]
 ];
