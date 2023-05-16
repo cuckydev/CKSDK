@@ -377,6 +377,24 @@
         : "r"(r0)               \
         : "$12", "$13", "$14")
 
+#define gte_ldtx(r0) \
+    __asm__ volatile(    \
+        "ctc2   %0, $5;"  \
+        :                \
+        : "r"(r0))
+
+#define gte_ldty(r0) \
+    __asm__ volatile(    \
+        "ctc2   %0, $6;"  \
+        :                \
+        : "r"(r0))
+
+#define gte_ldtz(r0) \
+    __asm__ volatile(    \
+        "ctc2   %0, $7;"  \
+        :                \
+        : "r"(r0))
+
 #define gte_ldtr(r0, r1, r2) \
     __asm__ volatile(        \
         "ctc2   %0, $5;"     \
