@@ -253,51 +253,51 @@ namespace CKSDK
 				{ *this = *this / _x; }
 
 				// Fixed < Fixed
-				bool operator<(const Fixed<T, FRAC> &_x) const
+				constexpr bool operator<(const Fixed<T, FRAC> &_x) const
 				{ return x < _x.x; }
 				// Fixed < number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
-				bool operator<(U _x) const
+				constexpr bool operator<(U _x) const
 				{ return x < Fixed<T, FRAC>(_x).x; }
 
 				// Fixed > Fixed
-				bool operator>(const Fixed<T, FRAC> &_x) const
+				constexpr bool operator>(const Fixed<T, FRAC> &_x) const
 				{ return x > _x.x; }
 				// Fixed > number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
-				bool operator>(U _x) const
+				constexpr bool operator>(U _x) const
 				{ return x > Fixed<T, FRAC>(_x).x; }
 
 				// Fixed <= Fixed
-				bool operator<=(const Fixed<T, FRAC> &_x) const
+				constexpr bool operator<=(const Fixed<T, FRAC> &_x) const
 				{ return x <= _x.x; }
 				// Fixed <= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
-				bool operator<=(U _x) const
+				constexpr bool operator<=(U _x) const
 				{ return x <= Fixed<T, FRAC>(_x).x; }
 
 				// Fixed >= Fixed
-				bool operator>=(const Fixed<T, FRAC> &_x) const
+				constexpr bool operator>=(const Fixed<T, FRAC> &_x) const
 				{ return x >= _x.x; }
 				// Fixed >= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
-				bool operator>=(U _x) const
+				constexpr bool operator>=(U _x) const
 				{ return x >= Fixed<T, FRAC>(_x).x; }
 
 				// Fixed == Fixed
-				bool operator==(const Fixed<T, FRAC> &_x) const
+				constexpr bool operator==(const Fixed<T, FRAC> &_x) const
 				{ return x == _x.x; }
 				// Fixed == number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
-				bool operator==(U _x) const
+				constexpr bool operator==(U _x) const
 				{ return x == Fixed<T, FRAC>(_x).x; }
 
 				// Fixed != Fixed
-				bool operator!=(const Fixed<T, FRAC> &_x) const
+				constexpr bool operator!=(const Fixed<T, FRAC> &_x) const
 				{ return x != _x.x; }
 				// Fixed != number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
-				bool operator!=(U _x) const
+				constexpr bool operator!=(U _x) const
 				{ return x != Fixed<T, FRAC>(_x).x; }
 
 				// (number)Fixed
