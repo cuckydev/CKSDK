@@ -483,22 +483,19 @@ namespace CKSDK
 
 		/// @brief DrawMode is a struct which contains the draw mode register
 		/// 
-		/// @param x Texture page X Base (N*64)
-		/// @param y Texture page Y Base (N*256)
+		/// @param tpage Texture page index
 		/// @param semi Semi Transparency (see SemiMode)
 		/// @param bpp Texture bit depth (see BitDepth)
 		/// @param dither Dither 24bit to 15bit
 		/// @param draw_enable Drawing to display area
 		/// @param tex_disable Texture Disable
-		/// @param xflip Textured Rectangle X-Flip (Does nothing on retail GPUs?)
-		/// @param yflip Textured Rectangle Y-Flip (Does nothing on retail GPUs?)
 		struct DrawModePrim
 		{
 			Word mode;
 
 			DrawModePrim() {}
-			DrawModePrim(Word x, Word y, Word semi, Word bpp, Word dither, Word draw_enable, Word tex_disable, Word xflip, Word yflip)
-				: mode((GP0_DrawMode << 24) | (x & 0xF) | ((y & 1) << 4) | ((semi & 3) << 5) | ((bpp & 3) << 7) | ((dither & 1) << 9) | ((draw_enable & 1) << 10) | ((tex_disable & 1) << 11) | ((xflip & 1) << 12) | ((yflip & 1) << 13))
+			DrawModePrim(Word tpage, Word semi, Word bpp, Word dither, Word draw_enable, Word tex_disable)
+				: mode((GP0_DrawMode << 24) | (tpage & 0x1F) | ((semi & 3) << 5) | ((bpp & 3) << 7) | ((dither & 1) << 9) | ((draw_enable & 1) << 10) | ((tex_disable & 1) << 11))
 			{}
 
 			/// @brief Returns the texture page X base

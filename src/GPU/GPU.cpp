@@ -231,8 +231,8 @@ namespace CKSDK
 
 			buffers[1].gp1_vram = (GP1_DisplayVRAM << 24) | (x0 << 0) | (y0 << 10);
 			
-			buffers[0].gp0.mode = DrawModePrim(0, 0, false, BitDepth_4Bit, false, true, false, false, false);
-			buffers[1].gp0.mode = DrawModePrim(0, 0, false, BitDepth_4Bit, false, true, false, false, false);
+			buffers[0].gp0.mode = DrawModePrim(0, false, BitDepth_4Bit, false, true, false);
+			buffers[1].gp0.mode = DrawModePrim(0, false, BitDepth_4Bit, false, true, false);
 
 			// Setup mode
 			uint32_t mode = (GP1_DisplayMode << 24);
