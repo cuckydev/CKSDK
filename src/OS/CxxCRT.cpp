@@ -32,7 +32,7 @@ extern "C"
 	// C library functions
 	void *memset(void *dst, int val, size_t len)
 	{
-		char *ptr = (char *)dst;
+		char *ptr = (char*)dst;
 		while (len-- > 0)
 			*ptr++ = val;
 		return dst;
