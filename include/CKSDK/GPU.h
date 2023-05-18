@@ -264,7 +264,6 @@ namespace CKSDK
 			GP0_FillRect = GP0_Misc | 2,
 		};
 
-
 		// GP0_Poly
 		enum GP0_PolyCmds
 		{

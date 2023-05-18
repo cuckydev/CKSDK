@@ -236,6 +236,9 @@ namespace CKSDK
 
 			// Setup mode
 			uint32_t mode = (GP1_DisplayMode << 24);
+			if (g_pal)
+				mode |= (1 << 3);
+
 			if (w == 368)
 				mode |= (1 << 6); // 368 pixels wide
 			else if (w == 256)
