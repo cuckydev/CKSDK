@@ -81,9 +81,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a78656fb9ab845a0d643cb1d69b0af8f2"><td class="memItemLeft" align="right" valign="top"><a id="a78656fb9ab845a0d643cb1d69b0af8f2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DrawModePrim</b> (<a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> x, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> y, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> semi, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> bpp, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> dither, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> draw_enable, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> tex_disable, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> xflip, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> yflip)</td></tr>
-<tr class="separator:a78656fb9ab845a0d643cb1d69b0af8f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbb5664a0a42cf53c098338582dadf9a"><td class="memItemLeft" align="right" valign="top"><a id="afbb5664a0a42cf53c098338582dadf9a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DrawModePrim</b> (<a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> tpage, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> semi, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> bpp, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> dither, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> draw_enable, <a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a> tex_disable)</td></tr>
+<tr class="separator:afbb5664a0a42cf53c098338582dadf9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a661766470f82cd38fd2f32f62f0dc3e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9">Word</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a661766470f82cd38fd2f32f62f0dc3e8">X</a> () const</td></tr>
 <tr class="memdesc:a661766470f82cd38fd2f32f62f0dc3e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the texture page X base.  <a href="../../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a661766470f82cd38fd2f32f62f0dc3e8">More...</a><br /></td></tr>
 <tr class="separator:a661766470f82cd38fd2f32f62f0dc3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,15 +122,12 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>DrawMode is a struct which contains the draw mode register. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>Texture page X Base (N*64) </td></tr>
-    <tr><td class="paramname">y</td><td>Texture page Y Base (N*256) </td></tr>
+    <tr><td class="paramname">tpage</td><td>Texture page index </td></tr>
     <tr><td class="paramname">semi</td><td>Semi Transparency (see SemiMode) </td></tr>
     <tr><td class="paramname">bpp</td><td>Texture bit depth (see BitDepth) </td></tr>
     <tr><td class="paramname">dither</td><td>Dither 24bit to 15bit </td></tr>
     <tr><td class="paramname">draw_enable</td><td>Drawing to display area </td></tr>
     <tr><td class="paramname">tex_disable</td><td>Texture Disable </td></tr>
-    <tr><td class="paramname">xflip</td><td>Textured Rectangle X-Flip (Does nothing on retail GPUs?) </td></tr>
-    <tr><td class="paramname">yflip</td><td>Textured Rectangle Y-Flip (Does nothing on retail GPUs?) </td></tr>
   </table>
   </dd>
 </dl>
