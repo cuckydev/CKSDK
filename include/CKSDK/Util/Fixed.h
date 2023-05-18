@@ -181,7 +181,11 @@ namespace CKSDK
 				// Fixed + number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr Fixed<T, FRAC> operator+(const U &_x) const
-				{ return Raw(this->x + Fixed<T, FRAC>(_x)); }
+				{ return *this + Fixed<T, FRAC>(_x); }
+				// number + Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr Fixed<T, FRAC> operator+(const U &_x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x) + _y; }
 				// Fixed += number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				void operator+=(const U &_x)
@@ -197,7 +201,11 @@ namespace CKSDK
 				// Fixed - number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr Fixed<T, FRAC> operator-(const U &_x) const
-				{ return Raw(this->x - Fixed<T, FRAC>(_x)); }
+				{ return *this - Fixed<T, FRAC>(_x); }
+				// number - Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr Fixed<T, FRAC> operator-(const U &_x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x) - _y; }
 				// Fixed -= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				void operator-=(const U &_x)
@@ -226,6 +234,10 @@ namespace CKSDK
 					else if constexpr (std::is_floating_point_v<U>)
 						return *this * Fixed<T, FRAC>(_x);
 				}
+				// number * Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr Fixed<T, FRAC> operator*(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x) * _y; }
 				// Fixed *= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				void operator*=(U _x)
@@ -247,6 +259,10 @@ namespace CKSDK
 					else if constexpr (std::is_floating_point_v<U>)
 						return *this / Fixed<T, FRAC>(_x);
 				}
+				// number / Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr Fixed<T, FRAC> operator/(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x) / _y; }
 				// Fixed /= number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				void operator/=(U _x)
@@ -259,6 +275,10 @@ namespace CKSDK
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr bool operator<(U _x) const
 				{ return x < Fixed<T, FRAC>(_x).x; }
+				// number < Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr bool operator<(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x).x < _y.x; }
 
 				// Fixed > Fixed
 				constexpr bool operator>(const Fixed<T, FRAC> &_x) const
@@ -267,6 +287,10 @@ namespace CKSDK
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr bool operator>(U _x) const
 				{ return x > Fixed<T, FRAC>(_x).x; }
+				// number > Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr bool operator>(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x).x > _y.x; }
 
 				// Fixed <= Fixed
 				constexpr bool operator<=(const Fixed<T, FRAC> &_x) const
@@ -275,6 +299,10 @@ namespace CKSDK
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr bool operator<=(U _x) const
 				{ return x <= Fixed<T, FRAC>(_x).x; }
+				// number <= Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr bool operator<=(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x).x <= _y.x; }
 
 				// Fixed >= Fixed
 				constexpr bool operator>=(const Fixed<T, FRAC> &_x) const
@@ -283,6 +311,10 @@ namespace CKSDK
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr bool operator>=(U _x) const
 				{ return x >= Fixed<T, FRAC>(_x).x; }
+				// number >= Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr bool operator>=(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x).x >= _y.x; }
 
 				// Fixed == Fixed
 				constexpr bool operator==(const Fixed<T, FRAC> &_x) const
@@ -291,6 +323,10 @@ namespace CKSDK
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr bool operator==(U _x) const
 				{ return x == Fixed<T, FRAC>(_x).x; }
+				// number == Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr bool operator==(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x).x == _y.x; }
 
 				// Fixed != Fixed
 				constexpr bool operator!=(const Fixed<T, FRAC> &_x) const
@@ -299,6 +335,10 @@ namespace CKSDK
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
 				constexpr bool operator!=(U _x) const
 				{ return x != Fixed<T, FRAC>(_x).x; }
+				// number != Fixed
+				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
+				friend constexpr bool operator!=(U _x, const Fixed<T, FRAC> &_y)
+				{ return Fixed<T, FRAC>(_x).x != _y.x; }
 
 				// (number)Fixed
 				template <typename U, typename = typename std::enable_if_t<std::is_integral_v<U>, U>>
