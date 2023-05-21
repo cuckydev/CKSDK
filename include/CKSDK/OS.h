@@ -348,9 +348,11 @@ namespace CKSDK
 			public:
 				Function() { ptr = nullptr; }
 				Function(F _ptr) { ptr = _ptr; }
-				Function(Function &o) { ptr = o.ptr; }
+				Function(const Function &o) { ptr = o.ptr; }
+				void operator= (F _ptr) { ptr = _ptr; }
+				void operator= (const Function &o) { ptr = o.ptr; }
 
-				inline R operator()(A... arg)
+				inline R operator()(A... arg) const
 				{
 					// T9 must be set before calling the function
 					// as it's used for local addressing for DLLs
@@ -359,10 +361,10 @@ namespace CKSDK
 					return ptr(arg...);
 				}
 				
-				bool operator==(F _ptr) { return ptr == _ptr; }
-				bool operator==(Function &o) { return ptr == o.ptr; }
-				bool operator!=(F _ptr) { return ptr != _ptr; }
-				bool operator!=(Function &o) { return ptr != o.ptr; }
+				bool operator==(F _ptr) const { return ptr == _ptr; }
+				bool operator==(const Function &o) const { return ptr == o.ptr; }
+				bool operator!=(F _ptr) const { return ptr != _ptr; }
+				bool operator!=(const Function &o) const { return ptr != o.ptr; }
 			/// @endcond INTERNAL
 		};
 

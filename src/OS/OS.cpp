@@ -146,6 +146,7 @@ namespace CKSDK
 		{
 			unsigned i = unsigned(irq);
 			InterruptCallback old_cb = interrupt_callbacks[i];
+
 			if (cb != nullptr)
 			{
 				// Set interrupt callback

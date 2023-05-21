@@ -72,8 +72,8 @@ target_compile_options(
 		-fno-threadsafe-statics
 		-fno-use-cxa-atexit
 		-fcoroutines
-		# Use C++20
-		-std=c++20
+		# Use C++23
+		-std=c++2b
 	>
 	$<$<COMPILE_LANGUAGE:C>:
 		# Use C17
