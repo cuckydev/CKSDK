@@ -35,12 +35,9 @@ namespace CKSDK
 		/// @details This is simply an array of 16 bytes
 		struct Result
 		{
-			private:
-				uint8_t b[16];
-
-			public:
-				uint8_t &operator[](int i) { return b[i]; }
-				const uint8_t &operator[](int i) const { return b[i]; }
+			uint8_t b[16];
+			uint8_t &operator[](int i) { return b[i]; }
+			const uint8_t &operator[](int i) const { return b[i]; }
 		};
 
 		/// @brief BCD encoded byte

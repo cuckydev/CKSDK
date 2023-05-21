@@ -20,10 +20,11 @@
 
 #pragma once
 
-// Types
+// Common headers
 #include <cstddef>
 #include <cstdint>
 #include <new>
+#include <iterator>
 
 // ASM macro
 #define INLINE_ASM(...) asm __volatile__( __VA_ARGS__ )
@@ -31,9 +32,6 @@
 // Common macros
 #ifndef PACKED
 	#define PACKED __attribute__((packed))
-#endif
-#ifndef COUNTOF
-	#define COUNTOF(x) (sizeof(x) / sizeof(x[0]))
 #endif
 
 /// @brief CKSDK namespace

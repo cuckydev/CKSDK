@@ -221,7 +221,7 @@ namespace CKSDK
 
 				// Read bytes to result pointer
 				auto *resultp = &result[0];
-				auto *resulte = &result[COUNTOF(result)];
+				auto *resulte = &result[std::size(result.b)];
 				if (resultp != nullptr)
 				{
 					*resultp++ = first_byte;

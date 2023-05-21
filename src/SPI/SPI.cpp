@@ -167,7 +167,7 @@ namespace CKSDK
 
 			// Attempt to configure analog controllers
 			const ConfigPacket *config_packetp = config_packets;
-			const ConfigPacket *config_packete = config_packets + COUNTOF(config_packets);
+			const ConfigPacket *config_packete = config_packets + std::size(config_packets);
 
 			switch (padp->pad.GetPadID())
 			{

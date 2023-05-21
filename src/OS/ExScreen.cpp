@@ -225,7 +225,7 @@ namespace CKSDK
 					SPI::PollPads();
 					if (SPI::g_pad[0].press & SPI::PadButton::Cross)
 					{
-						screen = (screen + 1) % COUNTOF(screens);
+						screen = (screen + 1) % std::size(screens);
 						break;
 					}
 				}
