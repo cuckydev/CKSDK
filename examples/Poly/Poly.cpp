@@ -29,7 +29,7 @@ extern "C" void main()
 	
 	// Initialize GPU buffer and screen
 	static CKSDK::GPU::Word buffer[0x200];
-	CKSDK::GPU::SetBuffer(buffer, sizeof(buffer) / sizeof(CKSDK::GPU::Word), 1);
+	CKSDK::GPU::SetBuffer(buffer, std::size(buffer), 1);
 	CKSDK::GPU::SetScreen(g_width, g_height, 0, 0, 0, 0, 0, g_height);
 
 	// Test loop
