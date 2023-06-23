@@ -248,9 +248,9 @@ namespace CKSDK
 			const uint32_t *dtor_list = (const uint32_t*)GetSymbol("__DTOR_LIST__");
 			if (dtor_list != nullptr)
 			{
-				for (uint32_t i = dtor_list[0]; i != 0; i--)
+				for (uint32_t i = *dtor_list++; i != 0; i--)
 				{
-					OS::Function<void> dtor = (void(*)())dtor_list[i];
+					OS::Function<void> dtor = (void(*)())(*dtor_list++);
 					dtor();
 				}
 			}

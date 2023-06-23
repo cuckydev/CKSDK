@@ -41,15 +41,17 @@ _start:
 	addiu $t0, 4
 
 	# Run constructors
+	# This is done in reverse order as the linker places them in reverse order
 	la    $t0, __CTOR_LIST__
 	lw    $t2, 0($t0)
-	addiu $t0, 4
-	beqz  $t2, .Lno_ctor_loop
 	nop
+	beqz  $t2, .Lno_ctor_loop
+	sll   $t3, $t2, 2
+	addu  $t0, $t0, $t3
 
 .Lctor_loop:
 	lw    $t1, 0($t0)
-	addiu $t0, 4
+	addiu $t0, -4
 	jalr  $t1
 	addiu $t2, -1
 	bnez  $t2, .Lctor_loop
