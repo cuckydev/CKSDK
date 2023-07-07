@@ -56,21 +56,17 @@ namespace CKSDK
 			// ExtendedExtent = 1 << 7 // 4GiB+ files, unsupported
 		};
 
-		// The idea of the both integer formats is to allow all devices to directly address integers regardless of endianness
-		// However, ISO9660 requires 2-byte aligned, but we're on hardware which requires word alignment. So close!
+		#pragma pack(push, 2)
 		struct Both16
 		{
 			uint16_t le, be;
-
 			uint16_t operator()() { return le; } 
 		};
 
 		struct Both32
 		{
-			uint16_t le[2];
-			uint16_t be[2];
-
-			uint32_t operator()() { return ((uint32_t)le[0] << 0) | ((uint32_t)le[1] << 16); } 
+			uint32_t le, be;
+			uint32_t operator()() { return le; } 
 		};
 
 		struct VolumeDescriptor
@@ -94,6 +90,7 @@ namespace CKSDK
 			uint8_t name_length;
 			char name[0];
 		};
+		#pragma pack(pop)
 
 		// ISO9660 callbacks
 		static void ReadCallback_ReadDirectory(void *addr, size_t sectors)
