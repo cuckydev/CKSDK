@@ -239,19 +239,34 @@ namespace CKSDK
 			if (g_pal)
 				mode |= (1 << 3);
 
-			if (w == 368)
-				mode |= (1 << 6); // 368 pixels wide
-			else if (w == 256)
-				mode |= (0 << 0); // 256 pixels wide
-			else if (w == 320)
-				mode |= (1 << 0); // 320 pixels wide
-			else if (w == 512)
-				mode |= (2 << 0); // 512 pixels wide
-			else if (w == 640)
-				mode |= (3 << 0); // 640 pixels wide
-			else
-				ExScreen::Abort("Invalid width for SetScreen");
-			
+			uint32_t h_dot;
+			switch (w)
+			{
+				case 368:
+					mode |= (1 << 6); // 368 pixels wide
+					h_dot = 7;
+					break;
+				case 256:
+					mode |= (0 << 0); // 256 pixels wide
+					h_dot = 10;
+					break;
+				case 320:
+					mode |= (1 << 0); // 320 pixels wide
+					h_dot = 8;
+					break;
+				case 512:
+					mode |= (2 << 0); // 512 pixels wide
+					h_dot = 5;
+					break;
+				case 640:
+					mode |= (3 << 0); // 640 pixels wide
+					h_dot = 4;
+					break;
+				default:
+					ExScreen::Abort("Invalid width for SetScreen");
+					break;
+			}
+
 			if (h > 256)
 			{
 				mode |= (1 << 2) | (1 << 5); // Interlaced
@@ -260,8 +275,11 @@ namespace CKSDK
 
 			// Setup spans
 			uint32_t hspan = (GP1_DisplayHSpan << 24);
-			hspan |= (0x260 + 0) << 0; // The 260h value is the first visible pixel on standard TV Sets
-			hspan |= (0x260 + w * 8) << 12;
+
+			uint32_t hspan_center = 0x760;
+			uint32_t hspan_width = (w * h_dot) / 2;
+			hspan |= (hspan_center - hspan_width) << 0;
+			hspan |= (hspan_center + hspan_width) << 12;
 
 			uint32_t vspan = (GP1_DisplayVSpan << 24);
 			if (g_pal)
