@@ -47,7 +47,7 @@ target_compile_options(
 		# Options common to all target types
 		-g
 		-Wa,--strip-local-absolute
-		-O3
+		-Os
 		-ffreestanding
 		-fno-builtin
 		-nostdlib
@@ -63,6 +63,7 @@ target_compile_options(
 		-mno-mt
 		-mno-llsc
 		-mdivide-breaks
+		-fno-unroll-loops
 		-fomit-frame-pointer
 	$<$<COMPILE_LANGUAGE:CXX>:
 		# Options common to all target types (C++)

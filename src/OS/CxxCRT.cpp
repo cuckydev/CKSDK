@@ -37,6 +37,15 @@ extern "C"
 			*ptr++ = val;
 		return dst;
 	}
+
+	void *memcpy(void *dst, const void *src, size_t len)
+	{
+		char *dptr = (char*)dst;
+		const char *sptr = (const char*)src;
+		while (len-- > 0)
+			*dptr++ = *sptr++;
+		return dst;
+	}
 }
 
 // C++ new and delete
