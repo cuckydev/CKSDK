@@ -282,7 +282,7 @@ $(function() {
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="keyword">                </span>{ <span class="keywordflow">return</span> <a class="code" href="../../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a70e618fc37236d302194e83c1db7a680">Raw</a>(((extend_integral_t&lt;T&gt;)this-&gt;x &lt;&lt; FRAC) / _x.x); }</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="comment">// Fixed /= Fixed</span></div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordtype">void</span> operator/=(<span class="keyword">const</span> Fixed&lt;T, FRAC&gt; &amp;_x)</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                { *<span class="keyword">this</span> = *<span class="keyword">this</span> * _x; }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                { *<span class="keyword">this</span> = *<span class="keyword">this</span> / _x; }</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <span class="comment">// Fixed / number</span></div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keyword">template</span> &lt;<span class="keyword">typename</span> U, <span class="keyword">typename</span> = <span class="keyword">typename</span> std::enable_if_t&lt;std::is_arithmetic_v&lt;U&gt;, U&gt;&gt;</div>
