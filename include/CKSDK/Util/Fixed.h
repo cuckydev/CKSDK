@@ -248,7 +248,7 @@ namespace CKSDK
 				{ return Raw(((extend_integral_t<T>)this->x << FRAC) / _x.x); }
 				// Fixed /= Fixed
 				void operator/=(const Fixed<T, FRAC> &_x)
-				{ *this = *this * _x; }
+				{ *this = *this / _x; }
 
 				// Fixed / number
 				template <typename U, typename = typename std::enable_if_t<std::is_arithmetic_v<U>, U>>
