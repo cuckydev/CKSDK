@@ -336,6 +336,7 @@ namespace CKSDK
 				constexpr Fixed<T, FRAC> &operator/=(const Fixed<T2, FRAC2> &_x)
 				{
 					this->x = ((extend_integral_2_t<T, T2, true>)this->x << FRAC2) / _x.x;
+					return *this;
 				}
 				// Fixed / Fixed
 				template <typename T2, int FRAC2>
