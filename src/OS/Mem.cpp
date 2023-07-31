@@ -27,40 +27,40 @@ namespace CKSDK
 	namespace Mem
 	{
 		// Mem alignment
-		static constexpr uintptr_t ALIGNMENT = 0x10;
+		static constexpr uintptr_t ALIGNMENT = 8;
 		
 		template<typename T>
-		static T Align(T x) { return T((uintptr_t(x) + (ALIGNMENT - 1)) & ~(ALIGNMENT - 1)); }
+		static constexpr T Align(T x) { return T(((uintptr_t)x + (ALIGNMENT - 1)) & ~(ALIGNMENT - 1)); }
 		
 		template<typename T>
-		static T AlignEnd(T x) { return T(uintptr_t(x) & ~(ALIGNMENT - 1)); }
+		static constexpr T AlignEnd(T x) { return T((uintptr_t)x & ~(ALIGNMENT - 1)); }
 		
 		// Mem heap
-		struct Header
+		struct Block
 		{
-			Header *prev, *next;
+			Block *prev, *next;
 			size_t size;
 		};
-		static Header *mem;
+		static Block *mem;
 
 		// Mem functions
 		void Init(void *ptr, size_t size)
 		{
-			// Initialize header
-			mem = (Header*)Align(ptr);
+			// Initialize block
+			mem = (Block*)Align(ptr);
 			mem->prev = nullptr;
 			mem->next = nullptr;
-			mem->size = ((char*)ptr + size) - (char*)mem;
+			mem->size = AlignEnd(((uintptr_t)ptr + size) - (uintptr_t)mem);
 		}
 		
 		void *Alloc(size_t size)
 		{
 			// Align size
-			size = Align(size) + Align(sizeof(Header));
+			size = Align(size) + Align(sizeof(Block));
 
-			// Get header pointer
-			Header *head, *prev, *next;
-			char *hpos = (char*)mem + Align(sizeof(Header));
+			// Get block pointer
+			Block *head, *prev, *next;
+			char *hpos = (char*)mem + Align(sizeof(Block));
 			
 			prev = mem;
 			next = prev->next;
@@ -74,11 +74,11 @@ namespace CKSDK
 					if (cleft >= size)
 					{
 						// Set pointer
-						head = (Header*)hpos;
+						head = (Block*)hpos;
 						break;
 					}
 					
-					// Check next header
+					// Check next block
 					hpos = (char*)next + next->size;
 					prev = next;
 					next = prev->next;
@@ -88,18 +88,15 @@ namespace CKSDK
 					// Check against end of heap
 					size_t cleft = ((char*)mem + mem->size) - hpos;
 					if (cleft < size)
-					{
-						ExScreen::Abort("Mem::Alloc failed");
 						return nullptr;
-					}
 					
 					// Set pointer
-					head = (Header*)hpos;
+					head = (Block*)hpos;
 					break;
 				}
 			}
 
-			// Link header
+			// Link block
 			head->size = size;
 			head->prev = prev;
 			if ((head->next = prev->next) != nullptr)
@@ -107,17 +104,17 @@ namespace CKSDK
 			prev->next = head;
 
 			// Return pointer
-			return (void*)(hpos + Align(sizeof(Header)));
+			return (void*)(hpos + Align(sizeof(Block)));
 		}
 
 		void Free(void *ptr)
 		{
-			// Get header
+			// Get block
 			if (ptr == nullptr)
 				return;
-			Header *head = (Header*)((char*)ptr - Align(sizeof(Header)));
+			Block *head = (Block*)((char*)ptr - Align(sizeof(Block)));
 
-			// Unlink header
+			// Unlink block
 			if ((head->prev->next = head->next) != nullptr)
 				head->next->prev = head->prev;
 		}
@@ -127,16 +124,16 @@ namespace CKSDK
 			if (used != nullptr)
 			{
 				size_t u = 0;
-				for (Header *head = mem->next; head != nullptr; head = head->next)
+				for (Block *head = mem->next; head != nullptr; head = head->next)
 					u += head->size;
 				*used = u;
 			}
 			if (total != nullptr)
-				*total = mem->size - Align(sizeof(Header));
+				*total = mem->size - Align(sizeof(Block));
 			if (blocks != nullptr)
 			{
 				size_t b = 0;
-				for (Header *head = mem->next; head != nullptr; head = head->next)
+				for (Block *head = mem->next; head != nullptr; head = head->next)
 					b++;
 				*blocks = b;
 			}
