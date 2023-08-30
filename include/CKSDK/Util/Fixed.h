@@ -31,6 +31,7 @@ namespace CKSDK
 	/// @brief CKSDK fixed point namespace
 	namespace Fixed
 	{
+		/// @cond INTERNAL
 		// Integer type extension for multiplication
 		template <typename T, bool DIV = false>
 		struct extend_integral_type { using type = T; };
@@ -88,6 +89,7 @@ namespace CKSDK
 
 		template <typename T1, typename T2, bool DIV = false>
 		using extend_integral_2_t = typename extend_integral_2<T1, T2, DIV>::type;
+		/// @endcond
 
 		// Fixed point types
 		/// @brief Fixed point class template
