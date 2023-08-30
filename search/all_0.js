@@ -4,7 +4,7 @@ var searchData=
   ['acknowledge_1',['Acknowledge',['../dc/d2b/namespaceCKSDK_1_1CD.html#aed4f27d936ff8d0dafbe58039047bf05add279c1edcfbecb780a4a20917a766c1',1,'CKSDK::CD']]],
   ['addr_2',['addr',['../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html#a707550f4f0b64432067f099d5a8910e6',1,'CKSDK::OS::SPU_VOICE_CTRL::addr()'],['../d9/d1e/structCKSDK_1_1SPI_1_1PadPacket.html#ab4a31ae26267a15c3d4f0745f78ddd4c',1,'CKSDK::SPI::PadPacket::addr()']]],
   ['adsr_3',['adsr',['../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html#a49a9fbc2aec70cefef8834eea45562fb',1,'CKSDK::OS::SPU_VOICE_CTRL']]],
-  ['alloc_4',['Alloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#add55e8bba2c73b30c1a0ab6f3d50aa42',1,'CKSDK::Mem']]],
+  ['alloc_4',['Alloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#abfd0d2d789d2bddc6997fc9870094c82',1,'CKSDK::Mem']]],
   ['allocpacket_5',['AllocPacket',['../d8/d2a/namespaceCKSDK_1_1GPU.html#a8306dfbb814b19ae2a0811373d76edcf',1,'CKSDK::GPU::AllocPacket(size_t ot, size_t words)'],['../d8/d2a/namespaceCKSDK_1_1GPU.html#a6a37a54ced2e46714c59443268976d41',1,'CKSDK::GPU::AllocPacket(size_t ot)']]],
   ['america_6',['America',['../dc/d2b/namespaceCKSDK_1_1CD.html#aabe89ede4a564e2e9533eff996fbb41fa088f003833d523d9dccc529e929afdc7',1,'CKSDK::CD']]],
   ['analog_7',['analog',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#afdc89f379c77fb627466f9e8cd7a9e8d',1,'CKSDK::SPI::PadResponse']]],
