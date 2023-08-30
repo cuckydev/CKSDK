@@ -44,7 +44,7 @@ namespace CKSDK
 		static Block *mem;
 
 		// Mem functions
-		void Init(void *ptr, size_t size)
+		KEEP void Init(void *ptr, size_t size)
 		{
 			// Initialize block
 			mem = (Block*)Align(ptr);
@@ -53,7 +53,7 @@ namespace CKSDK
 			mem->size = AlignEnd(((uintptr_t)ptr + size) - (uintptr_t)mem);
 		}
 		
-		void *Alloc(size_t size)
+		KEEP void *Alloc(size_t size)
 		{
 			// Align size
 			size = Align(size) + Align(sizeof(Block));
@@ -107,7 +107,7 @@ namespace CKSDK
 			return (void*)(hpos + Align(sizeof(Block)));
 		}
 
-		void Free(void *ptr)
+		KEEP void Free(void *ptr)
 		{
 			// Get block
 			if (ptr == nullptr)
@@ -119,7 +119,7 @@ namespace CKSDK
 				head->next->prev = head->prev;
 		}
 
-		void Profile(size_t *used, size_t *total, size_t *blocks)
+		KEEP void Profile(size_t *used, size_t *total, size_t *blocks)
 		{
 			if (used != nullptr)
 			{

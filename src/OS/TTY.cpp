@@ -26,13 +26,13 @@ namespace CKSDK
 	namespace TTY
 	{
 		// TTY functions
-		void Init()
+		KEEP void Init()
 		{
 			// Initialize TTY on EXP2
 			OS::Exp2DelaySize() = 0x70777;
 		}
 
-		void Out(const char *str)
+		KEEP void Out(const char *str)
 		{
 			// Check if TTY is idle
 			if (OS::DuartSra() != 0x0C)

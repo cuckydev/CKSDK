@@ -23,7 +23,6 @@
 #include <CKSDK/ExScreen.h>
 
 #include <CKSDK/TTY.h>
-#include <CKSDK/STL.h>
 
 #include <CKSDK/Util/Queue.h>
 
@@ -355,7 +354,7 @@ namespace CKSDK
 		}
 
 		// CD functions
-		void Init()
+		KEEP void Init()
 		{
 			// Enable CD IRQ
 			OS::DisableIRQ();
@@ -396,22 +395,22 @@ namespace CKSDK
 					// The CD drive will give us a string that represents which region it's designed for
 					if (result[1] == 0x10)
 						g_region = Region::Japan; // SPCH-1000 will return an error
-					else if (!STL::Memory::Compare(&result[0], "for Japan", 9))
+					else if (!__builtin_memcmp(&result[0], "for Japan", 9))
 						g_region = Region::Japan;
-					else if (!STL::Memory::Compare(&result[0], "for U/C", 7))
+					else if (!__builtin_memcmp(&result[0], "for U/C", 7))
 						g_region = Region::America;
-					else if (!STL::Memory::Compare(&result[0], "for Europe", 10))
+					else if (!__builtin_memcmp(&result[0], "for Europe", 10))
 						g_region = Region::Europe;
-					else if (!STL::Memory::Compare(&result[0], "for NETNA", 9) || !STL::Memory::Compare(&result[0], "for NETEU", 9))
+					else if (!__builtin_memcmp(&result[0], "for NETNA", 9) || !__builtin_memcmp(&result[0], "for NETEU", 9))
 						g_region = Region::Worldwide;
-					else if (!STL::Memory::Compare(&result[0], "for US/AEP", 10))
+					else if (!__builtin_memcmp(&result[0], "for US/AEP", 10))
 						g_region = Region::Debug;
 				}, nullptr, nullptr, param, sizeof(param));
 				Sync(nullptr);
 			}
 		}
 
-		void Issue(Command com, Callback complete_cb, Callback ready_cb, Callback end_cb, const uint8_t *param, unsigned length)
+		KEEP void Issue(Command com, Callback complete_cb, Callback ready_cb, Callback end_cb, const uint8_t *param, unsigned length)
 		{
 			// Enqueue command
 			CommandQueueArgs args;
@@ -425,7 +424,7 @@ namespace CKSDK
 			command_queue.Enqueue(CommandQueue_Issue, args);
 		}
 		
-		void GetSector(void *addr, size_t size)
+		KEEP void GetSector(void *addr, size_t size)
 		{
 			// Unlock sector buffer
 			OS::CdStat() = 0x00;
@@ -444,7 +443,7 @@ namespace CKSDK
 			while (OS::DmaCtrl(OS::DMA::CDROM).chcr & (1 << 24));
 		}
 
-		IRQStatus QueueSync(uint8_t *result)
+		KEEP IRQStatus QueueSync(uint8_t *result)
 		{
 			// Wait for command queue to clear up
 			command_queue.Sync();
@@ -455,7 +454,7 @@ namespace CKSDK
 			return handle_complete.last_irq_status;
 		}
 
-		IRQStatus Sync(uint8_t *result)
+		KEEP IRQStatus Sync(uint8_t *result)
 		{
 			// Wait for command queue to clear up
 			command_queue.Sync();
@@ -477,7 +476,7 @@ namespace CKSDK
 		}
 
 		// Play track
-		void PlayTrack(uint8_t track, Callback report_cb, Callback end_cb)
+		KEEP void PlayTrack(uint8_t track, Callback report_cb, Callback end_cb)
 		{
 			// Play track
 			{
@@ -522,7 +521,7 @@ namespace CKSDK
 			}
 		}
 
-		void ReadSectors(ReadCallback cb, void *addr, const CD::Loc &loc, size_t sectors, uint8_t mode)
+		KEEP void ReadSectors(ReadCallback cb, void *addr, const CD::Loc &loc, size_t sectors, uint8_t mode)
 		{
 			// Setup read
 			ReadSync();
@@ -542,12 +541,12 @@ namespace CKSDK
 			Issue(Command::ReadN, nullptr, ReadyCallback_Read, nullptr, nullptr, 0);
 		}
 		
-		void ReadSectors(ReadCallback cb, void *addr, const CD::File &file, uint8_t mode)
+		KEEP void ReadSectors(ReadCallback cb, void *addr, const CD::File &file, uint8_t mode)
 		{
 			ReadSectors(cb, addr, file.loc, file.Sectors(), mode);
 		}
 
-		void ReadSync()
+		KEEP void ReadSync()
 		{
 			// Wait for read sectors to reach 0
 			while (read_sectors != 0);

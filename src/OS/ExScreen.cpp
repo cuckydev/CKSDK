@@ -163,7 +163,7 @@ namespace CKSDK
 			}
 		}
 
-		void Main()
+		KEEP void Main()
 		{
 			// Reset GPU
 			GPU::Init();

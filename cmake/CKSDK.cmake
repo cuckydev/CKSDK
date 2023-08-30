@@ -49,7 +49,6 @@ target_compile_options(
 		-Wa,--strip-local-absolute
 		-Os
 		-ffreestanding
-		-fno-builtin
 		-nostdlib
 		-fdata-sections
 		-ffunction-sections
@@ -65,6 +64,9 @@ target_compile_options(
 		-mdivide-breaks
 		-fno-unroll-loops
 		-fomit-frame-pointer
+		-fbuiltin
+		-flto
+		-ffat-lto-objects
 	$<$<COMPILE_LANGUAGE:CXX>:
 		# Options common to all target types (C++)
 		-fno-exceptions
@@ -103,6 +105,13 @@ target_compile_options(
 		-mno-gpopt
 		-mshared
 	>
+	$<$<STREQUAL:$<UPPER_CASE:$<TARGET_PROPERTY:CKSDK_TARGET_TYPE>>,DLL_STATIC>:
+		# Options for DLL static libraries
+		-G0
+		-fPIC
+		-mabicalls
+		-mno-gpopt
+	>
 )
 
 target_link_options(
@@ -120,6 +129,11 @@ target_link_options(
 		-static
 	>
 	$<$<STREQUAL:$<UPPER_CASE:$<TARGET_PROPERTY:CKSDK_TARGET_TYPE>>,SHARED_LIBRARY>:
+		# Options for DLLs
+		-G0
+		-shared
+	>
+	$<$<STREQUAL:$<UPPER_CASE:$<TARGET_PROPERTY:CKSDK_TARGET_TYPE>>,DLL_STATIC>:
 		# Options for DLLs
 		-G0
 		-shared
@@ -162,7 +176,6 @@ function(cksdk_executable name target_exe target_map)
 
 		"${INC_DIR}/OS.h"
 		"${INC_DIR}/ExScreen.h"
-		"${INC_DIR}/STL.h"
 		"${INC_DIR}/TTY.h"
 		"${INC_DIR}/Mem.h"
 		"${INC_DIR}/Timer.h"
@@ -257,6 +270,6 @@ endfunction()
 function(cksdk_dll_static_library name)
 	# Compile library
 	add_library(${name} STATIC ${ARGN})
-	set_target_properties(${name} PROPERTIES CKSDK_TARGET_TYPE SHARED_LIBRARY)
+	set_target_properties(${name} PROPERTIES CKSDK_TARGET_TYPE DLL_STATIC)
 	target_link_libraries(${name} PRIVATE CKSDK_defs)
 endfunction()

@@ -37,7 +37,7 @@ extern "C"
 namespace CKSDK
 {
 	// CKSDK functions
-	void Init()
+	KEEP void Init()
 	{
 		// Initialize systems
 		Mem::Init(_end, 0x80200000 - uintptr_t(_end));

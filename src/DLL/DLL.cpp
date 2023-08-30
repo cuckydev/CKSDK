@@ -23,11 +23,8 @@
 
 #include <CKSDK/OS.h>
 #include <CKSDK/ExScreen.h>
-#include <CKSDK/STL.h>
 #include <CKSDK/CD.h>
 #include <CKSDK/ISO.h>
-
-#include <CKSDK/Util/Hash.h>
 
 namespace CKSDK
 {
@@ -37,7 +34,7 @@ namespace CKSDK
 		static SymbolCallback symbol_callback;
 		
 		// DLL resolver callback
-		void DLL::Resolver(uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3)
+		KEEP void DLL::Resolver(uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3)
 		{
 			// We placed a pointer to the DLL in got[1] in DLL::DLL
 			// gp-7FF0h points to the start of the .got section,
@@ -65,7 +62,7 @@ namespace CKSDK
 		}
 
 		// DLL class
-		DLL::DLL(std::unique_ptr<char[]> _ptr, size_t _size): ptr(std::move(_ptr)), size(_size)
+		KEEP DLL::DLL(std::unique_ptr<char[]> _ptr, size_t _size): ptr(std::move(_ptr)), size(_size)
 		{
 			// Rel reloc table
 			ELF::Elf32_Rel *rel = nullptr;
@@ -242,7 +239,7 @@ namespace CKSDK
 			}
 		}
 
-		DLL::~DLL()
+		KEEP DLL::~DLL()
 		{
 			// Run DLL destructors
 			const uint32_t *dtor_list = (const uint32_t*)GetSymbol("__DTOR_LIST__");
@@ -256,7 +253,7 @@ namespace CKSDK
 			}
 		}
 
-		void *DLL::GetSymbol(const char *name)
+		KEEP void *DLL::GetSymbol(const char *name)
 		{
 			uint32_t nbucket = hash[0];
 			uint32_t nchain = hash[1];
@@ -271,7 +268,7 @@ namespace CKSDK
 				// 	ExScreen::Abort("GetSymbol index OoB");
 				ELF::Elf32_Sym *sym = &symtab[i];
 				const char *_name = &strtab[sym->st_name];
-				if (STL::String::Compare(name, _name) == 0)
+				if (__builtin_strcmp(name, _name) == 0)
 					return sym->st_value;
 			}
 
@@ -279,19 +276,19 @@ namespace CKSDK
 		}
 
 		// DLL Functions
-		void Init()
+		KEEP void Init()
 		{
 			
 		}
 		
-		SymbolCallback SetSymbolCallback(SymbolCallback cb)
+		KEEP SymbolCallback SetSymbolCallback(SymbolCallback cb)
 		{
 			SymbolCallback old = symbol_callback;
 			symbol_callback = cb;
 			return old;
 		}
 
-		SymbolCallback GetSymbolCallback()
+		KEEP SymbolCallback GetSymbolCallback()
 		{
 			return symbol_callback;
 		}

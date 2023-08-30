@@ -27,7 +27,7 @@ namespace CKSDK
 		static constexpr unsigned STATUS_TIMEOUT = 0x100000;
 
 		// Internal SPU functions
-		void StatusSync(uint16_t mask, uint16_t value)
+		static void StatusSync(uint16_t mask, uint16_t value)
 		{
 			for (unsigned i = STATUS_TIMEOUT; i != 0; i--)
 				if ((OS::SpuStat() & mask) == value)
@@ -36,7 +36,7 @@ namespace CKSDK
 		}
 
 		// SPU functions
-		void Init()
+		KEEP void Init()
 		{
 			// Reset SPU
 			OS::SpuDelaySize() = 0x200931E1;

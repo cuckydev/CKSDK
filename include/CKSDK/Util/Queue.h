@@ -28,7 +28,6 @@
 #include <CKSDK/OS.h>
 #include <CKSDK/ExScreen.h>
 #include <CKSDK/TTY.h>
-#include <CKSDK/STL.h>
 
 /// @brief CKSDK namespace
 namespace CKSDK

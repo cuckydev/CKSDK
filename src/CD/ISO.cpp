@@ -21,7 +21,6 @@
 
 #include <CKSDK/OS.h>
 #include <CKSDK/ExScreen.h>
-#include <CKSDK/STL.h>
 #include <CKSDK/TTY.h>
 
 #include <memory>
@@ -106,7 +105,7 @@ namespace CKSDK
 					break;
 
 				// Check name
-				if (!STL::Memory::Compare(dir->name, "ALL;1", 3+2))
+				if (!__builtin_memcmp(dir->name, "ALL;1", 3+2))
 				{
 					g_all.size = dir->extent_size();
 					all_lba = dir->extent_lba();

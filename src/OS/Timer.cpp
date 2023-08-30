@@ -26,12 +26,12 @@ namespace CKSDK
 	namespace Timer
 	{
 		// Timer functions
-		void Init()
+		KEEP void Init()
 		{
 			
 		}
 
-		void Set(uint32_t rate, TimerCallback cb)
+		KEEP void Set(uint32_t rate, TimerCallback cb)
 		{
 			rate = (OS::CpuHz / 8) / rate;
 			if (rate >= 0x10000) // Timer cannot run below 65hz

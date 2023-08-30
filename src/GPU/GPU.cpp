@@ -30,11 +30,11 @@ namespace CKSDK
 		static constexpr unsigned VSYNC_TIMEOUT = 0x100000;
 
 		// GPU globals
-		bool g_pal = false;
+		KEEP bool g_pal = false;
 
 		// GPU buffers
 		static Buffer buffers[2];
-		Buffer *g_bufferp;
+		KEEP Buffer *g_bufferp;
 
 		// VBlank callback
 		static VBlankCallback vblank_callback = nullptr;
@@ -70,7 +70,7 @@ namespace CKSDK
 		}
 
 		// Queue commands
-		void Queue_DMAImage(const DrawQueueArgs &args)
+		static void Queue_DMAImage(const DrawQueueArgs &args)
 		{
 			// Get arguments
 			uint32_t addr = args.arg[0];
@@ -100,7 +100,7 @@ namespace CKSDK
 			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x01000200 | write;
 		}
 
-		void Queue_DrawOT(const DrawQueueArgs &args)
+		static void Queue_DrawOT(const DrawQueueArgs &args)
 		{
 			// Get arguments
 			size_t ot = args.arg[0];
@@ -121,7 +121,7 @@ namespace CKSDK
 		}
 
 		// GPU functions
-		void Init()
+		KEEP void Init()
 		{
 			// Disable IRQs while we work on setting up the GPU
 			OS::DisableIRQ();
@@ -199,7 +199,7 @@ namespace CKSDK
 			OS::EnableIRQ();
 		}
 
-		void SetBuffer(Word *buffer, size_t size, size_t ot_size)
+		KEEP void SetBuffer(Word *buffer, size_t size, size_t ot_size)
 		{
 			// Setup buffers
 			Word *bufferp = buffer;
@@ -216,7 +216,7 @@ namespace CKSDK
 			g_bufferp->Init();
 		}
 
-		void SetScreen(uint32_t w, uint32_t h, uint32_t ox, uint32_t oy, uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1)
+		KEEP void SetScreen(uint32_t w, uint32_t h, uint32_t ox, uint32_t oy, uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1)
 		{
 			// Set buffer framebuffer commands
 			buffers[0].gp0.tl  = (GP0_DrawTL << 24)     | ((x0) << 0)         | ((y0) << 10);
@@ -305,7 +305,7 @@ namespace CKSDK
 		}
 
 		static FlipCallback flip_callback = nullptr;
-		void Flip()
+		KEEP void Flip()
 		{
 			Buffer *bufferp = g_bufferp;
 
@@ -340,7 +340,7 @@ namespace CKSDK
 			bufferp->Init();
 		}
 		
-		void VBlankSync()
+		KEEP void VBlankSync()
 		{
 			// Wait for vblank
 			uint32_t counter = vblank_counter;
@@ -353,7 +353,7 @@ namespace CKSDK
 			TTY::Out("GPU vsync timeout\n");
 		}
 
-		void QueueSync()
+		KEEP void QueueSync()
 		{
 			// Wait for queue to clear up
 			draw_queue.Sync();
@@ -364,47 +364,47 @@ namespace CKSDK
 			DataSync();
 		}
 
-		void QueueReset()
+		KEEP void QueueReset()
 		{
 			draw_queue.Reset();
 		}
 		
-		void DMAImage(const void *addr, uint32_t xy, uint32_t wh, uint32_t bcr)
+		KEEP void DMAImage(const void *addr, uint32_t xy, uint32_t wh, uint32_t bcr)
 		{
 			draw_queue.Enqueue(Queue_DMAImage, DrawQueueArgs{
 				uint32_t(addr), xy, wh, bcr, 1
 			});
 		}
 
-		FlipCallback SetFlipCallback(FlipCallback cb)
+		KEEP FlipCallback SetFlipCallback(FlipCallback cb)
 		{
 			FlipCallback old_cb = flip_callback;
 			flip_callback = cb;
 			return old_cb;
 		}
-		FlipCallback GetFlipCallback()
+		KEEP FlipCallback GetFlipCallback()
 		{
 			return flip_callback;
 		}
 
-		VBlankCallback SetVBlankCallback(VBlankCallback cb)
+		KEEP VBlankCallback SetVBlankCallback(VBlankCallback cb)
 		{
 			VBlankCallback old_cb = vblank_callback;
 			vblank_callback = cb;
 			return old_cb;
 		}
-		VBlankCallback GetVBlankCallback()
+		KEEP VBlankCallback GetVBlankCallback()
 		{
 			return vblank_callback;
 		}
 
-		QueueCallback SetQueueCallback(QueueCallback cb)
+		KEEP QueueCallback SetQueueCallback(QueueCallback cb)
 		{
 			QueueCallback old_cb = queue_callback;
 			queue_callback = cb;
 			return old_cb;
 		}
-		QueueCallback GetQueueCallback()
+		KEEP QueueCallback GetQueueCallback()
 		{
 			return queue_callback;
 		}

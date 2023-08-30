@@ -34,6 +34,11 @@
 	#define PACKED __attribute__((packed))
 #endif
 
+// Keep section
+/// @brief Keep section
+/// @details This is used to keep a function in the final binary. You should use this for any functions that are called from DLLs.
+#define KEEP __attribute__((used))
+
 /// @brief CKSDK namespace
 namespace CKSDK
 {

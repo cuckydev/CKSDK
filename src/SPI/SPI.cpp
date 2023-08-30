@@ -30,7 +30,7 @@ namespace CKSDK
 		static constexpr unsigned CONFIGURE_ATTEMPTS = 10;
 
 		// SPI globals
-		Pad g_pad[2];
+		KEEP Pad g_pad[2];
 
 		static bool error = false;
 
@@ -216,7 +216,7 @@ namespace CKSDK
 			}
 		}
 
-		void PollPads()
+		KEEP void PollPads()
 		{
 			// Poll both pads
 			for (unsigned i = 0; i < 2; i++)

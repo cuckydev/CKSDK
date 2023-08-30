@@ -113,7 +113,7 @@ namespace CKSDK
 		}
 
 		// OS functions
-		void Init()
+		KEEP void Init()
 		{
 			// Reset interrupt controller
 			DisableIRQ_SR();
@@ -142,7 +142,7 @@ namespace CKSDK
 			EnableIRQ_SR();
 		}
 
-		InterruptCallback SetIRQ(IRQ irq, InterruptCallback cb)
+		KEEP InterruptCallback SetIRQ(IRQ irq, InterruptCallback cb)
 		{
 			unsigned i = unsigned(irq);
 			InterruptCallback old_cb = interrupt_callbacks[i];
@@ -163,13 +163,13 @@ namespace CKSDK
 			return old_cb;
 		}
 
-		InterruptCallback GetIRQ(IRQ irq)
+		KEEP InterruptCallback GetIRQ(IRQ irq)
 		{
 			unsigned i = unsigned(irq);
 			return interrupt_callbacks[i];
 		}
 
-		InterruptCallback SetDMA(DMA dma, InterruptCallback cb)
+		KEEP InterruptCallback SetDMA(DMA dma, InterruptCallback cb)
 		{
 			// Set DMA callback
 			unsigned i = unsigned(dma);
@@ -199,13 +199,13 @@ namespace CKSDK
 			return old_cb;
 		}
 
-		InterruptCallback GetDMA(DMA dma)
+		KEEP InterruptCallback GetDMA(DMA dma)
 		{
 			unsigned i = unsigned(dma);
 			return dma_callbacks[i];
 		}
 		
-		void FlushICache()
+		KEEP void FlushICache()
 		{
 			bios_FlushICache();
 		}
