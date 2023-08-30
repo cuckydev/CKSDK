@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['y_582',['Y',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#ac970bd27b4b0e44277aa86b299430d3c',1,'CKSDK::GPU::DrawModePrim']]],
-  ['y_583',['y',['../da/d5d/unionCKSDK_1_1GPU_1_1ScreenCoord.html#abf55851a7ad6968b8ea0cfe319e5ad4e',1,'CKSDK::GPU::ScreenCoord::y()'],['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a2b089d5a443f37f40b2f082c4f04ef81',1,'CKSDK::SPI::PadResponse::y()']]],
-  ['y_5fmov_584',['y_mov',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a3dc21d671dcb34a7b202900aac74e382',1,'CKSDK::SPI::PadResponse']]],
-  ['yflip_585',['YFlip',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a4a23b1f9cc575ce7b13f8028b1fe7b89',1,'CKSDK::GPU::DrawModePrim']]]
+  ['x_561',['X',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a661766470f82cd38fd2f32f62f0dc3e8',1,'CKSDK::GPU::DrawModePrim']]],
+  ['x_562',['x',['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#a4612248b41150189beee3ebae1681c8e',1,'CKSDK::GPU::Color::x()'],['../da/d5d/unionCKSDK_1_1GPU_1_1ScreenCoord.html#a89a1f3155bbad23787e5badaf27b454b',1,'CKSDK::GPU::ScreenCoord::x()'],['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html#a80d259c1ea29f166b2abb18fa1786f93',1,'CKSDK::GPU::TexCoord::x()'],['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a8cbb2ae61bb945625ef525802c5bd423',1,'CKSDK::SPI::PadResponse::x()']]],
+  ['x_5fmov_563',['x_mov',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#ac5cea37e380bdf18e6caef167a5f23d8',1,'CKSDK::SPI::PadResponse']]],
+  ['xafilter_564',['XAFilter',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0b496e9e5f753107893cc47c07e91954af0f00bca16ba6a27a1b95b3f3f5d4553',1,'CKSDK::CD']]],
+  ['xainput_565',['XAInput',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0b496e9e5f753107893cc47c07e91954a853586c92fc8d42318adad7b78519719',1,'CKSDK::CD']]],
+  ['xflip_566',['XFlip',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a4c5110ac205a1e88603efe12b0604650',1,'CKSDK::GPU::DrawModePrim']]]
 ];

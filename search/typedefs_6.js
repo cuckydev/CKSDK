@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['spriteprim_940',['SpritePrim',['../d8/d2a/namespaceCKSDK_1_1GPU.html#a0afd56cc52d9e6841dfd06db99298761',1,'CKSDK::GPU']]],
-  ['symbolcallback_941',['SymbolCallback',['../d9/d0e/namespaceCKSDK_1_1DLL.html#a63607a5523f8371bcce29c6c540f93bc',1,'CKSDK::DLL']]]
+  ['timercallback_911',['TimerCallback',['../de/d25/namespaceCKSDK_1_1Timer.html#a4def85aff63a5def0dea826aeeec402b',1,'CKSDK::Timer']]],
+  ['type_912',['Type',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a7e81ce180e3cd0e28c410af8a6e600b4',1,'CKSDK::Fixed::Fixed']]]
 ];

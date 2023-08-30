@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['off_354',['off',['../dc/d0d/structCKSDK_1_1GPU_1_1Buffer_1_1GP0.html#a01608a90a7f01ad647b00e515350cbf7',1,'CKSDK::GPU::Buffer::GP0']]],
-  ['operator_22_22_5fh_355',['operator&quot;&quot;_h',['../d0/dd0/Hash_8h.html#a0d06d47d927b627263571d1213c1e318',1,'Hash.h']]],
-  ['operator_3d_356',['operator=',['../d3/df4/structCKSDK_1_1CD_1_1BCD.html#a1a42dc44169aaeea151845916c846905',1,'CKSDK::CD::BCD::operator=()'],['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#adc9aee9f353e04210d477bd01eb8af3e',1,'CKSDK::GPU::Color::operator=()'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a8bbe9e4e6d03aab164849d916f905dbe',1,'CKSDK::Fixed::Fixed::operator=(Fixed&lt; T2, FRAC2 &gt; const &amp;rhs)'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#adf9972b9afe42fd869fac0a46a4e27d5',1,'CKSDK::Fixed::Fixed::operator=(U _x)']]],
-  ['os_2eh_357',['OS.h',['../d2/d4f/OS_8h.html',1,'']]],
-  ['ot_5fsize_358',['ot_size',['../d3/dd3/structCKSDK_1_1GPU_1_1Buffer.html#a5aaa048dcfc7ac85ad526e8c886cdedb',1,'CKSDK::GPU::Buffer']]],
-  ['otc_359',['OTC',['../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eaba99d34e1cefc7f86f9f4470d74e29e052',1,'CKSDK::OS']]],
-  ['out_360',['Out',['../da/d8f/namespaceCKSDK_1_1TTY.html#a6ddb44df474c962985394912db732478',1,'CKSDK::TTY']]],
-  ['outhex_361',['OutHex',['../da/d8f/namespaceCKSDK_1_1TTY.html#a8a14987a7a1f6a7a0bee60ce1ab4d4f6',1,'CKSDK::TTY::OutHex(uint32_t x)'],['../da/d8f/namespaceCKSDK_1_1TTY.html#a9274dbc315fef49f845b553a41ee2e71',1,'CKSDK::TTY::OutHex(T x)']]]
+  ['neg_337',['neg',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#af33b4d104658523db99c0a7e9983bd1e',1,'CKSDK::SPI::PadResponse']]],
+  ['negcon_338',['neGcon',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a8fadab7f8bbc7a54e79b3e6e858a0da9a61f6b36c50ff749ffdba56d440c48718',1,'CKSDK::SPI']]],
+  ['noirq_339',['NoIRQ',['../dc/d2b/namespaceCKSDK_1_1CD.html#aed4f27d936ff8d0dafbe58039047bf05a1c9debf6e13abbe492477e9782ccef14',1,'CKSDK::CD']]],
+  ['none_340',['None',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a8fadab7f8bbc7a54e79b3e6e858a0da9acde4135fd27ab2bf4fb85b8afb6d8474',1,'CKSDK::SPI']]],
+  ['nop_341',['Nop',['../dc/d2b/namespaceCKSDK_1_1CD.html#ac8dabbfdb2b4f83f71326a8dc89c57dbab7e7f2b46723f5b08d763041108f8fed',1,'CKSDK::CD']]]
 ];

@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['w_571',['w',['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#a534c81e94d077e528942d6818cc03151',1,'CKSDK::GPU::Color::w()'],['../da/d5d/unionCKSDK_1_1GPU_1_1ScreenCoord.html#aab40dba455cea8c957f79aa6f67bd826',1,'CKSDK::GPU::ScreenCoord::w()'],['../de/d20/unionCKSDK_1_1GPU_1_1ScreenDim.html#a0732e13dd2d24b43cabfdcdb90474b97',1,'CKSDK::GPU::ScreenDim::w()'],['../de/d20/unionCKSDK_1_1GPU_1_1ScreenDim.html#a4ea50e05dcba98d6601685c01511bc63',1,'CKSDK::GPU::ScreenDim::w()'],['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html#a8c121124d0eb5a33cd8ecd49e5da003e',1,'CKSDK::GPU::TexCoord::w()']]],
-  ['waitcycles_572',['WaitCycles',['../db/d79/namespaceCKSDK_1_1OS.html#af73d5b5380a3745f81791a2a6d4de221',1,'CKSDK::OS']]],
-  ['word_573',['Word',['../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9',1,'CKSDK::GPU']]],
-  ['words_574',['Words',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a2a6a591f6151ae4fa7a91f28d0af4818',1,'CKSDK::GPU::Tag']]],
-  ['worldwide_575',['Worldwide',['../dc/d2b/namespaceCKSDK_1_1CD.html#aabe89ede4a564e2e9533eff996fbb41fa5982adce3bd1f8a983240b10ef190ab2',1,'CKSDK::CD']]]
+  ['v_548',['v',['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html#a6c51d0557379dced4aa389aaa4128b3a',1,'CKSDK::GPU::TexCoord']]],
+  ['value_549',['value',['../d9/df4/structCKSDK_1_1OS_1_1TIMER__CTRL.html#acf5fe3ef856f453f562457130cab45bb',1,'CKSDK::OS::TIMER_CTRL']]],
+  ['vblank_550',['VBLANK',['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828aa8f49a45a9c67e350263db3ee9fce478',1,'CKSDK::OS']]],
+  ['vblankcallback_551',['VBlankCallback',['../d8/d2a/namespaceCKSDK_1_1GPU.html#ad3f63b2a4cfcdf164fe8d6cdf5098f13',1,'CKSDK::GPU']]],
+  ['vblanksync_552',['VBlankSync',['../d8/d2a/namespaceCKSDK_1_1GPU.html#a6b7bdf3e8c119c4ea028fcf882a72a95',1,'CKSDK::GPU']]],
+  ['vector_553',['Vector',['../d2/deb/structCKSDK_1_1GPU_1_1Vector.html',1,'CKSDK::GPU::Vector'],['../d2/deb/structCKSDK_1_1GPU_1_1Vector.html#a778dd7b4e64d2e07a96e00215aa5016b',1,'CKSDK::GPU::Vector::Vector()'],['../d2/deb/structCKSDK_1_1GPU_1_1Vector.html#a1f270fe80d589e8de261fedaeb3bf8c7',1,'CKSDK::GPU::Vector::Vector(int32_t x, int32_t y, int32_t z)']]],
+  ['vol_5fl_554',['vol_l',['../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html#a63e2c0de95d16ce5622388ac2634e0b1',1,'CKSDK::OS::SPU_VOICE_CTRL']]],
+  ['vol_5fr_555',['vol_r',['../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html#a5fa9520dad09b7bd8f8904fa6ed189cd',1,'CKSDK::OS::SPU_VOICE_CTRL']]]
 ];

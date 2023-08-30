@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['x_576',['X',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a661766470f82cd38fd2f32f62f0dc3e8',1,'CKSDK::GPU::DrawModePrim']]],
-  ['x_577',['x',['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#a4612248b41150189beee3ebae1681c8e',1,'CKSDK::GPU::Color::x()'],['../da/d5d/unionCKSDK_1_1GPU_1_1ScreenCoord.html#a89a1f3155bbad23787e5badaf27b454b',1,'CKSDK::GPU::ScreenCoord::x()'],['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html#a80d259c1ea29f166b2abb18fa1786f93',1,'CKSDK::GPU::TexCoord::x()'],['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a8cbb2ae61bb945625ef525802c5bd423',1,'CKSDK::SPI::PadResponse::x()']]],
-  ['x_5fmov_578',['x_mov',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#ac5cea37e380bdf18e6caef167a5f23d8',1,'CKSDK::SPI::PadResponse']]],
-  ['xafilter_579',['XAFilter',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0b496e9e5f753107893cc47c07e91954af0f00bca16ba6a27a1b95b3f3f5d4553',1,'CKSDK::CD']]],
-  ['xainput_580',['XAInput',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0b496e9e5f753107893cc47c07e91954a853586c92fc8d42318adad7b78519719',1,'CKSDK::CD']]],
-  ['xflip_581',['XFlip',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a4c5110ac205a1e88603efe12b0604650',1,'CKSDK::GPU::DrawModePrim']]]
+  ['w_556',['w',['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#a534c81e94d077e528942d6818cc03151',1,'CKSDK::GPU::Color::w()'],['../da/d5d/unionCKSDK_1_1GPU_1_1ScreenCoord.html#aab40dba455cea8c957f79aa6f67bd826',1,'CKSDK::GPU::ScreenCoord::w()'],['../de/d20/unionCKSDK_1_1GPU_1_1ScreenDim.html#a0732e13dd2d24b43cabfdcdb90474b97',1,'CKSDK::GPU::ScreenDim::w()'],['../de/d20/unionCKSDK_1_1GPU_1_1ScreenDim.html#a4ea50e05dcba98d6601685c01511bc63',1,'CKSDK::GPU::ScreenDim::w()'],['../da/d49/unionCKSDK_1_1GPU_1_1TexCoord.html#a8c121124d0eb5a33cd8ecd49e5da003e',1,'CKSDK::GPU::TexCoord::w()']]],
+  ['waitcycles_557',['WaitCycles',['../db/d79/namespaceCKSDK_1_1OS.html#af73d5b5380a3745f81791a2a6d4de221',1,'CKSDK::OS']]],
+  ['word_558',['Word',['../d8/d2a/namespaceCKSDK_1_1GPU.html#a3bb3ea8c2c41668dd41692b2e7fbeab9',1,'CKSDK::GPU']]],
+  ['words_559',['Words',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a2a6a591f6151ae4fa7a91f28d0af4818',1,'CKSDK::GPU::Tag']]],
+  ['worldwide_560',['Worldwide',['../dc/d2b/namespaceCKSDK_1_1CD.html#aabe89ede4a564e2e9533eff996fbb41fa5982adce3bd1f8a983240b10ef190ab2',1,'CKSDK::CD']]]
 ];
