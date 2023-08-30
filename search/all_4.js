@@ -24,21 +24,5 @@ var searchData=
   ['exp2addr_176',['Exp2Addr',['../db/d79/namespaceCKSDK_1_1OS.html#a8fb63d8a349328b6ecaf2e086d951bec',1,'CKSDK::OS']]],
   ['exp2delaysize_177',['Exp2DelaySize',['../db/d79/namespaceCKSDK_1_1OS.html#adb60b8e376cba672bb06f393945d7447',1,'CKSDK::OS']]],
   ['exp3delaysize_178',['Exp3DelaySize',['../db/d79/namespaceCKSDK_1_1OS.html#ae788f79917913ca577f19344908aa4cc',1,'CKSDK::OS']]],
-  ['exscreen_2eh_179',['ExScreen.h',['../d9/dc8/ExScreen_8h.html',1,'']]],
-  ['extend_5fintegral_5f2_180',['extend_integral_2',['../d3/da2/structCKSDK_1_1Fixed_1_1extend__integral__2.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_181',['extend_integral_type',['../d3/daf/structCKSDK_1_1Fixed_1_1extend__integral__type.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20char_20_3e_182',['extend_integral_type&lt; char &gt;',['../d0/d33/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01char_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20int_20_3e_183',['extend_integral_type&lt; int &gt;',['../d1/d21/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01int_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20long_20long_2c_20false_20_3e_184',['extend_integral_type&lt; long long, false &gt;',['../d7/d25/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01long_01long_00_01false_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20long_20long_2c_20true_20_3e_185',['extend_integral_type&lt; long long, true &gt;',['../db/d29/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01long_01long_00_01true_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20long_2c_20false_20_3e_186',['extend_integral_type&lt; long, false &gt;',['../d8/de2/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01long_00_01false_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20long_2c_20true_20_3e_187',['extend_integral_type&lt; long, true &gt;',['../dc/d84/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01long_00_01true_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20short_20_3e_188',['extend_integral_type&lt; short &gt;',['../d4/d74/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01short_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20unsigned_20char_20_3e_189',['extend_integral_type&lt; unsigned char &gt;',['../de/dbc/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01unsigned_01char_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20unsigned_20int_20_3e_190',['extend_integral_type&lt; unsigned int &gt;',['../d1/d15/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01unsigned_01int_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20unsigned_20long_20long_2c_20false_20_3e_191',['extend_integral_type&lt; unsigned long long, false &gt;',['../d4/d25/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01unsigned_01long_01long_00_01false_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20unsigned_20long_20long_2c_20true_20_3e_192',['extend_integral_type&lt; unsigned long long, true &gt;',['../df/d7a/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01unsigned_01long_01long_00_01true_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20unsigned_20long_2c_20false_20_3e_193',['extend_integral_type&lt; unsigned long, false &gt;',['../da/df9/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01unsigned_01long_00_01false_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20unsigned_20long_2c_20true_20_3e_194',['extend_integral_type&lt; unsigned long, true &gt;',['../de/d22/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01unsigned_01long_00_01true_01_4.html',1,'CKSDK::Fixed']]],
-  ['extend_5fintegral_5ftype_3c_20unsigned_20short_20_3e_195',['extend_integral_type&lt; unsigned short &gt;',['../d7/d83/structCKSDK_1_1Fixed_1_1extend__integral__type_3_01unsigned_01short_01_4.html',1,'CKSDK::Fixed']]]
+  ['exscreen_2eh_179',['ExScreen.h',['../d9/dc8/ExScreen_8h.html',1,'']]]
 ];
