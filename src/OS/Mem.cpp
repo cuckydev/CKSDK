@@ -143,9 +143,9 @@ namespace CKSDK
 
 			// Copy data over
 			if (head->size > size)
-				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), size);
+				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), size - Align(sizeof(Block)));
 			else
-				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), head->size);
+				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), head->size - Align(sizeof(Block)));
 
 			// Link block
 			head->size = size;
