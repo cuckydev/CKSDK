@@ -43,6 +43,52 @@ namespace CKSDK
 		};
 		static Block *mem;
 
+		// Mem block search
+		static Block *Search(size_t size, Block **const out_prev)
+		{
+			// Get block pointer
+			Block *head, *prev, *next;
+			char *hpos = (char*)mem + Align(sizeof(Block));
+
+			prev = mem;
+			next = prev->next;
+
+			while (1)
+			{
+				if (next != nullptr)
+				{
+					// Check against the next block
+					size_t cleft = (char*)next - hpos;
+					if (cleft >= size)
+					{
+						// Set pointer
+						head = (Block*)hpos;
+						break;
+					}
+
+					// Check next block
+					hpos = (char*)next + next->size;
+					prev = next;
+					next = prev->next;
+				}
+				else
+				{
+					// Check against end of heap
+					size_t cleft = ((char*)mem + mem->size) - hpos;
+					if (cleft < size)
+						return nullptr;
+
+					// Set pointer
+					head = (Block*)hpos;
+					break;
+				}
+			}
+
+			// Return pointers
+			*out_prev = prev;
+			return head;
+		}
+
 		// Mem functions
 		KEEP void Init(void *ptr, size_t size)
 		{
@@ -58,43 +104,11 @@ namespace CKSDK
 			// Align size
 			size = Align(size) + Align(sizeof(Block));
 
-			// Get block pointer
-			Block *head, *prev, *next;
-			char *hpos = (char*)mem + Align(sizeof(Block));
-			
-			prev = mem;
-			next = prev->next;
-			
-			while (1)
-			{
-				if (next != nullptr)
-				{
-					// Check against the next block
-					size_t cleft = (char*)next - hpos;
-					if (cleft >= size)
-					{
-						// Set pointer
-						head = (Block*)hpos;
-						break;
-					}
-					
-					// Check next block
-					hpos = (char*)next + next->size;
-					prev = next;
-					next = prev->next;
-				}
-				else
-				{
-					// Check against end of heap
-					size_t cleft = ((char*)mem + mem->size) - hpos;
-					if (cleft < size)
-						return nullptr;
-					
-					// Set pointer
-					head = (Block*)hpos;
-					break;
-				}
-			}
+			// Search for free block
+			Block *head, *prev;
+			head = Search(size, &prev);
+			if (head == nullptr)
+				return nullptr;
 
 			// Link block
 			head->size = size;
@@ -104,7 +118,43 @@ namespace CKSDK
 			prev->next = head;
 
 			// Return pointer
-			return (void*)(hpos + Align(sizeof(Block)));
+			return (void*)((char*)head + Align(sizeof(Block)));
+		}
+
+		KEEP void *Realloc(void *ptr, size_t size)
+		{
+			// Get block
+			if (ptr == nullptr)
+				return nullptr;
+			Block *head = (Block*)((char*)ptr - Align(sizeof(Block)));
+
+			// Unlink block
+			if ((head->prev->next = head->next) != nullptr)
+				head->next->prev = head->prev;
+
+			// Align size
+			size = Align(size) + Align(sizeof(Block));
+
+			// Search for free block
+			Block *newhead, *newprev;
+			newhead = Search(size, &newprev);
+			if (newhead == nullptr)
+				return nullptr;
+
+			// Copy data over
+			if (head->size > size)
+				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), size);
+			else
+				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), head->size);
+
+			// Link block
+			head->size = size;
+			head->prev = newprev;
+			if ((head->next = newprev->next) != nullptr)
+				head->next->prev = head;
+			newprev->next = head;
+
+			return head;
 		}
 
 		KEEP void Free(void *ptr)

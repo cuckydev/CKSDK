@@ -26,7 +26,7 @@
 namespace CKSDK
 {
 	/// @brief CKSDK Memory allocation namespace
-	/// @note `new` and `delete` wrap these functions and handle construction and destruction. Please use them instead of these functions.
+	/// @note `new` and `delete` wrap these functions and handle construction and destruction. Only use these if you know what you are doing.
 	namespace Mem
 	{
 		// Mem functions
@@ -39,7 +39,12 @@ namespace CKSDK
 		/// @brief Allocate memory
 		/// @param size Size of the memory to allocate
 		/// @return Pointer to the allocated memory
-		/// @note This will abort the program if there is not enough memory
+		void *Alloc(size_t size);
+		/// @brief Reallocate memory
+		/// @param ptr Pointer to the memory to reallocate
+		/// @param size Size of the memory to allocate
+		/// @return Pointer to the reallocated memory
+		/// @note No-operation if ptr is null
 		void *Alloc(size_t size);
 		/// @brief Free memory
 		/// @param ptr Pointer to the memory to free
