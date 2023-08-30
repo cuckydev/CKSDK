@@ -38,12 +38,3 @@
 /// @brief Keep section
 /// @details This is used to keep a function in the final binary. You should use this for any functions that are called from DLLs.
 #define KEEP __attribute__((used))
-
-/// @brief CKSDK namespace
-namespace CKSDK
-{
-	// CKSDK functions
-	/// @brief Initialize CKSDK
-	/// @details This will initialize all components of CKSDK and should be the first thing called in your program
-	void Init();
-}

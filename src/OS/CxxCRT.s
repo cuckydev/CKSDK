@@ -58,6 +58,6 @@ _start:
 	nop
 
 .Lno_ctor_loop:
-	# Call main
-	j     main
+	# Call C++ start
+	j     cksdk_start
 	nop

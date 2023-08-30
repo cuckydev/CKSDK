@@ -20,8 +20,27 @@
 
 #include <CKSDK/Mem.h>
 
+// CKSDK initialization
+namespace CKSDK
+{
+	// Initialize CKSDK
+	void Init();
+}
+
 extern "C"
 {
+	// C++ start
+	void main(void);
+
+	KEEP void cksdk_start(void)
+	{
+		// Initialize CKSDK
+		CKSDK::Init();
+
+		// Call main
+		main();
+	}
+
 	// GCC built-in new and delete
 	KEEP void *__builtin_new(size_t size) { return CKSDK::Mem::Alloc(size); }
 	KEEP void  __builtin_delete(void *ptr) { CKSDK::Mem::Free(ptr); }
