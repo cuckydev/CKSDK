@@ -123,11 +123,12 @@ namespace CKSDK
 
 		KEEP void *Realloc(void *ptr, size_t size)
 		{
+
 			// Get block
 			if (ptr == nullptr)
-				return nullptr;
+				return Alloc(size);
 			Block *head = (Block*)((char*)ptr - Align(sizeof(Block)));
-
+			
 			// Unlink block
 			if ((head->prev->next = head->next) != nullptr)
 				head->next->prev = head->prev;
@@ -143,9 +144,9 @@ namespace CKSDK
 
 			// Copy data over
 			if (head->size > size)
-				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), size - Align(sizeof(Block)));
+				__builtin_memcpy((char*)newhead + Align(sizeof(Block)), (char*)ptr, size - Align(sizeof(Block)));
 			else
-				__builtin_memcpy((char*)ptr, (char*)newhead + Align(sizeof(Block)), head->size - Align(sizeof(Block)));
+				__builtin_memcpy((char*)newhead + Align(sizeof(Block)), (char*)ptr, head->size - Align(sizeof(Block)));
 
 			// Link block
 			head->size = size;
@@ -154,7 +155,7 @@ namespace CKSDK
 				head->next->prev = head;
 			newprev->next = head;
 
-			return head;
+			return (void*)((char*)head + Align(sizeof(Block)));
 		}
 
 		KEEP void Free(void *ptr)

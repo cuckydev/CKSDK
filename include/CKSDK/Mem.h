@@ -45,7 +45,7 @@ namespace CKSDK
 		/// @param size Size of the memory to allocate
 		/// @return Pointer to the reallocated memory
 		/// @note No-operation if ptr is null
-		void *Alloc(size_t size);
+		void *Realloc(void *ptr, size_t size);
 		/// @brief Free memory
 		/// @param ptr Pointer to the memory to free
 		/// @note No-operation if ptr is null
