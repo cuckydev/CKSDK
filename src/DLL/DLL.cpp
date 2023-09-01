@@ -146,6 +146,9 @@ namespace CKSDK
 					case ELF::DT_MIPS_GOTSYM:
 						first_got_symbol = dyn->d_un.d_val;
 						break;
+
+					default:
+						break;
 				}
 			}
 

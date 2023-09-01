@@ -20,6 +20,8 @@
 
 #include <CKSDK/Mem.h>
 
+#include <EASTL/allocator.h>
+
 // CKSDK initialization
 namespace CKSDK
 {
@@ -47,54 +49,6 @@ extern "C"
 
 	// Pure virtual call
 	KEEP void __cxa_pure_virtual(void) { CKSDK::ExScreen::Abort("Pure virtual call"); }
-
-	// memset
-	KEEP void *memset(void *s, int c, size_t n)
-	{
-		unsigned char *p = (unsigned char*)s;
-		while (n-- > 0)
-			*p++ = (unsigned char)c;
-		return s;
-	}
-
-	// memcpy
-	KEEP void *memcpy(void *dest, const void *src, size_t n)
-	{
-		unsigned char *d = (unsigned char*)dest;
-		const unsigned char *s = (const unsigned char*)src;
-		while (n-- > 0)
-			*d++ = *s++;
-		return dest;
-	}
-
-	// memcmp
-	KEEP int memcmp(const void *s1, const void *s2, size_t n)
-	{
-		const unsigned char *p1 = (const unsigned char*)s1;
-		const unsigned char *p2 = (const unsigned char*)s2;
-
-		while (n-- > 0)
-		{
-			if (*p1++ != *p2++)
-				return p1[-1] < p2[-1] ? -1 : 1;
-		}
-		return 0;
-	}
-
-	// strcmp
-	KEEP int strcmp(const char *s1, const char *s2)
-	{
-		const unsigned char *p1 = (const unsigned char *)s1;
-		const unsigned char *p2 = (const unsigned char *)s2;
-
-		while (*p1 && *p1 == *p2)
-		{
-			p1++;
-			p2++;
-		}
-
-		return (*p1 > *p2) - (*p2 > *p1);
-	}
 }
 
 // C++ new and delete
@@ -108,3 +62,80 @@ KEEP void operator delete(void *ptr) noexcept { CKSDK::Mem::Free(ptr); }
 KEEP void operator delete[](void *ptr) noexcept { CKSDK::Mem::Free(ptr); }
 KEEP void operator delete(void *ptr, size_t size) noexcept { (void)size; CKSDK::Mem::Free(ptr); }
 KEEP void operator delete[](void *ptr, size_t size) noexcept { (void)size; CKSDK::Mem::Free(ptr); }
+
+// EASTL allocator
+namespace eastl
+{
+	KEEP inline allocator::allocator(const char *EASTL_NAME(pName))
+	{
+		#if EASTL_NAME_ENABLED
+		mpName = pName ? pName : EASTL_ALLOCATOR_DEFAULT_NAME;
+		#endif
+	}
+
+	KEEP inline allocator::allocator(const allocator &EASTL_NAME(alloc))
+	{
+		#if EASTL_NAME_ENABLED
+		mpName = alloc.mpName;
+		#endif
+	}
+
+	KEEP inline allocator::allocator(const allocator &, const char *EASTL_NAME(pName))
+	{
+		#if EASTL_NAME_ENABLED
+		mpName = pName ? pName : EASTL_ALLOCATOR_DEFAULT_NAME;
+		#endif
+	}
+
+
+	KEEP inline allocator &allocator::operator=(const allocator &EASTL_NAME(alloc))
+	{
+		#if EASTL_NAME_ENABLED
+		mpName = alloc.mpName;
+		#endif
+		return *this;
+	}
+
+	KEEP inline const char *allocator::get_name() const
+	{
+		#if EASTL_NAME_ENABLED
+		return mpName;
+		#else
+		return EASTL_ALLOCATOR_DEFAULT_NAME;
+		#endif
+	}
+
+	KEEP inline void allocator::set_name(const char *EASTL_NAME(pName))
+	{
+		#if EASTL_NAME_ENABLED
+		mpName = pName;
+		#endif
+	}
+
+	KEEP inline void *allocator::allocate(size_t n, int flags)
+	{
+		return CKSDK::Mem::Alloc(n);
+	}
+
+	KEEP inline void *allocator::allocate(size_t n, size_t alignment, size_t offset, int flags)
+	{
+		return CKSDK::Mem::Alloc(n);
+	}
+
+	KEEP inline void allocator::deallocate(void *p, size_t)
+	{
+		CKSDK::Mem::Free(p);
+	}
+
+	KEEP inline bool operator==(const allocator &, const allocator &)
+	{
+		return true; // All allocators are considered equal, as they merely use global new/delete.
+	}
+
+	#if !defined(EA_COMPILER_HAS_THREE_WAY_COMPARISON)
+	KEEP inline bool operator!=(const allocator &, const allocator &)
+	{
+		return false; // All allocators are considered equal, as they merely use global new/delete.
+	}
+	#endif
+} // namespace eastl

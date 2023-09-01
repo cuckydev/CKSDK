@@ -48,13 +48,19 @@ target_compile_options(
 		-g
 		-Wa,--strip-local-absolute
 		-Os
+
+		-Wall
+		-Wno-deprecated-declarations
+
 		-ffreestanding
 		-nostdlib
+
 		-fdata-sections
 		-ffunction-sections
 		-fsigned-char
 		-fno-strict-overflow
 		-fdiagnostics-color=always
+
 		-msoft-float
 		-march=r3000
 		-mtune=r3000
@@ -62,11 +68,13 @@ target_compile_options(
 		-mno-mt
 		-mno-llsc
 		-mdivide-breaks
+
 		-fno-unroll-loops
 		-fomit-frame-pointer
 		-fbuiltin
 		-flto
 		-ffat-lto-objects
+
 	$<$<COMPILE_LANGUAGE:CXX>:
 		# Options common to all target types (C++)
 		-fno-exceptions
@@ -138,6 +146,10 @@ target_link_libraries(CKSDK_defs INTERFACE -lgcc)
 
 target_include_directories(CKSDK_defs INTERFACE "${CKSDK_DIR}/include")
 
+# Add EASTL subdirectory
+target_include_directories(CKSDK_defs INTERFACE "${CKSDK_DIR}/external/EASTL/include")
+target_include_directories(CKSDK_defs INTERFACE "${CKSDK_DIR}/external/EABase/include/Common")
+
 # CKSDK library
 function(cksdk_executable name target_exe target_map)
 	# Get source directories
@@ -200,6 +212,10 @@ function(cksdk_executable name target_exe target_map)
 		# Util
 		"${INC_DIR}/Util/Fixed.h"
 		"${INC_DIR}/Util/Queue.h"
+
+		# STL
+		"${SRC_DIR}/STL/ctype.cpp"
+		"${SRC_DIR}/STL/string.cpp"
 	)
 	
 	target_include_directories(${name} PRIVATE "${CKSDK_DIR}/src")
