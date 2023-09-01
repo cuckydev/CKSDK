@@ -4,12 +4,13 @@ var searchData=
   ['acknowledge_1',['Acknowledge',['../dc/d2b/namespaceCKSDK_1_1CD.html#aed4f27d936ff8d0dafbe58039047bf05add279c1edcfbecb780a4a20917a766c1',1,'CKSDK::CD']]],
   ['addr_2',['addr',['../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html#a707550f4f0b64432067f099d5a8910e6',1,'CKSDK::OS::SPU_VOICE_CTRL::addr()'],['../d9/d1e/structCKSDK_1_1SPI_1_1PadPacket.html#ab4a31ae26267a15c3d4f0745f78ddd4c',1,'CKSDK::SPI::PadPacket::addr()']]],
   ['adsr_3',['adsr',['../d3/d9c/structCKSDK_1_1OS_1_1SPU__VOICE__CTRL.html#a49a9fbc2aec70cefef8834eea45562fb',1,'CKSDK::OS::SPU_VOICE_CTRL']]],
-  ['alloc_4',['Alloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#abfd0d2d789d2bddc6997fc9870094c82',1,'CKSDK::Mem']]],
+  ['alloc_4',['Alloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#add55e8bba2c73b30c1a0ab6f3d50aa42',1,'CKSDK::Mem']]],
   ['allocpacket_5',['AllocPacket',['../d8/d2a/namespaceCKSDK_1_1GPU.html#a8306dfbb814b19ae2a0811373d76edcf',1,'CKSDK::GPU::AllocPacket(size_t ot, size_t words)'],['../d8/d2a/namespaceCKSDK_1_1GPU.html#a6a37a54ced2e46714c59443268976d41',1,'CKSDK::GPU::AllocPacket(size_t ot)']]],
   ['america_6',['America',['../dc/d2b/namespaceCKSDK_1_1CD.html#aabe89ede4a564e2e9533eff996fbb41fa088f003833d523d9dccc529e929afdc7',1,'CKSDK::CD']]],
   ['analog_7',['analog',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#afdc89f379c77fb627466f9e8cd7a9e8d',1,'CKSDK::SPI::PadResponse']]],
   ['analog_8',['Analog',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a8fadab7f8bbc7a54e79b3e6e858a0da9aa3002b111f6b8eac54284351e975c857',1,'CKSDK::SPI']]],
   ['analogstick_9',['AnalogStick',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a8fadab7f8bbc7a54e79b3e6e858a0da9ac47ea704112991c4b943f0d4ec85f4e3',1,'CKSDK::SPI']]],
-  ['autopause_10',['AutoPause',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0b496e9e5f753107893cc47c07e91954ac73a0eb9a60b2f2db8662c34e708fad6',1,'CKSDK::CD']]],
-  ['aux_11',['AUX',['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828ad22b2d6890a5e46ef1adfd9a5b631097',1,'CKSDK::OS']]]
+  ['at_10',['At',['../d7/d98/classCKSDK_1_1Vector.html#ab285c4bb34b6ee926a12be160f7c8b6a',1,'CKSDK::Vector::At(int index)'],['../d7/d98/classCKSDK_1_1Vector.html#a368372e450253d1383429e5f23229def',1,'CKSDK::Vector::At(int index) const']]],
+  ['autopause_11',['AutoPause',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0b496e9e5f753107893cc47c07e91954ac73a0eb9a60b2f2db8662c34e708fad6',1,'CKSDK::CD']]],
+  ['aux_12',['AUX',['../db/d79/namespaceCKSDK_1_1OS.html#a62fea3a9299f4f6702fdfe79364df828ad22b2d6890a5e46ef1adfd9a5b631097',1,'CKSDK::OS']]]
 ];
