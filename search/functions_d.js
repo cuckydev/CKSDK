@@ -1,14 +1,10 @@
 var searchData=
 [
-  ['ramsizecfg_758',['RamSizeCfg',['../db/d79/namespaceCKSDK_1_1OS.html#a8445758970bcb75903b651b924e83461',1,'CKSDK::OS']]],
-  ['raw_759',['Raw',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#aec846b25fcc41f60a8cc6ea31b86d054',1,'CKSDK::Fixed::Fixed::Raw(T _x)'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a70e618fc37236d302194e83c1db7a680',1,'CKSDK::Fixed::Fixed::Raw() const']]],
-  ['rbegin_760',['rbegin',['../d7/d98/classCKSDK_1_1Vector.html#a9d186c3d7e9ea65f62ee37ca7d2a62b8',1,'CKSDK::Vector::rbegin()'],['../d7/d98/classCKSDK_1_1Vector.html#aaf81dcd12d0b671c8d638e40b820136b',1,'CKSDK::Vector::rbegin() const']]],
-  ['readsectors_761',['ReadSectors',['../dc/d2b/namespaceCKSDK_1_1CD.html#a5232675ab39b3dcc6362b2e66bb35fe2',1,'CKSDK::CD::ReadSectors(ReadCallback cb, void *addr, const CD::File &amp;file, uint8_t mode)'],['../dc/d2b/namespaceCKSDK_1_1CD.html#ae154ed014a4e83459ea904572b3d89fa',1,'CKSDK::CD::ReadSectors(ReadCallback cb, void *addr, const CD::Loc &amp;loc, size_t sectors, uint8_t mode)']]],
-  ['readsync_762',['ReadSync',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0bf3bf756dd84b462c8d6c649ceffef7',1,'CKSDK::CD']]],
-  ['realloc_763',['Realloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#ac0fc355097a3c28f26eb07104f151e80',1,'CKSDK::Mem']]],
-  ['rend_764',['rend',['../d7/d98/classCKSDK_1_1Vector.html#a88ffb927f6406d544bc16099f4b26507',1,'CKSDK::Vector::rend() const'],['../d7/d98/classCKSDK_1_1Vector.html#aaabfd1a8a95b7e45e97e79b80313c52c',1,'CKSDK::Vector::rend()']]],
-  ['reserve_765',['Reserve',['../d7/d98/classCKSDK_1_1Vector.html#ac1fcd5c9ed6e31b304853dafb6ffc61f',1,'CKSDK::Vector']]],
-  ['reset_766',['Reset',['../d7/d7a/classCKSDK_1_1Queue_1_1Queue.html#af6c1386e09a4763f3bef5a11074ffef8',1,'CKSDK::Queue::Queue::Reset()'],['../db/da0/structCKSDK_1_1SPI_1_1Pad.html#a3f5d04e723061410f8d4addcb9b2db28',1,'CKSDK::SPI::Pad::Reset()'],['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a824ec0e948876a9502b740456a8ce9de',1,'CKSDK::SPI::PadResponse::Reset()']]],
-  ['resize_767',['Resize',['../d7/d98/classCKSDK_1_1Vector.html#aa8dac73b74ea8aa77009d30f7bacf117',1,'CKSDK::Vector::Resize(size_t count)'],['../d7/d98/classCKSDK_1_1Vector.html#a4c4e18cb41521bf74e3369cbcc05b882',1,'CKSDK::Vector::Resize(size_t count, const T &amp;value)']]],
-  ['round_768',['Round',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#ac8799c2db9281330519add15505458e9',1,'CKSDK::Fixed::Fixed']]]
+  ['ramsizecfg_711',['RamSizeCfg',['../db/d79/namespaceCKSDK_1_1OS.html#a8445758970bcb75903b651b924e83461',1,'CKSDK::OS']]],
+  ['raw_712',['Raw',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a70e618fc37236d302194e83c1db7a680',1,'CKSDK::Fixed::Fixed::Raw() const'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#aec846b25fcc41f60a8cc6ea31b86d054',1,'CKSDK::Fixed::Fixed::Raw(T _x)']]],
+  ['readsectors_713',['ReadSectors',['../dc/d2b/namespaceCKSDK_1_1CD.html#ae154ed014a4e83459ea904572b3d89fa',1,'CKSDK::CD::ReadSectors(ReadCallback cb, void *addr, const CD::Loc &amp;loc, size_t sectors, uint8_t mode)'],['../dc/d2b/namespaceCKSDK_1_1CD.html#a5232675ab39b3dcc6362b2e66bb35fe2',1,'CKSDK::CD::ReadSectors(ReadCallback cb, void *addr, const CD::File &amp;file, uint8_t mode)']]],
+  ['readsync_714',['ReadSync',['../dc/d2b/namespaceCKSDK_1_1CD.html#a0bf3bf756dd84b462c8d6c649ceffef7',1,'CKSDK::CD']]],
+  ['realloc_715',['Realloc',['../db/dd5/namespaceCKSDK_1_1Mem.html#ac0fc355097a3c28f26eb07104f151e80',1,'CKSDK::Mem']]],
+  ['reset_716',['Reset',['../dc/dd8/structCKSDK_1_1SPI_1_1PadResponse.html#a824ec0e948876a9502b740456a8ce9de',1,'CKSDK::SPI::PadResponse::Reset()'],['../db/da0/structCKSDK_1_1SPI_1_1Pad.html#a3f5d04e723061410f8d4addcb9b2db28',1,'CKSDK::SPI::Pad::Reset()'],['../d7/d7a/classCKSDK_1_1Queue_1_1Queue.html#af6c1386e09a4763f3bef5a11074ffef8',1,'CKSDK::Queue::Queue::Reset()']]],
+  ['round_717',['Round',['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#ac8799c2db9281330519add15505458e9',1,'CKSDK::Fixed::Fixed']]]
 ];

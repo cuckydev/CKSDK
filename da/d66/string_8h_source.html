@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CKSDK: Vector.h File Reference</title>
+<title>CKSDK: string.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -61,43 +61,26 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="../../dir_8221254afbc6e69ae3bf8539c823958d.html">CKSDK</a></li><li class="navelem"><a class="el" href="../../dir_4ff5104d1587f8d3e912c27a88b8edbf.html">Util</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">Vector.h File Reference</div>  </div>
+<div class="title">string.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><a class="el" href="../../d8/dce/namespaceCKSDK.html" title="CKSDK namespace.">CKSDK</a> vector container.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d1/d5a/CKSDK_8h_source.html">CKSDK/CKSDK.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../de/d56/Mem_8h_source.html">CKSDK/Mem.h</a>&gt;</code><br />
-<code>#include &lt;iterator&gt;</code><br />
-<code>#include &lt;type_traits&gt;</code><br />
-<code>#include &lt;initializer_list&gt;</code><br />
-</div>
-<p><a href="../../d6/dbe/Vector_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d98/classCKSDK_1_1Vector.html">CKSDK::Vector&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d98/classCKSDK_1_1Vector.html" title="Vector container.">Vector</a> container.  <a href="../../d7/d98/classCKSDK_1_1Vector.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:d8/dce/namespaceCKSDK"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dce/namespaceCKSDK.html">CKSDK</a></td></tr>
-<tr class="memdesc:d8/dce/namespaceCKSDK"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/dce/namespaceCKSDK.html" title="CKSDK namespace.">CKSDK</a> namespace. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="../../d8/dce/namespaceCKSDK.html" title="CKSDK namespace.">CKSDK</a> vector container. </p>
-</div></div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">void</span> *memset(<span class="keywordtype">void</span> *dest, <span class="keywordtype">int</span> c, <span class="keywordtype">size_t</span> n);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">void</span> *memcpy(<span class="keywordtype">void</span> *dest, <span class="keyword">const</span> <span class="keywordtype">void</span> *src, <span class="keywordtype">size_t</span> n);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">void</span> *memmove(<span class="keywordtype">void</span> *dest, <span class="keyword">const</span> <span class="keywordtype">void</span> *src, <span class="keywordtype">size_t</span> n);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> memcmp(<span class="keyword">const</span> <span class="keywordtype">void</span> *s1, <span class="keyword">const</span> <span class="keywordtype">void</span> *s2, <span class="keywordtype">size_t</span> n);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">void</span> *memchr(<span class="keyword">const</span> <span class="keywordtype">void</span> *s, <span class="keywordtype">int</span> c, <span class="keywordtype">size_t</span> n);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
