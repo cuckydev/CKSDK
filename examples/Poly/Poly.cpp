@@ -24,9 +24,6 @@ static constexpr unsigned g_height = 240;
 
 extern "C" void main()
 {
-	// Initialize CKSDK
-	CKSDK::Init();
-	
 	// Initialize GPU buffer and screen
 	static CKSDK::GPU::Word buffer[0x200];
 	CKSDK::GPU::SetBuffer(buffer, std::size(buffer), 1);
