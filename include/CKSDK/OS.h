@@ -307,6 +307,12 @@ namespace CKSDK
 		/// @brief DUART data port
 		inline constexpr volatile uint8_t &DuartHra() { return MMIO<uint8_t>(0x2023); }
 
+		// PIO
+		/// @brief PIO data port
+		inline constexpr volatile uint8_t &PioData() { return *((volatile uint8_t *)0xBF060004); }
+		/// @brief PIO status port
+		inline constexpr volatile uint8_t &PioStatus() { return *((volatile uint8_t *)0xBF060005); }
+
 		// Clocks
 		/// @brief CPU clock rate
 		static constexpr uint32_t CpuHz = 33868800UL;

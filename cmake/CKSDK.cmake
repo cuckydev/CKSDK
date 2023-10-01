@@ -209,6 +209,9 @@ function(cksdk_executable name target_exe target_map)
 		"${INC_DIR}/DLL.h"
 		"${INC_DIR}/ELF.h"
 
+		# PIO
+		"${INC_DIR}/PIO.h"
+
 		# Util
 		"${INC_DIR}/Util/Fixed.h"
 		"${INC_DIR}/Util/Queue.h"
