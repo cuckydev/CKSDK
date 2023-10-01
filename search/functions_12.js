@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['x_773',['X',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a661766470f82cd38fd2f32f62f0dc3e8',1,'CKSDK::GPU::DrawModePrim']]],
-  ['xflip_774',['XFlip',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a4c5110ac205a1e88603efe12b0604650',1,'CKSDK::GPU::DrawModePrim']]]
+  ['waitcycles_789',['WaitCycles',['../db/d79/namespaceCKSDK_1_1OS.html#af73d5b5380a3745f81791a2a6d4de221',1,'CKSDK::OS']]],
+  ['words_790',['Words',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a2a6a591f6151ae4fa7a91f28d0af4818',1,'CKSDK::GPU::Tag']]],
+  ['write_791',['Write',['../dd/d39/namespaceCKSDK_1_1PIO.html#a6b97d1ad6008651842bc3cbb5d581825',1,'CKSDK::PIO']]]
 ];

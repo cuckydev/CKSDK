@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['playtrack_705',['PlayTrack',['../dc/d2b/namespaceCKSDK_1_1CD.html#ad9e5044690555ecad65169a67926b732',1,'CKSDK::CD']]],
-  ['pollpads_706',['PollPads',['../d5/d0b/namespaceCKSDK_1_1SPI.html#a7e250bd62ffeb2affc2f8b8b9f0c9b93',1,'CKSDK::SPI']]],
-  ['profile_707',['Profile',['../db/dd5/namespaceCKSDK_1_1Mem.html#ab21f3ddff335f5dc09df1d756b1e805e',1,'CKSDK::Mem']]],
-  ['ptr_708',['Ptr',['../d4/df5/structCKSDK_1_1GPU_1_1Tag.html#a20e51e729d41512fcd424c6d1f511d13',1,'CKSDK::GPU::Tag']]]
+  ['operator_3d_717',['operator=',['../d3/df4/structCKSDK_1_1CD_1_1BCD.html#a1a42dc44169aaeea151845916c846905',1,'CKSDK::CD::BCD::operator=()'],['../d4/d8d/unionCKSDK_1_1GPU_1_1Color.html#adc9aee9f353e04210d477bd01eb8af3e',1,'CKSDK::GPU::Color::operator=()'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#a8bbe9e4e6d03aab164849d916f905dbe',1,'CKSDK::Fixed::Fixed::operator=(Fixed&lt; T2, FRAC2 &gt; const &amp;rhs)'],['../de/dc0/classCKSDK_1_1Fixed_1_1Fixed.html#adf9972b9afe42fd869fac0a46a4e27d5',1,'CKSDK::Fixed::Fixed::operator=(U _x)']]],
+  ['out_718',['Out',['../da/d8f/namespaceCKSDK_1_1TTY.html#a6ddb44df474c962985394912db732478',1,'CKSDK::TTY']]],
+  ['outhex_719',['OutHex',['../da/d8f/namespaceCKSDK_1_1TTY.html#a8a14987a7a1f6a7a0bee60ce1ab4d4f6',1,'CKSDK::TTY::OutHex(uint32_t x)'],['../da/d8f/namespaceCKSDK_1_1TTY.html#a9274dbc315fef49f845b553a41ee2e71',1,'CKSDK::TTY::OutHex(T x)']]]
 ];
