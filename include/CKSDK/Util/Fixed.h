@@ -33,7 +33,7 @@ namespace CKSDK
 	{
 		/// @cond INTERNAL
 		// Integer type extension for multiplication
-		template <typename T, bool DIV = false>
+		template <typename T>
 		struct extend_integral_type { using type = T; };
 
 		template <>
@@ -55,40 +55,32 @@ namespace CKSDK
 		struct extend_integral_type<unsigned int> { using type = unsigned long long; };
 
 		template <>
-		struct extend_integral_type<long, false> { using type = long long; };
-		template <>
-		struct extend_integral_type<long, true> { using type = long; };
+		struct extend_integral_type<long> { using type = long long; };
 
 		template <>
-		struct extend_integral_type<unsigned long, false> { using type = unsigned long long; };
-		template <>
-		struct extend_integral_type<unsigned long, true> { using type = unsigned long; };
+		struct extend_integral_type<unsigned long> { using type = unsigned long long; };
 
 		// No standard integral type larger than long long.
 		template <>
-		struct extend_integral_type<long long, false> { using type = long long; };
-		template <>
-		struct extend_integral_type<long long, true> { using type = long; };
+		struct extend_integral_type<long long> { using type = long long; };
 
 		template <>
-		struct extend_integral_type<unsigned long long, false> { using type = unsigned long long; };
-		template <>
-		struct extend_integral_type<unsigned long long, true> { using type = unsigned long; };
+		struct extend_integral_type<unsigned long long> { using type = unsigned long long; };
 
-		template <typename T, bool DIV = false>
-		using extend_integral_t = typename extend_integral_type<T, DIV>::type;
+		template <typename T>
+		using extend_integral_t = typename extend_integral_type<T>::type;
 
 		// Integer type extension for two types, pick the larger one while keeping signedness
-		template <typename T1, typename T2, bool DIV = false>
+		template <typename T1, typename T2>
 		struct extend_integral_2
 		{
 			using larger_type = std::conditional_t<(sizeof(T1) > sizeof(T2)), T1, T2>;
-			using ext_larger_type = extend_integral_t<larger_type, DIV>;
+			using ext_larger_type = extend_integral_t<larger_type>;
 			using type = std::conditional_t<std::is_signed_v<T1>, std::make_signed_t<ext_larger_type>, std::make_unsigned_t<ext_larger_type>>;
 		};
 
-		template <typename T1, typename T2, bool DIV = false>
-		using extend_integral_2_t = typename extend_integral_2<T1, T2, DIV>::type;
+		template <typename T1, typename T2>
+		using extend_integral_2_t = typename extend_integral_2<T1, T2>::type;
 		/// @endcond
 
 		// Fixed point types
@@ -337,7 +329,7 @@ namespace CKSDK
 				template <typename T2, int FRAC2>
 				constexpr Fixed<T, FRAC> &operator/=(const Fixed<T2, FRAC2> &_x)
 				{
-					this->x = ((extend_integral_2_t<T, T2, true>)this->x << FRAC2) / _x.x;
+					this->x = ((extend_integral_2_t<T, T2>)this->x << FRAC2) / _x.x;
 					return *this;
 				}
 				// Fixed / Fixed
