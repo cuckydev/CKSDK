@@ -37,4 +37,8 @@
 // Keep section
 /// @brief Keep section
 /// @details This is used to keep a function in the final binary. You should use this for any functions that are called from DLLs.
+#ifdef __INTELLISENSE__
+#define KEEP
+#else
 #define KEEP __attribute__((used))
+#endif

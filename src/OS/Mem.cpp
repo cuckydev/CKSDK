@@ -101,6 +101,8 @@ namespace CKSDK
 		
 		KEEP void *Alloc(size_t size)
 		{
+			OS::DisableIRQ();
+
 			// Align size
 			size = Align(size) + Align(sizeof(Block));
 
@@ -118,11 +120,13 @@ namespace CKSDK
 			prev->next = head;
 
 			// Return pointer
+			OS::EnableIRQ();
 			return (void*)((char*)head + Align(sizeof(Block)));
 		}
 
 		KEEP void *Realloc(void *ptr, size_t size)
 		{
+			OS::DisableIRQ();
 
 			// Get block
 			if (ptr == nullptr)
@@ -155,11 +159,14 @@ namespace CKSDK
 				head->next->prev = head;
 			newprev->next = head;
 
+			OS::EnableIRQ();
 			return (void*)((char*)head + Align(sizeof(Block)));
 		}
 
 		KEEP void Free(void *ptr)
 		{
+			OS::DisableIRQ();
+
 			// Get block
 			if (ptr == nullptr)
 				return;
@@ -168,10 +175,14 @@ namespace CKSDK
 			// Unlink block
 			if ((head->prev->next = head->next) != nullptr)
 				head->next->prev = head->prev;
+
+			OS::EnableIRQ();
 		}
 
 		KEEP void Profile(size_t *used, size_t *total, size_t *blocks)
 		{
+			OS::DisableIRQ();
+
 			if (used != nullptr)
 			{
 				size_t u = 0;
@@ -188,6 +199,8 @@ namespace CKSDK
 					b++;
 				*blocks = b;
 			}
+
+			OS::EnableIRQ();
 		}
 	}
 }
