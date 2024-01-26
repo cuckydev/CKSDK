@@ -104,7 +104,11 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// Keep section</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d1/d5a/CKSDK_8h.html#ac435df27bedf08b52a822c32d9dad510">   40</a></span>&#160;<span class="comment"></span><span class="preprocessor">#define KEEP __attribute__((used))</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"></span><span class="preprocessor">#ifdef __INTELLISENSE__</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define KEEP</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d1/d5a/CKSDK_8h.html#ac435df27bedf08b52a822c32d9dad510">   43</a></span>&#160;<span class="preprocessor">#define KEEP __attribute__((used))</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
