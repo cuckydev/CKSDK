@@ -80,6 +80,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a9ec408e4466bcc691102873c59d5a551"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html#a9ec408e4466bcc691102873c59d5a551">Init</a> ()</td></tr>
 <tr class="memdesc:a9ec408e4466bcc691102873c59d5a551"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a>.  <a href="../../d4/d35/namespaceCKSDK_1_1SPU.html#a9ec408e4466bcc691102873c59d5a551">More...</a><br /></td></tr>
 <tr class="separator:a9ec408e4466bcc691102873c59d5a551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75d3f453f817dc737e5180851abe835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html#ab75d3f453f817dc737e5180851abe835">DMA</a> (void *data, size_t length, uint16_t addr, bool write)</td></tr>
+<tr class="memdesc:ab75d3f453f817dc737e5180851abe835"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMA between <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> RAM and main RAM.  <a href="../../d4/d35/namespaceCKSDK_1_1SPU.html#ab75d3f453f817dc737e5180851abe835">More...</a><br /></td></tr>
+<tr class="separator:ab75d3f453f817dc737e5180851abe835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6711257803801499fa3edfa786026451"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html#a6711257803801499fa3edfa786026451">DMASync</a> ()</td></tr>
+<tr class="memdesc:a6711257803801499fa3edfa786026451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> dma to finish.  <a href="../../d4/d35/namespaceCKSDK_1_1SPU.html#a6711257803801499fa3edfa786026451">More...</a><br /></td></tr>
+<tr class="separator:a6711257803801499fa3edfa786026451"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d8/dce/namespaceCKSDK.html" title="CKSDK namespace.">CKSDK</a> <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> namespace. </p>
@@ -101,6 +107,76 @@ Functions</h2></td></tr>
 
 <p>Initialize <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a>. </p>
 <dl class="section note"><dt>Note</dt><dd>For internal use only </dd></dl>
+
+</div>
+</div>
+<a id="ab75d3f453f817dc737e5180851abe835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab75d3f453f817dc737e5180851abe835">&#9670;&nbsp;</a></span>DMA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CKSDK::SPU::DMA </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>write</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DMA between <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> RAM and main RAM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer in main RAM to DMA </td></tr>
+    <tr><td class="paramname">length</td><td>Length in bytes to DMA </td></tr>
+    <tr><td class="paramname">addr</td><td>Address in <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> RAM to DMA </td></tr>
+    <tr><td class="paramname">write</td><td><code>true</code> if DMAing from main RAM to <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> RAM, <code>false</code> if DMAing from <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> RAM to main RAM </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6711257803801499fa3edfa786026451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6711257803801499fa3edfa786026451">&#9670;&nbsp;</a></span>DMASync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CKSDK::SPU::DMASync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait for <a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> dma to finish. </p>
 
 </div>
 </div>

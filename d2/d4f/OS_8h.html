@@ -150,6 +150,34 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:aeca51feef485f5889a4f6d93690a9eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMA channels.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#aeca51feef485f5889a4f6d93690a9eab">More...</a><br /></td></tr>
 <tr class="separator:aeca51feef485f5889a4f6d93690a9eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab07aedb04e5599301487f90102b8753"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#aab07aedb04e5599301487f90102b8753">CKSDK::OS::BIU_BITS</a> : uint32_t { <br />
+&#160;&#160;<b>BIU_WriteDelayShift</b> = 0
+, <b>BIU_WriteDelay</b> = 15 &lt;&lt; BIU_WriteDelayShift
+, <b>BIU_ReadDelayShift</b> = 4
+, <b>BIU_ReadDelay</b> = 15 &lt;&lt; BIU_ReadDelayShift
+, <br />
+&#160;&#160;<b>BIU_Recovery</b> = 1 &lt;&lt; 8
+, <b>BIU_Hold</b> = 1 &lt;&lt; 9
+, <b>BIU_Float</b> = 1 &lt;&lt; 10
+, <b>BIU_PreStrobe</b> = 1 &lt;&lt; 11
+, <br />
+&#160;&#160;<b>BIU_Width8</b> = 0 &lt;&lt; 12
+, <b>BIU_Width16</b> = 1 &lt;&lt; 12
+, <b>BIU_AutoIncrement</b> = 1 &lt;&lt; 13
+, <b>BIU_SizeShift</b> = 16
+, <br />
+&#160;&#160;<b>BIU_Size</b> = 31 &lt;&lt; BIU_SizeShift
+, <b>BIU_DmaDelayShift</b> = 24
+, <b>BIU_DmaDelay</b> = 15 &lt;&lt; BIU_DmaDelayShift
+, <b>BIU_AddrError</b> = 1 &lt;&lt; 28
+, <br />
+&#160;&#160;<b>BIU_UseDmaDelay</b> = 1 &lt;&lt; 29
+, <b>BIU_Dma32</b> = 1 &lt;&lt; 30
+, <b>BIU_Wait</b> = 1U &lt;&lt; 31
+<br />
+ }</td></tr>
+<tr class="memdesc:aab07aedb04e5599301487f90102b8753"><td class="mdescLeft">&#160;</td><td class="mdescRight">BIU control bits.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#aab07aedb04e5599301487f90102b8753">More...</a><br /></td></tr>
+<tr class="separator:aab07aedb04e5599301487f90102b8753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -289,30 +317,30 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a8fb63d8a349328b6ecaf2e086d951bec"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a8fb63d8a349328b6ecaf2e086d951bec">CKSDK::OS::Exp2Addr</a> ()</td></tr>
 <tr class="memdesc:a8fb63d8a349328b6ecaf2e086d951bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXP3 address port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a8fb63d8a349328b6ecaf2e086d951bec">More...</a><br /></td></tr>
 <tr class="separator:a8fb63d8a349328b6ecaf2e086d951bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4be10fb9de938261d9707c673c87bd53"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a4be10fb9de938261d9707c673c87bd53">CKSDK::OS::Exp1DelaySize</a> ()</td></tr>
-<tr class="memdesc:a4be10fb9de938261d9707c673c87bd53"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXP1 delay size port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a4be10fb9de938261d9707c673c87bd53">More...</a><br /></td></tr>
-<tr class="separator:a4be10fb9de938261d9707c673c87bd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae788f79917913ca577f19344908aa4cc"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#ae788f79917913ca577f19344908aa4cc">CKSDK::OS::Exp3DelaySize</a> ()</td></tr>
-<tr class="memdesc:ae788f79917913ca577f19344908aa4cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXP3 delay size port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#ae788f79917913ca577f19344908aa4cc">More...</a><br /></td></tr>
-<tr class="separator:ae788f79917913ca577f19344908aa4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a9e165c45b55404dd444357dcdf1511"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a5a9e165c45b55404dd444357dcdf1511">CKSDK::OS::BiosDelaySize</a> ()</td></tr>
-<tr class="memdesc:a5a9e165c45b55404dd444357dcdf1511"><td class="mdescLeft">&#160;</td><td class="mdescRight">BIOS delay size port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a5a9e165c45b55404dd444357dcdf1511">More...</a><br /></td></tr>
-<tr class="separator:a5a9e165c45b55404dd444357dcdf1511"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00cc4e7efa945f3f1db6624fc9de2e73"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a00cc4e7efa945f3f1db6624fc9de2e73">CKSDK::OS::SpuDelaySize</a> ()</td></tr>
-<tr class="memdesc:a00cc4e7efa945f3f1db6624fc9de2e73"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> delay size port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a00cc4e7efa945f3f1db6624fc9de2e73">More...</a><br /></td></tr>
-<tr class="separator:a00cc4e7efa945f3f1db6624fc9de2e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ed6abb5f930d097faf2a5edab90c25c"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a3ed6abb5f930d097faf2a5edab90c25c">CKSDK::OS::CdDelaySize</a> ()</td></tr>
-<tr class="memdesc:a3ed6abb5f930d097faf2a5edab90c25c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html" title="CKSDK CD namespace.">CD</a> delay size port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a3ed6abb5f930d097faf2a5edab90c25c">More...</a><br /></td></tr>
-<tr class="separator:a3ed6abb5f930d097faf2a5edab90c25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb60b8e376cba672bb06f393945d7447"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#adb60b8e376cba672bb06f393945d7447">CKSDK::OS::Exp2DelaySize</a> ()</td></tr>
-<tr class="memdesc:adb60b8e376cba672bb06f393945d7447"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXP2 delay size port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#adb60b8e376cba672bb06f393945d7447">More...</a><br /></td></tr>
-<tr class="separator:adb60b8e376cba672bb06f393945d7447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf892bab51183600c24961eff42ba902"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#abf892bab51183600c24961eff42ba902">CKSDK::OS::ComDelayCfg</a> ()</td></tr>
-<tr class="memdesc:abf892bab51183600c24961eff42ba902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common delay configuration port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#abf892bab51183600c24961eff42ba902">More...</a><br /></td></tr>
-<tr class="separator:abf892bab51183600c24961eff42ba902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8445758970bcb75903b651b924e83461"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a8445758970bcb75903b651b924e83461">CKSDK::OS::RamSizeCfg</a> ()</td></tr>
-<tr class="memdesc:a8445758970bcb75903b651b924e83461"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAM size configuration port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a8445758970bcb75903b651b924e83461">More...</a><br /></td></tr>
-<tr class="separator:a8445758970bcb75903b651b924e83461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eda7c8db2acdc979ea1752bf67f7c21"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a8eda7c8db2acdc979ea1752bf67f7c21">CKSDK::OS::Exp1BIU</a> ()</td></tr>
+<tr class="memdesc:a8eda7c8db2acdc979ea1752bf67f7c21"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXP1 BIU control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a8eda7c8db2acdc979ea1752bf67f7c21">More...</a><br /></td></tr>
+<tr class="separator:a8eda7c8db2acdc979ea1752bf67f7c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0d4daa7218dd8ce4222247b6c0b741a"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#ae0d4daa7218dd8ce4222247b6c0b741a">CKSDK::OS::Exp3BIU</a> ()</td></tr>
+<tr class="memdesc:ae0d4daa7218dd8ce4222247b6c0b741a"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXP3 BIU control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#ae0d4daa7218dd8ce4222247b6c0b741a">More...</a><br /></td></tr>
+<tr class="separator:ae0d4daa7218dd8ce4222247b6c0b741a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47aaea55a5ef5f184d4f6c50b2dcf629"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a47aaea55a5ef5f184d4f6c50b2dcf629">CKSDK::OS::BiosBIU</a> ()</td></tr>
+<tr class="memdesc:a47aaea55a5ef5f184d4f6c50b2dcf629"><td class="mdescLeft">&#160;</td><td class="mdescRight">BIOS BIU control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a47aaea55a5ef5f184d4f6c50b2dcf629">More...</a><br /></td></tr>
+<tr class="separator:a47aaea55a5ef5f184d4f6c50b2dcf629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0763244de6cc23f421a67d9f4fbc382"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#aa0763244de6cc23f421a67d9f4fbc382">CKSDK::OS::SpuBIU</a> ()</td></tr>
+<tr class="memdesc:aa0763244de6cc23f421a67d9f4fbc382"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d35/namespaceCKSDK_1_1SPU.html" title="CKSDK SPU namespace.">SPU</a> BIU control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#aa0763244de6cc23f421a67d9f4fbc382">More...</a><br /></td></tr>
+<tr class="separator:aa0763244de6cc23f421a67d9f4fbc382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2598a2b58787d643ad8deed705275c1f"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a2598a2b58787d643ad8deed705275c1f">CKSDK::OS::CdBIU</a> ()</td></tr>
+<tr class="memdesc:a2598a2b58787d643ad8deed705275c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d2b/namespaceCKSDK_1_1CD.html" title="CKSDK CD namespace.">CD</a> BIU control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a2598a2b58787d643ad8deed705275c1f">More...</a><br /></td></tr>
+<tr class="separator:a2598a2b58787d643ad8deed705275c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93672f37266830a6364a2f4115dc76af"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a93672f37266830a6364a2f4115dc76af">CKSDK::OS::Exp2BIU</a> ()</td></tr>
+<tr class="memdesc:a93672f37266830a6364a2f4115dc76af"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXP2 BIU control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a93672f37266830a6364a2f4115dc76af">More...</a><br /></td></tr>
+<tr class="separator:a93672f37266830a6364a2f4115dc76af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6646ed1afcf9f1c3b23918196f4db8b2"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a6646ed1afcf9f1c3b23918196f4db8b2">CKSDK::OS::ComDelay</a> ()</td></tr>
+<tr class="memdesc:a6646ed1afcf9f1c3b23918196f4db8b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common delay control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a6646ed1afcf9f1c3b23918196f4db8b2">More...</a><br /></td></tr>
+<tr class="separator:a6646ed1afcf9f1c3b23918196f4db8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be05722a719f3cf553023778806d23e"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint32_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a6be05722a719f3cf553023778806d23e">CKSDK::OS::RamSize</a> ()</td></tr>
+<tr class="memdesc:a6be05722a719f3cf553023778806d23e"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAM size control port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a6be05722a719f3cf553023778806d23e">More...</a><br /></td></tr>
+<tr class="separator:a6be05722a719f3cf553023778806d23e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4995ddf85eae43f566beb5d77510f6a6"><td class="memItemLeft" align="right" valign="top">constexpr volatile uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d79/namespaceCKSDK_1_1OS.html#a4995ddf85eae43f566beb5d77510f6a6">CKSDK::OS::DuartMode</a> ()</td></tr>
 <tr class="memdesc:a4995ddf85eae43f566beb5d77510f6a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">DUART mode port.  <a href="../../db/d79/namespaceCKSDK_1_1OS.html#a4995ddf85eae43f566beb5d77510f6a6">More...</a><br /></td></tr>
 <tr class="separator:a4995ddf85eae43f566beb5d77510f6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
