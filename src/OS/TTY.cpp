@@ -29,7 +29,13 @@ namespace CKSDK
 		KEEP void Init()
 		{
 			// Initialize TTY on EXP2
-			OS::Exp2DelaySize() = 0x70777;
+			OS::Exp2BIU() = 0
+				| (7 << OS::BIU_WriteDelayShift)
+				| (7 << OS::BIU_ReadDelayShift)
+				| OS::BIU_Recovery
+				| OS::BIU_Hold
+				| OS::BIU_Float
+				| (7 << OS::BIU_SizeShift);
 		}
 
 		KEEP void Out(const char *str)

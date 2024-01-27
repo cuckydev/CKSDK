@@ -130,14 +130,15 @@ namespace CKSDK
 			uint16_t addr;
 			/// @brief Voice ADSR
 			uint32_t adsr;
+
+			uint16_t pad;
 			/// @brief Voice loop address
 			uint16_t loop_addr;
-			uint16_t pad;
 		};
 		static_assert(sizeof(SPU_VOICE_CTRL) == 16);
 		
 		/// @brief SPU voice control ports (0-23)
-		inline constexpr volatile SPU_VOICE_CTRL &SpuVoiceCtrl(int i) { return (&MMIO<SPU_VOICE_CTRL>(0x1D80))[i]; }
+		inline constexpr volatile SPU_VOICE_CTRL &SpuVoiceCtrl(int i) { return (&MMIO<SPU_VOICE_CTRL>(0x1C00))[i]; }
 
 		// MDEC
 		/// @brief MDEC0 control port
@@ -279,23 +280,52 @@ namespace CKSDK
 		/// @brief EXP3 address port
 		inline constexpr volatile uint32_t &Exp2Addr() { return MMIO<uint32_t>(0x1004); }
 
-		/// @brief EXP1 delay size port
-		inline constexpr volatile uint32_t &Exp1DelaySize() { return MMIO<uint32_t>(0x1008); }
-		/// @brief EXP3 delay size port
-		inline constexpr volatile uint32_t &Exp3DelaySize() { return MMIO<uint32_t>(0x100C); }
-		/// @brief BIOS delay size port
-		inline constexpr volatile uint32_t &BiosDelaySize() { return MMIO<uint32_t>(0x1010); }
-		/// @brief SPU delay size port
-		inline constexpr volatile uint32_t &SpuDelaySize() { return MMIO<uint32_t>(0x1014); }
-		/// @brief CD delay size port
-		inline constexpr volatile uint32_t &CdDelaySize() { return MMIO<uint32_t>(0x1018); }
-		/// @brief EXP2 delay size port
-		inline constexpr volatile uint32_t &Exp2DelaySize() { return MMIO<uint32_t>(0x101C); }
+		/// @brief BIU control bits
+		enum BIU_BITS : uint32_t
+		{
+			BIU_WriteDelayShift = 0,
+			BIU_WriteDelay = 15 << BIU_WriteDelayShift,
 
-		/// @brief Common delay configuration port
-		inline constexpr volatile uint32_t &ComDelayCfg() { return MMIO<uint32_t>(0x1020); }
-		/// @brief RAM size configuration port
-		inline constexpr volatile uint32_t &RamSizeCfg() { return MMIO<uint32_t>(0x1060); }
+			BIU_ReadDelayShift = 4,
+			BIU_ReadDelay = 15 << BIU_ReadDelayShift,
+
+			BIU_Recovery = 1 << 8,
+			BIU_Hold = 1 << 9,
+			BIU_Float = 1 << 10,
+			BIU_PreStrobe = 1 << 11,
+			BIU_Width8 = 0 << 12,
+			BIU_Width16 = 1 << 12,
+			BIU_AutoIncrement = 1 << 13,
+
+			BIU_SizeShift = 16,
+			BIU_Size = 31 << BIU_SizeShift,
+
+			BIU_DmaDelayShift = 24,
+			BIU_DmaDelay = 15 << BIU_DmaDelayShift,
+
+			BIU_AddrError = 1 << 28,
+			BIU_UseDmaDelay = 1 << 29,
+			BIU_Dma32 = 1 << 30,
+			BIU_Wait = 1U << 31
+		};
+
+		/// @brief EXP1 BIU control port
+		inline constexpr volatile uint32_t &Exp1BIU() { return MMIO<uint32_t>(0x1008); }
+		/// @brief EXP3 BIU control port
+		inline constexpr volatile uint32_t &Exp3BIU() { return MMIO<uint32_t>(0x100C); }
+		/// @brief BIOS BIU control port
+		inline constexpr volatile uint32_t &BiosBIU() { return MMIO<uint32_t>(0x1010); }
+		/// @brief SPU BIU control port
+		inline constexpr volatile uint32_t &SpuBIU() { return MMIO<uint32_t>(0x1014); }
+		/// @brief CD BIU control port
+		inline constexpr volatile uint32_t &CdBIU() { return MMIO<uint32_t>(0x1018); }
+		/// @brief EXP2 BIU control port
+		inline constexpr volatile uint32_t &Exp2BIU() { return MMIO<uint32_t>(0x101C); }
+
+		/// @brief Common delay control port
+		inline constexpr volatile uint32_t &ComDelay() { return MMIO<uint32_t>(0x1020); }
+		/// @brief RAM size control port
+		inline constexpr volatile uint32_t &RamSize() { return MMIO<uint32_t>(0x1060); }
 
 		// DUART
 		/// @brief DUART mode port

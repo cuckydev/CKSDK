@@ -34,5 +34,14 @@ namespace CKSDK
 		/// @brief Initialize SPU
 		/// @note For internal use only
 		void Init();
+
+		/// @brief DMA between SPU RAM and main RAM
+		/// @param data Pointer in main RAM to DMA
+		/// @param length Length in bytes to DMA
+		/// @param addr Address in SPU RAM to DMA
+		/// @param write `true` if DMAing from main RAM to SPU RAM, `false` if DMAing from SPU RAM to main RAM
+		void DMA(void *data, size_t length, uint16_t addr, bool write);
+		/// @brief Wait for SPU dma to finish
+		void DMASync();
 	}
 }

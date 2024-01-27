@@ -362,8 +362,12 @@ namespace CKSDK
 			OS::EnableIRQ();
 
 			// Setup CD
-			OS::CdDelaySize() = 0x00020943;
-			OS::ComDelayCfg() = 0x1325;
+			OS::CdBIU() = 0
+				| (3 << OS::BIU_WriteDelayShift)
+				| (4 << OS::BIU_ReadDelayShift)
+				| OS::BIU_Recovery
+				| OS::BIU_PreStrobe
+				| (2 << OS::BIU_SizeShift);
 
 			OS::CdStat() = 0x01;
 			OS::CdIrq() = 0x1F; // Acknowledge all IRQs

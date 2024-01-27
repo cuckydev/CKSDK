@@ -39,9 +39,6 @@ namespace CKSDK
 		static InterruptCallback dma_callbacks[8] = {};
 		static uint32_t dma_callbacks_count = 0;
 
-		static void **bios_a0_tbl = (void**)0x80000200;
-		static void (*bios_FlushICache)();
-
 		// ISR callback
 		extern "C" Thread *CKSDK_OS_ISR_Callback(Thread *fp)
 		{
@@ -115,6 +112,13 @@ namespace CKSDK
 		// OS functions
 		KEEP void Init()
 		{
+			// Setup common delay
+			OS::ComDelay() = 0
+				| (5 << 0)   // COM0 - Recovery period cycles
+				| (2 << 4)   // COM1 - Hold period cycles
+				| (3 << 8)   // COM2 - Floating release cycles
+				| (1 << 12); // COM3 - Strobe active-going edge delay
+
 			// Reset interrupt controller
 			DisableIRQ_SR();
 			OS::IrqMask() = 0;
@@ -124,9 +128,6 @@ namespace CKSDK
 			OS::DmaDpcr() &= ~0x0888888;
 			OS::DmaDicr() = 0;
 			
-			// Recall OS functions
-			bios_FlushICache = (void(*)())bios_a0_tbl[0x44];
-
 			// Install ISR
 			uint32_t *ip = (uint32_t*)0x80000080;
 
@@ -135,8 +136,8 @@ namespace CKSDK
 			// nop
 			ip[1] = 0;
 
-			// Flush I-cache
-			bios_FlushICache();
+			// Flush cache as we just modified executable RAM
+			FlushICache();
 
 			// Enable ISR
 			EnableIRQ_SR();
@@ -207,7 +208,7 @@ namespace CKSDK
 		
 		KEEP void FlushICache()
 		{
-			bios_FlushICache();
+			((void(*)())(*((uint32_t *)0x80000000)))();
 		}
 	}
 }
