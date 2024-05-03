@@ -34,3 +34,4 @@ add_executable(MkExe
 )
 target_link_libraries(MkExe PUBLIC lz4)
 target_include_directories(MkExe PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/Include")
+add_dependencies(MkExe Ohmygodcompileit)
