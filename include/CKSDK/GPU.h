@@ -357,7 +357,7 @@ namespace CKSDK
 			
 			/// @brief Returns the clut
 			/// @return Clut
-			Clut &clut() { return *((Clut*)(&this->v1.uv.s.x)); }
+			Clut &clut() { return *((Clut*)(&this->v0.uv.s.x)); }
 			/// @brief Returns the clut
 			/// @return Clut
 			/// @overload
@@ -365,7 +365,7 @@ namespace CKSDK
 
 			/// @brief Returns the texture page
 			/// @return TexPage
-			TexPage &tpage() { return *((TexPage*)(&this->v2.uv.s.x)); }
+			TexPage &tpage() { return *((TexPage*)(&this->v1.uv.s.x)); }
 			/// @brief Returns the texture page
 			/// @return TexPage
 			/// @overload
