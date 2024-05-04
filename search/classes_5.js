@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gp0_583',['GP0',['../dc/d0d/structCKSDK_1_1GPU_1_1Buffer_1_1GP0.html',1,'CKSDK::GPU::Buffer']]]
+  ['loc_598',['Loc',['../df/d17/structCKSDK_1_1CD_1_1Loc.html',1,'CKSDK::CD']]]
 ];

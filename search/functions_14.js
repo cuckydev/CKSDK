@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y_798',['Y',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#ac970bd27b4b0e44277aa86b299430d3c',1,'CKSDK::GPU::DrawModePrim']]],
-  ['yflip_799',['YFlip',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a4a23b1f9cc575ce7b13f8028b1fe7b89',1,'CKSDK::GPU::DrawModePrim']]]
+  ['_7edll_819',['~DLL',['../df/d1c/classCKSDK_1_1DLL_1_1DLL.html#aeef68885c3a9d603ce472b9525bb3453',1,'CKSDK::DLL::DLL']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vblankcallback_907',['VBlankCallback',['../d8/d2a/namespaceCKSDK_1_1GPU.html#ad3f63b2a4cfcdf164fe8d6cdf5098f13',1,'CKSDK::GPU']]]
+  ['vblankcallback_927',['VBlankCallback',['../d8/d38/group__GpuCallbacks.html#gad3f63b2a4cfcdf164fe8d6cdf5098f13',1,'CKSDK::GPU']]]
 ];

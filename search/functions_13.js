@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['x_796',['X',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a661766470f82cd38fd2f32f62f0dc3e8',1,'CKSDK::GPU::DrawModePrim']]],
-  ['xflip_797',['XFlip',['../d5/d40/structCKSDK_1_1GPU_1_1DrawModePrim.html#a4c5110ac205a1e88603efe12b0604650',1,'CKSDK::GPU::DrawModePrim']]]
+  ['y_817',['Y',['../d3/d68/structCKSDK_1_1GPU_1_1DrawMode.html#ae52407ec57c8cc7acbb579ef5ba3f70d',1,'CKSDK::GPU::DrawMode']]],
+  ['yflip_818',['YFlip',['../d3/d68/structCKSDK_1_1GPU_1_1DrawMode.html#a3a430da3975667015ba78ec2015a88c1',1,'CKSDK::GPU::DrawMode']]]
 ];
