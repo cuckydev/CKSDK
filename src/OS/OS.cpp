@@ -39,6 +39,8 @@ namespace CKSDK
 		static InterruptCallback dma_callbacks[8] = {};
 		static uint32_t dma_callbacks_count = 0;
 
+		static void (*FlushCache_copy)();
+
 		// ISR callback
 		extern "C" Thread *CKSDK_OS_ISR_Callback(Thread *fp)
 		{
@@ -137,6 +139,7 @@ namespace CKSDK
 			ip[1] = 0;
 
 			// Flush cache as we just modified executable RAM
+			FlushCache_copy = ((void(*)())(*((uint32_t *)0x80000000)));
 			FlushICache();
 
 			// Enable ISR
@@ -208,7 +211,7 @@ namespace CKSDK
 		
 		KEEP void FlushICache()
 		{
-			((void(*)())(*((uint32_t *)0x80000000)))();
+			FlushCache_copy();
 		}
 	}
 }

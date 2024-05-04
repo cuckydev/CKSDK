@@ -36,6 +36,11 @@ namespace CKSDK
 		/// @brief Set to `true` if the GPU is PAL
 		extern bool g_pal;
 
+		/**
+		* \defgroup GpuData GPU command data
+		* This topic contains all GPU data structures
+		* @{
+		**/
 		// GPU types
 		/// @brief GPU word
 		typedef uint32_t Word;
@@ -373,8 +378,23 @@ namespace CKSDK
 		};
 
 		// GP0_Rect
+		/// @brief Rectangle sizes
+		enum class GP0_RectSize
+		{
+			/// @brief Rectangle contains its own size
+			Variable = 0,
+			/// @brief Rectangle is 1x1
+			Fixed1x1 = 1,
+			/// @brief Rectangle is 8x8
+			Fixed8x8 = 2,
+			/// @brief Rectangle is 16x16
+			Fixed16x16 = 3,
+		};
+
 		enum GP0_RectCmds
 		{
+			/// @brief Rectangle contains its own size
+			GP0_Rect_Variable = (0 << 3),
 			/// @brief Rectangle is 1x1
 			GP0_Rect_1x1   = (1 << 3),
 			/// @brief Rectangle is 8x8
@@ -387,14 +407,6 @@ namespace CKSDK
 			GP0_Rect_Semi  = (1 << 1),
 			/// @brief Modulation is disabled
 			GP0_Rect_Raw   = (1 << 0),
-		};
-
-		enum class GP0_RectSize
-		{
-			Variable = 0,
-			Fixed1x1 = 1,
-			Fixed8x8 = 2,
-			Fixed16x16 = 3,
 		};
 
 		/// @cond INTERNAL
@@ -480,7 +492,7 @@ namespace CKSDK
 			GP0_DrawOffset = GP0_Env | 5,
 		};
 
-		/// @brief DrawMode is a struct which contains the draw mode register
+		/// @brief DrawMode word which contains the draw mode register
 		/// 
 		/// @param tpage Texture page index
 		/// @param semi Semi Transparency (see SemiMode)
@@ -488,12 +500,12 @@ namespace CKSDK
 		/// @param dither Dither 24bit to 15bit
 		/// @param draw_enable Drawing to display area
 		/// @param tex_disable Texture Disable
-		struct DrawModePrim
+		struct DrawMode
 		{
 			Word mode;
 
-			DrawModePrim() {}
-			DrawModePrim(Word tpage, Word semi, Word bpp, Word dither, Word draw_enable, Word tex_disable)
+			DrawMode() : mode(0) {}
+			DrawMode(Word tpage, Word semi, Word bpp, Word dither, Word draw_enable, Word tex_disable)
 				: mode((GP0_DrawMode << 24) | (tpage & 0x1F) | ((semi & 3) << 5) | ((bpp & 3) << 7) | ((dither & 1) << 9) | ((draw_enable & 1) << 10) | ((tex_disable & 1) << 11))
 			{}
 
@@ -550,6 +562,58 @@ namespace CKSDK
 			GP1_DisplayMode = 0x08,
 		};
 
+		/// @brief GP0 packet to setup the draw environment
+		struct DrawEnvironment
+		{
+			/// @brief GP0_DrawTL
+			Word tl;
+			/// @brief GP0_DrawBR
+			Word br;
+			/// @brief GP0_DrawOffset
+			Word off;
+
+			DrawEnvironment() {}
+
+			/// @brief Sets up the draw environment packet for the given area in VRAM
+			/// @param x The left of the area in VRAM
+			/// @param y The top of the area in VRAM
+			/// @param w The width of the area in VRAM
+			/// @param h The height of the area in VRAM
+			/// @param ox The X offset to apply to the coordinate system of draw commands (typically 0)
+			/// @param oy The Y offset to apply to the coordinate system of draw commands (typically 0)
+			DrawEnvironment(uint32_t x, uint32_t y, uint32_t w, uint32_t h, int32_t ox = 0, int32_t oy = 0)
+			{
+				tl = (GP0_DrawTL << 24) | ((x) << 0) | ((y) << 10);
+				br = (GP0_DrawBR << 24) | ((x + w - 1) << 0) | ((y + h - 1) << 10);
+				off = (GP0_DrawOffset << 24) | ((x + ox) << 0) | ((y + oy) << 11);
+			}
+		};
+
+		/// @brief GP1 packet to setup the display environment
+		struct DisplayEnvironment
+		{
+			/// @brief GP1_DisplayVRAM
+			Word vram;
+			/// @brief GP1_DisplayHSpan
+			Word hspan;
+			/// @brief GP1_DisplayVSpan
+			Word vspan;
+			/// @brief GP1_DisplayMode
+			Word mode;
+
+			DisplayEnvironment() {}
+
+			/// @brief Sets up the display environment for the given area in VRAM
+			/// @param x The left of the area in VRAM
+			/// @param y The top of the area in VRAM
+			/// @param w The width of the area in VRAM
+			/// @param h The height of the area in VRAM
+			DisplayEnvironment(uint32_t x, uint32_t y, uint32_t w, uint32_t h)
+			{
+
+			}
+		};
+
 		// GPU types
 		/// @brief 32-bit 3D vector
 		struct Vector
@@ -588,32 +652,19 @@ namespace CKSDK
 				return {{{0x1000, 0, 0}, {0, 0x1000, 0}, {0, 0, 0x1000}}, {0, 0, 0}};
 			}
 		};
+		/**
+		* @}
+		**/
 
 		// GPU buffers
 		/// @brief GPU buffer
 		struct Buffer
 		{
 			// Screen
-			/// @brief Screen GP0 packet
-			struct GP0
-			{
-				/// @brief GP0_DrawTL
-				Word tl;
-				/// @brief GP0_DrawBR
-				Word br;
-				/// @brief GP0_DrawOffset
-				Word off;
-				/// @brief GP0_DisplayMode
-				DrawModePrim mode;
-			} gp0;
-			/// @brief GP1_DisplayVRAM
-			Word gp1_vram;
-			/// @brief GP1_DisplayHSpan
-			Word gp1_hspan;
-			/// @brief GP1_DisplayVSpan
-			Word gp1_vspan;
-			/// @brief GP1_DisplayMode
-			Word gp1_mode;
+			/// @brief Draw environment
+			DrawEnvironment draw_environment;
+			/// @brief Display environment (displays the other buffer)
+			DisplayEnvironment display_environment;
 
 			// Buffers
 			/// @brief Buffer pointer
@@ -676,23 +727,41 @@ namespace CKSDK
 		void SetScreen(uint32_t w, uint32_t h, uint32_t ox, uint32_t oy, uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1);
 
 		/// @brief Flips and displays GPU buffers
+		/// @details After this, a draw command is pushed to the command queue.
 		void Flip();
 
 		/// @brief Waits for next VBlank
 		void VBlankSync();
+
+		/**
+		* \defgroup GpuQueue GPU queue commands
+		* As the GPU runs separately to the CPU, CKSDK provides an asynchronous command queue for DMAs between the CPU and GPU, which includes DMAing GP0 packets to the GPU (ordering tables) and DMAing images to VRAM.
+		* 
+		* The command queue is implemented as a basic FIFO queue.
+		* 
+		* The default queue size is 16. If this is exhausted, the CPU will spin until a slot is free.
+		* @{
+		**/
 		/// @brief Waits for GPU command queue to be empty
 		void QueueSync();
-
-		/// @brief Resets GPU command queue
-		/// @note For internal use only
+		/// @brief Drops all queued GPU commands
 		void QueueReset();
+
+		/// @brief DMA ordering table to GPU
+		/// @param buffer The beginning of the ordering table
+		/// @details The simplest way to get commands from the CPU to the GPU on PS1 is often to DMA an ordering table to the GPU.
+		/// @details Each packet begins with a Tag which points to the next packet, and ends with a null terminator.
+		/// @note This is an asynchronous command, so the given pointer must be valid until the queue is empty
+		void Queue_OrderingTableDMA(const Tag &buffer);
 
 		/// @brief DMA image to VRAM
 		/// @param addr Address of image data
 		/// @param xy X and Y coordinate in VRAM
 		/// @param wh Width and height in VRAM
 		/// @param bcr DMA block count value
-		void DMAImage(const void *addr, uint32_t xy, uint32_t wh, uint32_t bcr);
+		/// @details See https://psx-spx.consoledev.net/graphicsprocessingunitgpu/#gpu-memory-transfer-commands for information on how to construct the DMA arguments
+		/// @note This is an asynchronous command, so the given pointer must be valid until the queue is empty
+		void Queue_ImageDMA(const void *addr, uint32_t xy, uint32_t wh, uint32_t bcr);
 
 		/// @brief Loads image to VRAM
 		/// @param addr Address of image data
@@ -700,7 +769,9 @@ namespace CKSDK
 		/// @param y Y coordinate in VRAM
 		/// @param w Width in VRAM
 		/// @param h Height in VRAM
-		inline void LoadImage(const void *addr, uint16_t x, uint16_t y, uint16_t w, uint16_t h)
+		/// @details This is a wrapper around DMAImage that constructs the DMA arguments for you
+		/// @note This is an asynchronous command, so the given pointer must be valid until the queue is empty
+		inline void Queue_ImageLoad(const void *addr, uint16_t x, uint16_t y, uint16_t w, uint16_t h)
 		{
 			uint32_t bcr = w * h;
 			// if (bcr & 1)
@@ -718,15 +789,30 @@ namespace CKSDK
 			// 	ExScreen::Abort("LoadImage bcr too large");
 			bcr <<= 16;
 			bcr |= bs;
-			DMAImage(addr, (x << 0) | (y << 16), (w << 0) | (h << 16), bcr);
+			Queue_ImageDMA(addr, (x << 0) | (y << 16), (w << 0) | (h << 16), bcr);
 		}
 
+		/// @brief Queue a list of GP1 commands
+		/// @param addr Pointer to the GP1 commands
+		/// @param size Number of words to send
+		/// @note This is an asynchronous command, so the given pointer must be valid until the queue is empty
+		void Queue_GP1(const Word *addr, size_t size);
+
+		/**
+		* @}
+		**/
+
+		/**
+		* \defgroup GpuCallbacks GPU callbacks
+		* @{
+		**/
 		/// @brief Flip callback type
 		typedef OS::Function<void> FlipCallback;
 
 		/// @brief Sets flip callback
 		/// @param cb FlipCallback
 		/// @returns Previous FlipCallback
+		/// @details This is called by Flip, and will be on the CPU thread.
 		FlipCallback SetFlipCallback(FlipCallback cb);
 
 		/// @brief Gets flip callback
@@ -739,6 +825,7 @@ namespace CKSDK
 		/// @brief Sets VBlank callback
 		/// @param cb VBlankCallback
 		/// @returns Previous VBlankCallback
+		/// @details This is invoked during the VBlank IRQ, and will be on the ISR thread.
 		VBlankCallback SetVBlankCallback(VBlankCallback cb);
 
 		/// @brief Gets VBlank callback
@@ -751,11 +838,15 @@ namespace CKSDK
 		/// @brief Sets queue callback
 		/// @param cb QueueCallback
 		/// @returns Previous QueueCallback
+		/// @details This is invoked by either the GPU DMA IRQ, or on the CPU if it's immediate (queued a GP1 command with no commands queued)
 		QueueCallback SetQueueCallback(QueueCallback cb);
 
 		/// @brief Gets queue callback
 		/// @returns QueueCallback
 		QueueCallback GetQueueCallback();
+		/**
+		* @}
+		**/
 
 		// GPU packet functions
 		/// @brief Allocates and links a packet of a given size
@@ -840,5 +931,19 @@ namespace CKSDK
 		{
 			OS::GpuGp1() = cmd;
 		}
+
+		/// @brief Sends a packet to the GP1 port
+		/// @tparam T Packet type
+		/// @param packet Packet
+		template <typename T>
+		inline void GP1_Packet(const T &packet)
+		{
+			Word *wordp = (Word*)&packet;
+			Word *worde = wordp + (sizeof(T) / sizeof(Word));
+
+			for (; wordp != worde; wordp++)
+				OS::GpuGp1() = *wordp;
+		}
+
 	}
 }

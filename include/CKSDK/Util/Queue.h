@@ -45,7 +45,7 @@ namespace CKSDK
 		{
 			private:
 				// Queue entries
-				using FT = void(*)(const T&);
+				using FT = bool(*)(const T&);
 				struct QueueEntry
 				{
 					FT func;
@@ -125,7 +125,11 @@ namespace CKSDK
 				/// @brief Reset queue
 				void Reset()
 				{
+					OS::DisableIRQ();
+
 					queue_length = 0;
+
+					OS::EnableIRQ();
 				}
 		};
 	}

@@ -122,7 +122,7 @@ namespace CKSDK
 
 		static Queue::Queue<CommandQueueArgs, 16> command_queue;
 
-		static void CommandQueue_Issue(const CommandQueueArgs &args)
+		static bool CommandQueue_Issue(const CommandQueueArgs &args)
 		{
 			uint8_t com = uint8_t(args.com);
 
@@ -168,6 +168,8 @@ namespace CKSDK
 			// Write command
 			OS::CdStat() = 0;
 			OS::CdCmd() = com;
+
+			return true;
 		}
 
 		// CD IRQ

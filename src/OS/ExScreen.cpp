@@ -165,6 +165,16 @@ namespace CKSDK
 
 		KEEP void Main()
 		{
+			// Disable all IRQs and callbacks
+			for (int i = 0; i <= 10; i++)
+				OS::SetIRQ(static_cast<CKSDK::OS::IRQ>(i), nullptr);
+			for (int i = 0; i <= 6; i++)
+				OS::SetDMA(static_cast<CKSDK::OS::DMA>(i), nullptr);
+
+			GPU::SetVBlankCallback(nullptr);
+			GPU::SetFlipCallback(nullptr);
+			GPU::SetQueueCallback(nullptr);
+
 			// Reset GPU
 			GPU::Init();
 			GPU::SetScreen(WIDTH, HEIGHT, 0, 0, 0, 0, 0, 0);
@@ -176,16 +186,19 @@ namespace CKSDK
 			// Load font
 			GPU::DataSync();
 			GPU::CHCRSync();
-			GPU::LoadImage((uint32_t*)os_font_tex, 1024 - 64, 0, 32, 48);
+			GPU::Queue_ImageLoad((uint32_t*)os_font_tex, 1024 - 64, 0, 32, 48);
 			GPU::QueueReset();
 
 			GPU::DataSync();
 			GPU::CHCRSync();
-			GPU::LoadImage((uint32_t*)os_font_clut, 1024 - 32, 0, 16, 1);
+			GPU::Queue_ImageLoad((uint32_t*)os_font_clut, 1024 - 32, 0, 16, 1);
 			GPU::QueueReset();
 
 			GPU::DataSync();
 			GPU::CHCRSync();
+
+			// Re-enable IRQs now that it's safe to do so
+			OS::EnableIRQ();
 
 			// Show screen
 			static void (*screens[])() = {
@@ -193,21 +206,15 @@ namespace CKSDK
 				StackDump
 			};
 			unsigned screen = 0;
-			
+
 			while (1)
 			{
 				// Prepare GPU
-				GPU::GP1_Cmd(GPU::g_bufferp->gp1_vram);
-				GPU::GP1_Cmd(GPU::g_bufferp->gp1_hspan);
-				GPU::GP1_Cmd(GPU::g_bufferp->gp1_vspan);
-				GPU::GP1_Cmd(GPU::g_bufferp->gp1_mode);
+				GPU::GP1_Packet(GPU::g_bufferp->display_environment);
 
 				GPU::GP1_Cmd((GPU::GP1_DisplayEnable << 24) | 0);
 
-				GPU::GP0_Cmd(GPU::g_bufferp->gp0.tl);
-				GPU::GP0_Cmd(GPU::g_bufferp->gp0.br);
-				GPU::GP0_Cmd(GPU::g_bufferp->gp0.off);
-				GPU::GP0_Cmd(GPU::g_bufferp->gp0.mode.mode);
+				GPU::GP0_Packet(GPU::g_bufferp->draw_environment);
 
 				GPU::GP0_Cmd((GPU::GP0_FillRect << 24) | (0xFF << 16) | (0 << 8) | (0 << 0));
 				GPU::GP0_Data((0 << 0) | (0 << 16));
@@ -222,12 +229,14 @@ namespace CKSDK
 				// Wait for key press
 				while (1)
 				{
+					GPU::VBlankSync();
 					SPI::PollPads();
 					if (SPI::g_pad[0].press & SPI::PadButton::Cross)
 					{
 						screen = (screen + 1) % std::size(screens);
 						break;
 					}
+					break;
 				}
 			}
 		}

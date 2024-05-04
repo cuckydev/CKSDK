@@ -36,8 +36,12 @@ namespace CKSDK
 		static Buffer buffers[2];
 		KEEP Buffer *g_bufferp;
 
-		// VBlank callback
+		// Callbacks
+		static FlipCallback flip_callback = nullptr;
 		static VBlankCallback vblank_callback = nullptr;
+		static QueueCallback queue_callback = nullptr;
+
+		// VBlank callback
 		static volatile uint32_t vblank_counter;
 
 		static void IRQ_VBlank()
@@ -49,75 +53,23 @@ namespace CKSDK
 		}
 
 		// GPU draw queue
-		static QueueCallback queue_callback = nullptr;
 
-		struct DrawQueueArgs
+		struct GPUQueueArgs
 		{
 			uint32_t arg[6];
 		};
-		static Queue::Queue<DrawQueueArgs, 16> draw_queue;
+		static Queue::Queue<GPUQueueArgs, 16> gpu_queue;
 
 		static void IRQ_DMA()
 		{
 			// Dispatch next draw queue command
-			if (draw_queue.Dispatch())
+			if (gpu_queue.Dispatch())
 			{
 				// Disable DMA request and call queue callback
 				GP1_Cmd((GP1_DMADirection << 24) | 0);
 				if (queue_callback != nullptr)
 					queue_callback();
 			}
-		}
-
-		// Queue commands
-		static void Queue_DMAImage(const DrawQueueArgs &args)
-		{
-			// Get arguments
-			uint32_t addr = args.arg[0];
-			uint32_t xy = args.arg[1];
-			uint32_t wh = args.arg[2];
-			uint32_t bcr = args.arg[3];
-			uint32_t write = args.arg[4];
-
-			// Disable DMA
-			DataSync();
-
-			GP1_Cmd((GP1_DMADirection << 24) | 0);
-			GP0_Cmd(GP0_FlushCache << 24);
-
-			// Set DMA command
-			GP0_Cmd(write ? (GP0_ToVRAM << 24) : (GP0_FrVRAM << 24));
-			GP0_Data(xy);
-			GP0_Data(wh);
-			// DataSync();
-
-			// Set DMA direction
-			GP1_Cmd((GP1_DMADirection << 24) | (write ? 2 : 3));
-
-			// Start DMA
-			OS::DmaCtrl(OS::DMA::GPU).madr = addr;
-			OS::DmaCtrl(OS::DMA::GPU).bcr = bcr;
-			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x01000200 | write;
-		}
-
-		static void Queue_DrawOT(const DrawQueueArgs &args)
-		{
-			// Get arguments
-			size_t ot = args.arg[0];
-
-			// Set DMA direction
-			DataSync();
-			GP1_Cmd((GP1_DMADirection << 24) | 2);
-
-			// Wait for DMA to be ready
-			CmdSync();
-			DataSync();
-			CHCRSync();
-
-			// Start DMA
-			OS::DmaCtrl(OS::DMA::GPU).madr = ot;
-			OS::DmaCtrl(OS::DMA::GPU).bcr = 0;
-			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x01000401;
 		}
 
 		// GPU functions
@@ -219,20 +171,13 @@ namespace CKSDK
 		KEEP void SetScreen(uint32_t w, uint32_t h, uint32_t ox, uint32_t oy, uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1)
 		{
 			// Set buffer framebuffer commands
-			buffers[0].gp0.tl  = (GP0_DrawTL << 24)     | ((x0) << 0)         | ((y0) << 10);
-			buffers[0].gp0.br  = (GP0_DrawBR << 24)     | ((x0 + w - 1) << 0) | ((y0 + h - 1) << 10);
-			buffers[0].gp0.off = (GP0_DrawOffset << 24) | ((x0 + ox) << 0)    | ((y0 + oy) << 11);
+			g_bufferp = &buffers[0];
 
-			buffers[0].gp1_vram = (GP1_DisplayVRAM << 24) | (x1 << 0) | (y1 << 10);
+			buffers[0].draw_environment = DrawEnvironment(x0, y0, w, h, ox, oy);
+			buffers[0].display_environment = DisplayEnvironment(x1, y1, w, h);
 
-			buffers[1].gp0.tl  = (GP0_DrawTL << 24)     | ((x1) << 0)         | ((y1) << 10);
-			buffers[1].gp0.br  = (GP0_DrawBR << 24)     | ((x1 + w - 1) << 0) | ((y1 + h - 1) << 10);
-			buffers[1].gp0.off = (GP0_DrawOffset << 24) | ((x1 + ox) << 0)    | ((y1 + oy) << 11);
-
-			buffers[1].gp1_vram = (GP1_DisplayVRAM << 24) | (x0 << 0) | (y0 << 10);
-			
-			buffers[0].gp0.mode = DrawModePrim(0, false, BitDepth_4Bit, false, true, false);
-			buffers[1].gp0.mode = DrawModePrim(0, false, BitDepth_4Bit, false, true, false);
+			buffers[1].draw_environment = DrawEnvironment(x0, y0, w, h, ox, oy);
+			buffers[1].display_environment = DisplayEnvironment(x0, y0, w, h);
 
 			// Setup mode
 			uint32_t mode = (GP1_DisplayMode << 24);
@@ -298,13 +243,12 @@ namespace CKSDK
 			// Setup display commands
 			for (auto &i : buffers)
 			{
-				i.gp1_hspan = hspan;
-				i.gp1_vspan = vspan;
-				i.gp1_mode = mode;
+				i.display_environment.hspan = hspan;
+				i.display_environment.vspan = vspan;
+				i.display_environment.mode = mode;
 			}
 		}
 
-		static FlipCallback flip_callback = nullptr;
 		KEEP void Flip()
 		{
 			Buffer *bufferp = g_bufferp;
@@ -314,10 +258,7 @@ namespace CKSDK
 			VBlankSync();
 			
 			// Set display framebuffer
-			GP1_Cmd(bufferp->gp1_vram);
-			GP1_Cmd(bufferp->gp1_hspan);
-			GP1_Cmd(bufferp->gp1_vspan);
-			GP1_Cmd(bufferp->gp1_mode);
+			GP1_Packet(bufferp->display_environment);
 			
 			GP1_Cmd((GP1_DisplayEnable << 24) | 0);
 			
@@ -327,12 +268,10 @@ namespace CKSDK
 
 			// Send GP0 setup packet
 			// These commands are not safe to send during the OT, so we send them here
-			GP0_Packet<Buffer::GP0>(bufferp->gp0);
+			GP0_Packet(bufferp->draw_environment);
 
 			// Send OT to GPU
-			draw_queue.Enqueue(Queue_DrawOT, DrawQueueArgs{
-				uint32_t(&bufferp->GetOT(bufferp->ot_size - 1))
-			});
+			Queue_OrderingTableDMA(bufferp->GetOT(bufferp->ot_size - 1));
 
 			// Flip and initialize buffer
 			bufferp = (bufferp == &buffers[0]) ? &buffers[1] : &buffers[0];
@@ -353,10 +292,77 @@ namespace CKSDK
 			TTY::Out("GPU vsync timeout\n");
 		}
 
+		// Queue commands
+		static bool Command_ImageDMA(const GPUQueueArgs &args)
+		{
+			// Get arguments
+			uint32_t addr = args.arg[0];
+			uint32_t xy = args.arg[1];
+			uint32_t wh = args.arg[2];
+			uint32_t bcr = args.arg[3];
+			uint32_t write = args.arg[4];
+
+			// Disable DMA
+			DataSync();
+
+			GP1_Cmd((GP1_DMADirection << 24) | 0);
+			GP0_Cmd(GP0_FlushCache << 24);
+
+			// Set DMA command
+			GP0_Cmd(write ? (GP0_ToVRAM << 24) : (GP0_FrVRAM << 24));
+			GP0_Data(xy);
+			GP0_Data(wh);
+			// DataSync();
+
+			// Set DMA direction
+			GP1_Cmd((GP1_DMADirection << 24) | (write ? 2 : 3));
+
+			// Start DMA
+			OS::DmaCtrl(OS::DMA::GPU).madr = addr;
+			OS::DmaCtrl(OS::DMA::GPU).bcr = bcr;
+			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x01000200 | write;
+
+			return false;
+		}
+
+		static bool Command_OrderingTableDMA(const GPUQueueArgs &args)
+		{
+			// Get arguments
+			size_t ot = args.arg[0];
+
+			// Set DMA direction
+			DataSync();
+			GP1_Cmd((GP1_DMADirection << 24) | 2);
+
+			// Wait for DMA to be ready
+			CmdSync();
+			DataSync();
+			CHCRSync();
+
+			// Start DMA
+			OS::DmaCtrl(OS::DMA::GPU).madr = ot;
+			OS::DmaCtrl(OS::DMA::GPU).bcr = 0;
+			OS::DmaCtrl(OS::DMA::GPU).chcr = 0x01000401;
+
+			return false;
+		}
+
+		static bool Command_GP1(const GPUQueueArgs &args)
+		{
+			// Get arguments
+			const Word *addr = reinterpret_cast<const Word *>(args.arg[0]);
+			size_t size = args.arg[1];
+
+			while (size-- > 0)
+				GP1_Cmd(*addr++);
+
+			return true;
+		}
+
 		KEEP void QueueSync()
 		{
 			// Wait for queue to clear up
-			draw_queue.Sync();
+			gpu_queue.Sync();
 
 			// Sync
 			CHCRSync();
@@ -366,16 +372,32 @@ namespace CKSDK
 
 		KEEP void QueueReset()
 		{
-			draw_queue.Reset();
+			// Drop all queued commands
+			gpu_queue.Reset();
+		}
+
+		KEEP void Queue_OrderingTableDMA(const Tag &buffer)
+		{
+			gpu_queue.Enqueue(Command_OrderingTableDMA, GPUQueueArgs{
+				reinterpret_cast<uint32_t>(&buffer)
+			});
 		}
 		
-		KEEP void DMAImage(const void *addr, uint32_t xy, uint32_t wh, uint32_t bcr)
+		KEEP void Queue_ImageDMA(const void *addr, uint32_t xy, uint32_t wh, uint32_t bcr)
 		{
-			draw_queue.Enqueue(Queue_DMAImage, DrawQueueArgs{
+			gpu_queue.Enqueue(Command_ImageDMA, GPUQueueArgs{
 				uint32_t(addr), xy, wh, bcr, 1
 			});
 		}
 
+		KEEP void Queue_GP1(const Word *addr, size_t size)
+		{
+			gpu_queue.Enqueue(Command_GP1, GPUQueueArgs{
+				uint32_t(addr), size
+			});
+		}
+
+		// Callbacks
 		KEEP FlipCallback SetFlipCallback(FlipCallback cb)
 		{
 			FlipCallback old_cb = flip_callback;
